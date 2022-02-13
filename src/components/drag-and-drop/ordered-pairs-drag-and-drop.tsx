@@ -57,80 +57,85 @@ export function OrderedPairsDragAndDrop() {
   }
 
   return (
-    <DragDropContext onDragEnd={onDragEnd}>
-      <Box className={classes.box}>
-        <Typography>
-          Pairs of numbers in the relation:
-        </Typography>
-        <Droppable droppableId="selected" direction="horizontal">
-          {(providedDroppable2:DroppableProvided, snapshotDroppable2:DroppableStateSnapshot) => (
-            <div
-              ref={providedDroppable2.innerRef}
-              style={getListStyle(snapshotDroppable2.isDraggingOver)}>
-              {state.selected.map((item, index) => (
-                <Draggable
-                  key={item.id}
-                  draggableId={item.id}
-                  index={index}>
-                  {(providedDraggable2:DraggableProvided, snapshotDraggable2:DraggableStateSnapshot) => (
-                    <div>
-                      <div
-                        ref={providedDraggable2.innerRef}
-                        {...providedDraggable2.draggableProps}
-                        {...providedDraggable2.dragHandleProps}
-                        style={getItemStyle(
-                          providedDraggable2.draggableProps.style,
-                          snapshotDraggable2.isDragging
-                        )}>
-                        {item.content}
-                      </div>
-                      {providedDraggable2.placeholder}
-                    </div>
-                  )}
-                </Draggable>
-              ))}
-              {providedDroppable2.placeholder}
-            </div>
-          )}
-        </Droppable>
-      </Box>
-      <Box className={classes.box}>
-        <Typography>
-          Pairs of numbers not in the relation:
-        </Typography>
-        <Droppable droppableId="items" direction="horizontal">
-          {(provided:DroppableProvided, snapshot:DroppableStateSnapshot) => (
-            <div
-              ref={provided.innerRef}
-              {...provided.droppableProps}
-              style={getListStyle(snapshot.isDraggingOver)}
-            >
-              {state.items.map((item, index) => (
-                <Draggable key={item.id} draggableId={item.id} index={index}>
-                  {(providedDraggable:DraggableProvided, snapshotDraggable:DraggableStateSnapshot) => (
+    <Box>
+      <Typography align="center" className={classes.text}>
+        Drag and drop pairs of numbers to modify the relation
+      </Typography>
+      <DragDropContext onDragEnd={onDragEnd}>
+        <Box className={classes.box}>
+          <Typography>
+            Pairs of numbers in the relation:
+          </Typography>
+          <Droppable droppableId="selected" direction="horizontal">
+            {(providedDroppable2:DroppableProvided, snapshotDroppable2:DroppableStateSnapshot) => (
+              <div
+                ref={providedDroppable2.innerRef}
+                style={getListStyle(snapshotDroppable2.isDraggingOver)}>
+                {state.selected.map((item, index) => (
+                  <Draggable
+                    key={item.id}
+                    draggableId={item.id}
+                    index={index}>
+                    {(providedDraggable2:DraggableProvided, snapshotDraggable2:DraggableStateSnapshot) => (
                       <div>
                         <div
-                          ref={providedDraggable.innerRef}
-                          {...providedDraggable.draggableProps}
-                          {...providedDraggable.dragHandleProps}
+                          ref={providedDraggable2.innerRef}
+                          {...providedDraggable2.draggableProps}
+                          {...providedDraggable2.dragHandleProps}
                           style={getItemStyle(
-                            providedDraggable.draggableProps.style,
-                            snapshotDraggable.isDragging
-                          )}
-                        >
+                            providedDraggable2.draggableProps.style,
+                            snapshotDraggable2.isDragging
+                          )}>
                           {item.content}
                         </div>
-                        {providedDraggable.placeholder}
+                        {providedDraggable2.placeholder}
                       </div>
                     )}
-                </Draggable>
-              ))}
-              {provided.placeholder}
-            </div>
-          )}
-        </Droppable>
-      </Box>
-    </DragDropContext>
+                  </Draggable>
+                ))}
+                {providedDroppable2.placeholder}
+              </div>
+            )}
+          </Droppable>
+        </Box>
+        <Box className={classes.box}>
+          <Typography>
+            Pairs of numbers not in the relation:
+          </Typography>
+          <Droppable droppableId="items" direction="horizontal">
+            {(provided:DroppableProvided, snapshot:DroppableStateSnapshot) => (
+              <div
+                ref={provided.innerRef}
+                {...provided.droppableProps}
+                style={getListStyle(snapshot.isDraggingOver)}
+              >
+                {state.items.map((item, index) => (
+                  <Draggable key={item.id} draggableId={item.id} index={index}>
+                    {(providedDraggable:DraggableProvided, snapshotDraggable:DraggableStateSnapshot) => (
+                        <div>
+                          <div
+                            ref={providedDraggable.innerRef}
+                            {...providedDraggable.draggableProps}
+                            {...providedDraggable.dragHandleProps}
+                            style={getItemStyle(
+                              providedDraggable.draggableProps.style,
+                              snapshotDraggable.isDragging
+                            )}
+                          >
+                            {item.content}
+                          </div>
+                          {providedDraggable.placeholder}
+                        </div>
+                      )}
+                  </Draggable>
+                ))}
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
+        </Box>
+      </DragDropContext>
+    </Box>
   )
 }
 
@@ -160,5 +165,11 @@ const useStyles = makeStyles((theme: any) => ({
   box: {
     paddingBottom: theme.spacing(1),
     paddingTop: theme.spacing(1)
+  },
+  text: {
+    fontSize: theme.typography.pxToRem(18),
+    [theme.breakpoints.up("sm")]: {
+      fontSize: theme.typography.pxToRem(22),
+    },
   }
 }))
