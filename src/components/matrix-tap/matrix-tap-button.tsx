@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useContext } from "react"
+import React, { useContext } from "react"
+import _ from "lodash"
 import { 
   Button,
 } from "@mui/material"
@@ -16,16 +17,13 @@ interface IMatrixTapButton {
 export function MatrixTapButton (props: IMatrixTapButton) {
   const { rowIndex, colIndex } = props
   const { matrix, setter } = useContext(MatrixContext)
-  const [value, setValue] = useState(matrix[rowIndex][colIndex])
   const classes = useStyles()
 
   const handleClick = () => {
-    const tempMatrix = [...matrix]
-    if(value === 0) {
-      setValue(1)
+    const tempMatrix = _.cloneDeep(matrix)
+    if(matrix[rowIndex][colIndex] === 0) {
       tempMatrix[rowIndex][colIndex] = 1
     } else {
-      setValue(0)
       tempMatrix[rowIndex][colIndex] = 0
     }
     setter(tempMatrix)
@@ -37,7 +35,7 @@ export function MatrixTapButton (props: IMatrixTapButton) {
       onClick={handleClick}
       className={classes.button}
     >
-      {value}
+      {matrix[rowIndex][colIndex]}
     </Button>
   )
 }
