@@ -12,7 +12,7 @@ import {
 import { makeStyles } from "@mui/styles"
 
 interface IMatrix {
-  matrix: number[][] // Relations stored as a matrix
+  matrix: number[][] // Relation stored as a matrix
 }
 
 /**
