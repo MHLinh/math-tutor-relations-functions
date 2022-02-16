@@ -1,6 +1,11 @@
 import React from "react"
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
-import { ThemeProvider } from "@mui/styles"
+import { Box } from "@mui/material"
+import { makeStyles, ThemeProvider } from "@mui/styles"
+import {
+  ScrollToTop,
+  NavigationButtons,
+} from "components"
 import { 
   HomePage,
   RelationRepresentationPage,
@@ -16,21 +21,32 @@ import {
 import { theme } from "theme"
 
 function App() {
+
   return (
     <Router>
+      {/* <ScrollToTop /> */}
       <ThemeProvider theme={theme}>
-        <Routes>
-          <Route path="/" element={<HomePage />}/>
-          <Route path="/relation-representation" element={<RelationRepresentationPage />} />
-          <Route path="/relation-properties" element={<RelationPropertiesNavigationPage />} />
-          <Route path="/relation-properties-all" element={<RelationPropertiesPage />} />
-          <Route path="/relation-properties-reflexive" element={<RelationReflexivePage />} />
-          <Route path="/relation-properties-irreflexive" element={<RelationIrreflexivePage />} />
-          <Route path="/relation-properties-symmetric" element={<RelationSymmetricPage />} />
-          <Route path="/relation-properties-antisymmetric" element={<RelationAntisymmetricPage />} />
-          <Route path="/relation-properties-transitive" element={<RelationTransitivePage />} />
-          <Route path="/relation-warshalls" element={<RelationWarshallsPage />} />
-        </Routes>
+        <Box 
+          sx={{
+            paddingTop: 1,
+            paddingLeft: 1,
+            paddingRight: 1,
+          }}
+        >
+          <NavigationButtons />
+          <Routes>
+            <Route path="/" element={<HomePage />}/>
+            <Route path="/relation-representation" element={<RelationRepresentationPage />} />
+            <Route path="/relation-properties" element={<RelationPropertiesNavigationPage />} />
+            <Route path="/relation-properties-all" element={<RelationPropertiesPage />} />
+            <Route path="/relation-properties-reflexive" element={<RelationReflexivePage />} />
+            <Route path="/relation-properties-irreflexive" element={<RelationIrreflexivePage />} />
+            <Route path="/relation-properties-symmetric" element={<RelationSymmetricPage />} />
+            <Route path="/relation-properties-antisymmetric" element={<RelationAntisymmetricPage />} />
+            <Route path="/relation-properties-transitive" element={<RelationTransitivePage />} />
+            <Route path="/relation-warshalls" element={<RelationWarshallsPage />} />
+          </Routes>
+        </Box>
       </ThemeProvider>
     </Router>
   )
