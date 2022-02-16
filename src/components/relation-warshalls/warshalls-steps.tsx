@@ -3,6 +3,7 @@ import {
   Box,
   Button,
   Grid,
+  Stack,
   Typography,
   useTheme,
   useMediaQuery,
@@ -12,6 +13,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward"
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward"
 import { WarshallsMatrix } from "components/matrix/warshalls-matrix"
 import { Matrix } from "components/matrix/matrix"
+import { WarshallsInfo } from "./warshalls-info"
 
 interface IWarshallsSteps {
   steps: number[][][] // A list of relations stored as matrices
@@ -46,11 +48,14 @@ export function WarshallsSteps(props: IWarshallsSteps) {
   return (
     <Box>
       <Box className={classes.box}>
+        <Stack direction="row-reverse">
+          <WarshallsInfo />
+        </Stack>
         <Typography align="center" className={classes.text}>
           Round {round + 1}
         </Typography>
       </Box>
-      <Box className={classes.box}>
+      <Box className={classes.boxGrid}>
         <Grid 
           container 
           direction={small 
@@ -110,6 +115,10 @@ const useStyles = makeStyles((theme: any) => ({
   box: {
     paddingBottom: theme.spacing(1),
     paddingTop: theme.spacing(1)
+  },
+  boxGrid: {
+    paddingBottom: theme.spacing(2),
+    paddingTop: theme.spacing(2)
   },
   button: {
     width: theme.typography.pxToRem(100)
