@@ -1,25 +1,38 @@
 import React from "react"
-import logo from "logo.svg"
-import "App.css"
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+import { ThemeProvider } from "@mui/styles"
+import { 
+  HomePage,
+  RelationRepresentationPage,
+  RelationPropertiesNavigationPage,
+  RelationPropertiesPage,
+  RelationReflexivePage,
+  RelationIrreflexivePage,
+  RelationSymmetricPage,
+  RelationAntisymmetricPage,
+  RelationTransitivePage,
+  RelationWarshallsPage
+ } from "pages"
+import { theme } from "theme"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <ThemeProvider theme={theme}>
+        <Routes>
+          <Route path="/" element={<HomePage />}/>
+          <Route path="/relation-representation" element={<RelationRepresentationPage />} />
+          <Route path="/relation-properties" element={<RelationPropertiesNavigationPage />} />
+          <Route path="/relation-properties-all" element={<RelationPropertiesPage />} />
+          <Route path="/relation-properties-reflexive" element={<RelationReflexivePage />} />
+          <Route path="/relation-properties-irreflexive" element={<RelationIrreflexivePage />} />
+          <Route path="/relation-properties-symmetric" element={<RelationSymmetricPage />} />
+          <Route path="/relation-properties-antisymmetric" element={<RelationAntisymmetricPage />} />
+          <Route path="/relation-properties-transitive" element={<RelationTransitivePage />} />
+          <Route path="/relation-warshalls" element={<RelationWarshallsPage />} />
+        </Routes>
+      </ThemeProvider>
+    </Router>
   )
 }
 
