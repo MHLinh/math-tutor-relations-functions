@@ -73,7 +73,8 @@ const useStyles = makeStyles((theme: any) => ({
     transform: "translate(-50%, -50%)",
     backgroundColor: theme.palette.common.white,
     border: "2px solid #000",
-    padding: theme.spacing(2)
+    padding: theme.spacing(2),
+    maxWidth: theme.typography.pxToRem(400)
   },
   title: {
     fontSize: theme.typography.pxToRem(18),

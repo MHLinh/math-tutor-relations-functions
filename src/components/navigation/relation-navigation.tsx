@@ -50,7 +50,9 @@ export function RelationNavigation() {
               to={path}
               className={classes.button}
             >
-              {name}
+              <Typography align="center" className={classes.buttonText}>
+                {name}
+              </Typography>
             </Button>
           </Grid>
         ))}
@@ -63,8 +65,11 @@ const useStyles = makeStyles((theme: any) => ({
   button: {
     height: 60,
     width: 300,
+  },
+  buttonText: {
+    fontWeight: 500,
     fontSize: theme.typography.pxToRem(12),
-    [theme.breakpoints.up("mdp")]: {
+    [theme.breakpoints.up("md")]: {
       fontSize: theme.typography.pxToRem(14),
     },
   },
