@@ -7,12 +7,11 @@ import { makeStyles } from "@mui/styles"
 import { computeOrderedPairs } from "utils"
 
 interface IOrderedPairs {
-  matrix: number[][]
+  matrix: number[][] // Relation stored as a matrix
 }
 
 /**
  * A component displaying the relation as list of ordered pairs.
- * @param props -  matrix representing the relation
  */
 export function OrderedPairs(props: IOrderedPairs) {
   const { matrix } = props
@@ -25,6 +24,7 @@ export function OrderedPairs(props: IOrderedPairs) {
   const middle = Math.ceil(tuplePairs.length / 2)
   const stringPairs1 = tuplePairs.slice(0, middle).join(", ")
   const stringPairs2 = tuplePairs.slice(-middle).join(", ")
+  
   return (
     <Box>
       <Typography align="center" className={classes.text}>
