@@ -10,28 +10,27 @@ import { v4 as uuidv4 } from "uuid"
 import { computeDirectedGraphEdges } from "utils"
 
 export interface IDirectedGraphNode {
-  id: number | string,
-  label: string,
-  x?: number,
-  y?: number
+  id: number | string,  // Id of the node
+  label: string,        // Label of the node
+  x?: number,           // x-coordinate of the node
+  y?: number            // y-coordinate of the node
 }
 
 export interface IDirectedGraphEdge {
-  id: number | string,
-  from: number | string,
-  to: number | string,
-  color?: string
-  label?: string
+  id: number | string,    // Id of the edge
+  from: number | string,  // Id of the starting node
+  to: number | string,    // Id of the end node
+  color?: string          // Color of the edge
+  label?: string          // Label of the edge
 }
 
 interface IDirectedGraph {
-  matrix: number[][],
-  nodes: IDirectedGraphNode[]
+  matrix: number[][],           // Matrix representing the relation
+  nodes: IDirectedGraphNode[]   // Nodes for generating the directed graph
 }
 
 /**
  * A component displaying the relation as a directed graph.
- * @param props - matrix representing the relation and nodes for generating the directed graph
  */
 export function DirectedGraph(props: IDirectedGraph) {
   const { matrix, nodes } = props
