@@ -85,7 +85,10 @@ export function RelationRepresentation() {
         <ClearButtonProvider matrixContextValue={contextValue} />
       </Box>
       <Box className={classes.box}>
-        <SaveAndLoadRelation  matrixContextValue={contextValue} type="relation-representation" />
+        <SaveAndLoadRelation 
+          matrixContextValue={contextValue} 
+          type="relation-representation"
+        />
       </Box>
     </Container>
   )
