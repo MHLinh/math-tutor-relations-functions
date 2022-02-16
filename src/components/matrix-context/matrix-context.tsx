@@ -1,4 +1,4 @@
-import React from "react"
+import React, { createContext } from "react"
 
 export interface IMatrixContext {
   matrix: number[][],
@@ -6,9 +6,9 @@ export interface IMatrixContext {
 }
 
 /**
- * React context used to access the matrix and modify in children components.
+ * React context used to access the matrix and modify it in children components.
  */
-export const MatrixContext = React.createContext<IMatrixContext>({
+export const MatrixContext = createContext<IMatrixContext>({
   matrix: [[]],
   setter: (matrix: number[][]) => {}
 })
