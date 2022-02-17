@@ -18,6 +18,9 @@ export function RelationAntisymmetricCheck(props: IRelationAntisymmetricCheck) {
   const pairs = checkAntisymmetric(matrix)
   const antisymmetric = pairs.length === 0
   const stringPairs = pairs.join(", ")
+  const verb = pairs.length > 1
+    ? "are"
+    : "is"
 
   return (
     <Box>
@@ -32,7 +35,7 @@ export function RelationAntisymmetricCheck(props: IRelationAntisymmetricCheck) {
           The above relation is ANTISYMMETRIC.
         </Typography>
         : <Typography>
-          The above relation is NOT ANTISYMMETRIC because {stringPairs} are in the relation.
+          The above relation is NOT ANTISYMMETRIC because {stringPairs} {verb} in the relation.
         </Typography>
       }
     </Box>

@@ -18,6 +18,9 @@ export function RelationIrreflexiveCheck(props: IRelationIrreflexiveCheck) {
   const pairs = checkIrreflexive(matrix)
   const irreflexive = pairs.length === 0
   const stringPairs = pairs.join(", ")
+  const verb = pairs.length > 1
+    ? "are"
+    : "is"
 
   return (
     <Box>
@@ -31,7 +34,7 @@ export function RelationIrreflexiveCheck(props: IRelationIrreflexiveCheck) {
           The above relation is IRREFLEXIVE.
         </Typography>
         : <Typography>
-          The above relation is NOT IRREFLEXIVE because {stringPairs} are in the relation.
+          The above relation is NOT IRREFLEXIVE because {stringPairs} {verb} in the relation.
         </Typography>
       }
     </Box>

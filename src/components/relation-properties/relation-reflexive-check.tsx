@@ -18,6 +18,9 @@ export function RelationReflexiveCheck(props: IRelationReflexiveCheck) {
   const missingPairs = checkReflexive(matrix)
   const reflexive = missingPairs.length === 0
   const stringPairs = missingPairs.join(", ")
+  const verb = missingPairs.length > 1
+    ? "are"
+    : "is"
 
   return (
     <Box>
@@ -31,7 +34,7 @@ export function RelationReflexiveCheck(props: IRelationReflexiveCheck) {
           The above relation is REFLEXIVE.
         </Typography>
         : <Typography>
-          The above relation is NOT REFLEXIVE because {stringPairs} are missing.
+          The above relation is NOT REFLEXIVE because {stringPairs} {verb} missing.
         </Typography>
       }
     </Box>

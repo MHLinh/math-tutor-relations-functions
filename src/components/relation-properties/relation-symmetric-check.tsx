@@ -18,6 +18,9 @@ export function RelationSymmetricCheck(props: IRelationSymmetricCheck) {
   const missingPairs = checkReflexive(matrix)
   const symmetric = missingPairs.length === 0
   const stringPairs = missingPairs.join(", ")
+  const verb = missingPairs.length > 1
+    ? "are"
+    : "is"
 
   return (
     <Box>

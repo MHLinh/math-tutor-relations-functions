@@ -18,6 +18,9 @@ export function RelationTransitiveCheck(props: IRelationTransitiveCheck) {
   const missingPairs = checkTransitive(matrix)
   const transitive = missingPairs.length === 0
   const stringPairs = missingPairs.join(", ")
+  const verb = missingPairs.length > 1
+    ? "are"
+    : "is"
 
   return (
     <Box>
@@ -31,7 +34,7 @@ export function RelationTransitiveCheck(props: IRelationTransitiveCheck) {
           The above relation is TRANSITIVE.
         </Typography>
         : <Typography>
-          The above relation is NOT TRANSITIVE because {stringPairs} are missing.
+          The above relation is NOT TRANSITIVE because {stringPairs} {verb} missing.
         </Typography>
       }
     </Box>
