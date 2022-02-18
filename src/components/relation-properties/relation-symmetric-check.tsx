@@ -34,7 +34,7 @@ export function RelationSymmetricCheck(props: IRelationSymmetricCheck) {
           The above relation is SYMMETRIC.
         </Typography>
         : <Typography>
-          The above relation is NOT SYMMETRIC because {stringPairs} are missing.
+          The above relation is NOT SYMMETRIC because {stringPairs} {verb} missing.
         </Typography>
       }
     </Box>
