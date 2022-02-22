@@ -16,6 +16,7 @@ import {
   DropResult,
   DroppableStateSnapshot, DraggableProvided, DraggableStateSnapshot
 } from "react-beautiful-dnd"
+import _ from "lodash"
 import { getDragAndDropState } from "utils"
 import { palette } from "theme"
 import { MatrixContext } from "components/matrix-context/matrix-context"
@@ -41,7 +42,7 @@ export function OrderedPairsDragAndDrop() {
 
     // Dropped into different lists
     if (source.droppableId !== destination.droppableId) {
-      const tempMatrix = [...matrix]
+      const tempMatrix = _.cloneDeep(matrix)
 
       // Dragging from items to selected means adding pair to the relation.
       // Otherwise we are removing a pair from the relation.
