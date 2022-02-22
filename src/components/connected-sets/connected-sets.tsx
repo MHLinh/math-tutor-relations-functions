@@ -13,30 +13,30 @@ import { generateConnectedSetsNodes, generateConnectedSetsEdges } from "utils"
 import { ConnectedSetsNode } from "./connected-sets-node"
 import { ConnectedSetsEdge } from "./connected-sets-edge"
 
-interface IConnectedSets {
-  numOfElements: number   // The number of elements in a set
-}
-
 /**
  * A component displaying pairs of numbers to drag and drop for inputting a relation.
  */
-export function ConnectedSets(props: IConnectedSets) {
-  const { numOfElements } = props
+export function ConnectedSets() {
   const { matrix, setter } = useContext(MatrixContext)
   const [selectedNodes, setSelectedNodes] = useState({
     start: -1,
     end: -1
   })
   const [selectedEdge, setSelectedEdge] = useState("")
+
   const classes = useStyles()
+
+  const xElements = matrix.length
+  const yElements = matrix[0].length  // Note that the matrix always is 2-dimensional
 
   const size = 16
   const distance = 50
   const width = 500
-  const height = 200
-  const { startNodes, endNodes } = generateConnectedSetsNodes(numOfElements, width, size, distance)
+  const height = distance * Math.max(xElements, yElements)
+  const { startNodes, endNodes } = 
+    generateConnectedSetsNodes(xElements, yElements, width, size, distance)
   const edges = generateConnectedSetsEdges(matrix, startNodes, endNodes)
-
+  console.log(endNodes)
   useEffect(() => {
     if(selectedNodes.start >= 0 && selectedNodes.end >= 0) {
       const tempMatrix = _.cloneDeep(matrix)

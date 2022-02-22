@@ -10,28 +10,30 @@ export interface Node {
 }
 
 export interface Nodes {
-  startNodes: Node[], // Start nodes (left set)
-  endNodes: Node[],   // End nodes (right set)
+  startNodes: Node[], // Start nodes (x set)
+  endNodes: Node[],   // End nodes (y set)
 }
 
 /**
  * A function to generate all the nodes for the connecting sets for inputting a relation.
- * @param numOfElements - number of elements in a set
+ * @param xElements - number of elements in x set
+ * @param yElements - number of elements in y set
  * @param width - width of the canvas
  * @param size - size of the node (number)
  * @param distance - distance between each node (number)
  * @returns an object list arrays of start and end nodes
  */
 export function generateConnectedSetsNodes(
-  numOfElements: number, 
+  xElements: number, 
+  yElements: number, 
   width: number, 
   size: number, 
   distance: number
 ): Nodes {
   const startNodes: Node[] = []
   const endNodes: Node[] = []
-
-  for(let i = 0; i < numOfElements; i++) {
+  console.log(yElements)
+  for(let i = 0; i < xElements; i++) {
     startNodes.push({
       key: `start-${i}`,
       id: i,
@@ -43,7 +45,7 @@ export function generateConnectedSetsNodes(
     })
   }
 
-  for(let i = 0; i < numOfElements; i++) {
+  for(let i = 0; i < yElements; i++) {
     endNodes.push({
       key: `end-${i}`,
       id: i,
@@ -70,8 +72,8 @@ export interface Edge {
 /**
  * A function to generate all the edges for the connecting sets for inputting a relation.
  * @param matrix - a matrix of 0's and 1's
- * @param startNodes - an array of start nodes (left set)
- * @param endNodes - an array of end nodes (right set)
+ * @param startNodes - an array of start nodes (x set)
+ * @param endNodes - an array of end nodes (y set)
  * @returns an array of edges
  */
 export function generateConnectedSetsEdges(
@@ -82,7 +84,7 @@ export function generateConnectedSetsEdges(
   const edges: Edge[] = []
 
   for(let i = 0; i < matrix.length; i++) {
-    for(let j = 0; j < matrix.length; j++) {
+    for(let j = 0; j < matrix[0].length; j++) {
       if(matrix[i][j] === 1) {
         edges.push({
           key: `edge-${i}-${j}`,

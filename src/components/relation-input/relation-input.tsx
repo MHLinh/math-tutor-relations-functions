@@ -25,7 +25,7 @@ export function RelationInput(props: IRelationInput) {
       case "pairs":
         return <OrderedPairsDragAndDrop />
       case "sets":
-        return <ConnectedSets numOfElements={numOfElements}/>
+        return <ConnectedSets />
       default:
         return null
     }
