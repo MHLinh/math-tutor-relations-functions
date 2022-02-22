@@ -1,7 +1,6 @@
 import React from "react"
-import { generateGraphInputNodes } from "utils"
 import { MatrixContext, IMatrixContext } from "components/matrix-context/matrix-context"
-// import { GraphInput } from "components/graph-input/graph-input"
+import { ConnectedSets } from "components/connected-sets/connected-sets"
 import { MatrixTapGrid } from "components/matrix-tap/matrix-tap-grid"
 import { OrderedPairsDragAndDrop } from "components/drag-and-drop/ordered-pairs-drag-and-drop"
 
@@ -19,16 +18,14 @@ interface IRelationInput {
 export function RelationInput(props: IRelationInput) {
   const { matrixContextValue, matrix, numOfElements, type } = props
 
-  const elements = generateGraphInputNodes(numOfElements)
-
   const input = (inputType: string) => {
     switch(inputType) {
       case "matrix":
         return <MatrixTapGrid matrix={matrix} />
       case "pairs":
         return <OrderedPairsDragAndDrop />
-      // case "sets":
-      //   return <GraphInput elementsIn={elements} />
+      case "sets":
+        return <ConnectedSets numOfElements={numOfElements}/>
       default:
         return null
     }

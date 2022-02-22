@@ -14,7 +14,7 @@ import { makeStyles } from "@mui/styles"
 export const relationInputTypes = [
   { id: "matrix", name: "Matrix" },
   { id: "pairs", name: "Ordered pairs" },
-  // { id: "sets", name: "Connected sets" }
+  { id: "sets", name: "Connected sets" }
 ]
 
 interface IRelationInputSelection {
