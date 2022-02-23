@@ -61,7 +61,6 @@ export function RelationTransitive() {
         <RelationInput 
           matrixContextValue={contextValue}
           matrix={relation}
-          numOfElements={NUM_OF_ELEMENTS}
           type={inputType}
         />
       </Box>
