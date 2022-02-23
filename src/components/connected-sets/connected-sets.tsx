@@ -2,7 +2,9 @@ import React, { useState, useEffect, useContext } from "react"
 import {
   Box,
   Stack,
-  Typography
+  Typography,
+  useTheme,
+  useMediaQuery,
 } from "@mui/material"
 import { makeStyles } from "@mui/styles"
 import _ from "lodash"
@@ -25,6 +27,9 @@ import { ConnectedSetsEdge } from "./connected-sets-edge"
  */
 export function ConnectedSets() {
   const { matrix, setter } = useContext(MatrixContext)
+  const { breakpoints } = useTheme()
+  const small = useMediaQuery(breakpoints.down("sm"))
+
   const [selectedNodes, setSelectedNodes] = useState({
     start: -1,
     end: -1
@@ -38,7 +43,9 @@ export function ConnectedSets() {
 
   const size = 16
   const distance = 50
-  const width = 500
+  const width = small 
+                  ? 300
+                  : 500
   const height = distance * (Math.max(xElements, yElements) + 1)
   const labels = generateConnectedSetsLabels(width, size)
   const { startNodes, endNodes } = 
