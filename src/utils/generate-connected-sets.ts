@@ -1,4 +1,38 @@
 
+export interface Label {
+  key: string,      // Key for the label
+  groupX: number,   // X-coordinate for Group component
+  groupY: number,   // Y-coordinate for Group component
+  text: string      // Text for the label
+}
+
+/**
+ * A function to generate the labels for sets.
+ * @param width - width of the canvas
+ * @param size - size of a node (number)
+ * @returns an object list arrays of start and end nodes
+ */
+export function generateConnectedSetsLabels(
+  width: number, 
+  size: number, 
+): Label[] {
+
+    return [
+      {
+        key: "label-x",
+        groupX: width/4 - size/2,
+        groupY: size/2,
+        text: "X"
+      },
+      {
+        key: "label-y",
+        groupX:  width/4 * 3 - size/2,
+        groupY: size/2,
+        text: "Y"
+      }
+    ]
+}
+
 export interface Node {
   key: string,      // Key for the node
   id: number,       // Id for the node (acts as an index for the node array)
@@ -21,7 +55,7 @@ export interface Nodes {
  * @param width - width of the canvas
  * @param size - size of the node (number)
  * @param distance - distance between each node (number)
- * @returns an object list arrays of start and end nodes
+ * @returns an array of start and end nodes
  */
 export function generateConnectedSetsNodes(
   xElements: number, 
@@ -32,13 +66,13 @@ export function generateConnectedSetsNodes(
 ): Nodes {
   const startNodes: Node[] = []
   const endNodes: Node[] = []
-  console.log(yElements)
+
   for(let i = 0; i < xElements; i++) {
     startNodes.push({
       key: `start-${i}`,
       id: i,
       groupX: width/4 - size/2,
-      groupY: size/2 + distance * i,
+      groupY: size/2 + distance * (i + 1),
       circleX: size/2,
       circleY: size/2,
       text: `${i + 1}`
@@ -50,7 +84,7 @@ export function generateConnectedSetsNodes(
       key: `end-${i}`,
       id: i,
       groupX: width/4 * 3 - size/2,
-      groupY: size/2 + distance * i,
+      groupY: size/2 + distance * (i + 1),
       circleX: size/2,
       circleY: size/2,
       text: `${i + 1}`

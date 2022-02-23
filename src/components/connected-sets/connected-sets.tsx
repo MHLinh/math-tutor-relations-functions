@@ -10,10 +10,15 @@ import Konva from "konva"
 import { Stage, Layer } from "react-konva"
 import { center } from "theme"
 import { MatrixContext } from "components/matrix-context/matrix-context"
-import { generateConnectedSetsNodes, generateConnectedSetsEdges } from "utils"
+import { 
+  generateConnectedSetsLabels,
+  generateConnectedSetsNodes, 
+  generateConnectedSetsEdges 
+} from "utils"
+import { ConnectedSetsInfo } from "./connected-sets-info"
+import { ConnectedSetsLabel } from "./connected-sets-label"
 import { ConnectedSetsNode } from "./connected-sets-node"
 import { ConnectedSetsEdge } from "./connected-sets-edge"
-import { ConnectedSetsInfo } from "./connected-sets-info"
 
 /**
  * A component displaying pairs of numbers to drag and drop for inputting a relation.
@@ -34,7 +39,8 @@ export function ConnectedSets() {
   const size = 16
   const distance = 50
   const width = 500
-  const height = distance * Math.max(xElements, yElements)
+  const height = distance * (Math.max(xElements, yElements) + 1)
+  const labels = generateConnectedSetsLabels(width, size)
   const { startNodes, endNodes } = 
     generateConnectedSetsNodes(xElements, yElements, width, size, distance)
   const edges = generateConnectedSetsEdges(matrix, startNodes, endNodes)
@@ -125,6 +131,13 @@ export function ConnectedSets() {
       <Box className={classes.center}>
         <Stage width={width} height={height}>
           <Layer>
+            {labels.map((label) => (
+              <ConnectedSetsLabel
+                key={label.key} 
+                label={label} 
+                size={size} 
+              />
+            ))}
             {startNodes.map((node) => (
                <ConnectedSetsNode 
                 key={node.key} 
