@@ -44,7 +44,7 @@ export function ConnectedSets() {
   const { startNodes, endNodes } = 
     generateConnectedSetsNodes(xElements, yElements, width, size, distance)
   const edges = generateConnectedSetsEdges(matrix, startNodes, endNodes)
-  console.log(endNodes)
+
   useEffect(() => {
     if(selectedNodes.start >= 0 && selectedNodes.end >= 0) {
       const tempMatrix = _.cloneDeep(matrix)
