@@ -1,7 +1,7 @@
 import React from "react"
 import { MatrixOutput } from "components/matrix-output/matrix-output"
 import { OrderedPairs } from "components/ordered-pairs/ordered-pairs"
-import { DirectedGraph, IDirectedGraphNode } from "components/directed-graph/directed-graph"
+import { DirectedGraph } from "components/directed-graph/directed-graph"
 
 interface IRelationOutput {
   matrix: number[][],           // Relation stored as a matrix
