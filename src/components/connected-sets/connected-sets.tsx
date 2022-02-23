@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react"
 import {
   Box,
+  Stack,
   Typography
 } from "@mui/material"
 import { makeStyles } from "@mui/styles"
@@ -12,6 +13,7 @@ import { MatrixContext } from "components/matrix-context/matrix-context"
 import { generateConnectedSetsNodes, generateConnectedSetsEdges } from "utils"
 import { ConnectedSetsNode } from "./connected-sets-node"
 import { ConnectedSetsEdge } from "./connected-sets-edge"
+import { ConnectedSetsInfo } from "./connected-sets-info"
 
 /**
  * A component displaying pairs of numbers to drag and drop for inputting a relation.
@@ -116,6 +118,11 @@ export function ConnectedSets() {
         Select numbers on the left and right to modify the relation
       </Typography>
       <Box className={classes.box}>
+        <Stack direction="row-reverse">
+          <ConnectedSetsInfo />
+        </Stack>
+      </Box>
+      <Box className={classes.center}>
         <Stage width={width} height={height}>
           <Layer>
             {startNodes.map((node) => (
@@ -147,17 +154,16 @@ export function ConnectedSets() {
           </Layer>
         </Stage>
       </Box>
-      <Typography align="left">
-        Selecting the numbers on both sides will create an arrow if it is not present.
-        <br />
-        Otherwise, it will remove the arrow between the selected numbers.
-      </Typography>
     </Box>
 
   )
 }
 const useStyles = makeStyles((theme: any) => ({
   box: {
+    paddingBottom: theme.spacing(1),
+    paddingTop: theme.spacing(1)
+  },
+  center: {
     ...center,
     paddingBottom: theme.spacing(2),
     paddingTop: theme.spacing(2)
