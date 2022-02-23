@@ -7,7 +7,7 @@ import {
 import { makeStyles } from "@mui/styles"
 import Graph from "react-graph-vis"
 import { v4 as uuidv4 } from "uuid"
-import { computeDirectedGraphEdges } from "utils"
+import { directedGraphNodes, computeDirectedGraphEdges } from "utils"
 
 export interface IDirectedGraphNode {
   id: number | string,  // Id of the node
@@ -25,17 +25,18 @@ export interface IDirectedGraphEdge {
 }
 
 interface IDirectedGraph {
+  text: string,      // Header text
   matrix: number[][],           // Matrix representing the relation
-  nodes: IDirectedGraphNode[]   // Nodes for generating the directed graph
 }
 
 /**
  * A component displaying the relation as a directed graph.
  */
 export function DirectedGraph(props: IDirectedGraph) {
-  const { matrix, nodes } = props
+  const { text, matrix } = props
   const classes = useStyles()
 
+  const nodes = directedGraphNodes
   const edges = computeDirectedGraphEdges(matrix)
 
   const id = uuidv4()
@@ -78,7 +79,7 @@ export function DirectedGraph(props: IDirectedGraph) {
   return(
     <Box>
       <Typography align="center" className={classes.text}>
-        Relation as a directed graph:
+        {text}
       </Typography>
       <Box className={classes.boxGraph}>
         <Container className={classes.graph}>

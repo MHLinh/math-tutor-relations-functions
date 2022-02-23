@@ -7,6 +7,7 @@ import { makeStyles } from "@mui/styles"
 import { computeOrderedPairs } from "utils"
 
 interface IOrderedPairs {
+  text: string,      // Header text
   matrix: number[][] // Relation stored as a matrix
 }
 
@@ -14,7 +15,7 @@ interface IOrderedPairs {
  * A component displaying the relation as list of ordered pairs.
  */
 export function OrderedPairs(props: IOrderedPairs) {
-  const { matrix } = props
+  const { text, matrix } = props
   const classes = useStyles()
   
   const pairs = computeOrderedPairs(matrix)
@@ -28,7 +29,7 @@ export function OrderedPairs(props: IOrderedPairs) {
   return (
     <Box>
       <Typography align="center" className={classes.text}>
-        Relation as a set of ordered pairs:
+        {text}
       </Typography>
       {tuplePairs.length > 0
          ? <Typography align="center">
