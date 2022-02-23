@@ -76,7 +76,7 @@ export function RelationReflexive() {
       <Box className={classes.box}>
         <SaveAndLoadRelation 
           matrixContextValue={contextValue}
-          type="relation-properties-reflexive" 
+          type="relation" 
         />
       </Box>
     </Container>

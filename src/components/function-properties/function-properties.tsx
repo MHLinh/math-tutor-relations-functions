@@ -72,7 +72,7 @@ export function FunctionProperties() {
       <Box className={classes.box}>
         <SaveAndLoadRelation 
           matrixContextValue={contextValue}
-          type="function-properties-all" 
+          type="function" 
         />
       </Box>
     </Container>

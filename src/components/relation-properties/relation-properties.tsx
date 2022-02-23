@@ -91,7 +91,7 @@ export function RelationProperties() {
       <Box className={classes.box}>
         <SaveAndLoadRelation 
           matrixContextValue={contextValue}
-          type="relation-properties-all" 
+          type="relation" 
         />
       </Box>
     </Container>

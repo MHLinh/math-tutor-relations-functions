@@ -76,7 +76,7 @@ export function RelationSymmetric() {
       <Box className={classes.box}>
         <SaveAndLoadRelation 
           matrixContextValue={contextValue}
-          type="relation-properties-symmetric" 
+          type="relation" 
         />
       </Box>
     </Container>

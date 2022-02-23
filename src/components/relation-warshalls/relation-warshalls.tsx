@@ -95,7 +95,7 @@ export function RelationWarshalls() {
           <Box>
             <SaveAndLoadRelation 
               matrixContextValue={contextValue}
-              type="relation-properties-warshalls" 
+              type="relation" 
             />
           </Box>
           <Box className={classes.box}>

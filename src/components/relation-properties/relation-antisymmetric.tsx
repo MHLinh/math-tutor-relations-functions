@@ -76,7 +76,7 @@ export function RelationAntisymmetric() {
       <Box className={classes.box}>
         <SaveAndLoadRelation 
           matrixContextValue={contextValue}
-          type="relation-properties-antisymmetric" 
+          type="relation" 
         />
       </Box>
     </Container>

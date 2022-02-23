@@ -86,7 +86,7 @@ export function RelationRepresentation() {
       <Box className={classes.box}>
         <SaveAndLoadRelation 
           matrixContextValue={contextValue} 
-          type="relation-representation"
+          type="relation"
         />
       </Box>
     </Container>

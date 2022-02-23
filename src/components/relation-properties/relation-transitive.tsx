@@ -76,7 +76,7 @@ export function RelationTransitive() {
       <Box className={classes.box}>
         <SaveAndLoadRelation 
           matrixContextValue={contextValue}
-          type="relation-properties-transitive" 
+          type="relation" 
         />
       </Box>
     </Container>
