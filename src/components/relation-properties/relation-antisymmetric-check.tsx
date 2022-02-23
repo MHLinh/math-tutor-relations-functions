@@ -35,7 +35,8 @@ export function RelationAntisymmetricCheck(props: IRelationAntisymmetricCheck) {
           The above relation is ANTISYMMETRIC.
         </Typography>
         : <Typography>
-          The above relation is NOT ANTISYMMETRIC because {stringPairs} {verb} in the relation.
+          The above relation is NOT ANTISYMMETRIC because {stringPairs} {verb} 
+          in the relation at the same time.
         </Typography>
       }
     </Box>

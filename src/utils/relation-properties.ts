@@ -121,7 +121,7 @@ export function isAntisymmetric(matrix: number[][]): boolean {
 export function checkAntisymmetric(matrix: number[][]): string[] {
   const pairs: string[] = []
   for(let i = 0; i < matrix.length; i++) {
-    for(let j = 0; j < matrix.length; j++) {
+    for(let j = i; j < matrix.length; j++) {
       if(i !== j && matrix[i][j] === matrix[j][i] && matrix[i][j] === 1) {
         pairs.push(`(${i+1},${j+1})`)
         pairs.push(`(${j+1},${i+1})`)
