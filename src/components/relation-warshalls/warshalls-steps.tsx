@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useCallback } from "react"
 import {
   Box,
   Button,
@@ -13,6 +13,11 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward"
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward"
 import { WarshallsMatrix } from "components/matrix/warshalls-matrix"
 import { Matrix } from "components/matrix/matrix"
+import { WarshallsRelationOutput } from "components/relation-output/warshalls-relation-output"
+import { 
+  relationOutputTypes, 
+  RelationOutputSelection 
+} from "components/relation-output/relation-output-selection"
 import { WarshallsInfo } from "./warshalls-info"
 
 interface IWarshallsSteps {
@@ -26,13 +31,18 @@ interface IWarshallsSteps {
 export function WarshallsSteps(props: IWarshallsSteps) {
   const { steps } = props
   const [round, setRound] = useState(0)
+  const [outputType, setOutputType] = useState(relationOutputTypes[0].id)
+
   const classes = useStyles()
   const { breakpoints } = useTheme()
   const small = useMediaQuery(breakpoints.down("sm"))
 
-  // Steps contains initial matrix + matrices resulting from the algorithm.
-  // To get the max index we need to subtract 2.
-  const maxRound = steps.length - 2
+  const wrapperSetOutputType= useCallback((type: string) => {
+    setOutputType(type)
+  }, [setOutputType])
+
+  // Steps contains initial matrix and matrices resulting from the algorithm
+  const maxRound = steps.length - 1
   const handlePrev = () => {
     if(round > 0) {
       setRound(round - 1)
@@ -51,38 +61,87 @@ export function WarshallsSteps(props: IWarshallsSteps) {
         <Stack direction="row-reverse">
           <WarshallsInfo />
         </Stack>
-        <Typography align="center" className={classes.text}>
-          Round {round + 1}
-        </Typography>
+        {round !== maxRound
+          ? <Typography align="center" className={classes.text}>
+              Round {round + 1}
+            </Typography>
+          : null
+        }
       </Box>
       <Box className={classes.boxGrid}>
-        <Grid 
-          container 
-          direction={small 
-            ? "column"
-            : "row"
-          }
+        {round !== maxRound
+        ?  <Grid 
+              container 
+              direction={small 
+                ? "column"
+                : "row"
+              }
+              justifyContent="center"
+              alignItems="center" 
+              spacing={1}
+            >
+              <Grid item>
+                <WarshallsMatrix matrix={steps[round]} round={round} />
+              </Grid>
+              <Grid item>
+                {small 
+                  ? <ArrowDownwardIcon fontSize="large"/>
+                  : <ArrowForwardIcon fontSize="large"/>
+                }
+              </Grid>
+              <Grid item>
+                <Matrix matrix={steps[round + 1]} />
+              </Grid>
+            </Grid>
+        : <Grid 
+          container
+          direction="column"
           justifyContent="center"
           alignItems="center" 
           spacing={1}
         >
-          <Grid item>
-          <WarshallsMatrix matrix={steps[round]} round={round} />
-          </Grid>
-          <Grid item>
-            {small 
-              ? <ArrowDownwardIcon fontSize="large"/>
-              : <ArrowForwardIcon fontSize="large"/>
+          <Grid 
+            container
+            item 
+            direction={small 
+              ? "column"
+              : "row"
             }
+          >
+            <Grid item xs={6}>
+              <Box className={classes.box}>
+                <WarshallsRelationOutput
+                  text="Initial relation"
+                  matrix={steps[0]} 
+                  type={outputType}
+                />
+              </Box>
+            </Grid>
+            <Grid item xs={6}>
+              <Box className={classes.box}>
+                <WarshallsRelationOutput
+                  text="Final relation"
+                  matrix={steps[maxRound - 1]} 
+                  type={outputType}
+                />
+              </Box>
+            </Grid>
           </Grid>
           <Grid item>
-          <Matrix matrix={steps[round + 1]} />
+            <Box className={classes.box}>
+              <RelationOutputSelection 
+                selectedType={outputType}
+                setSelectedType={wrapperSetOutputType}
+              />
+            </Box>
           </Grid>
-        </Grid>
+          </Grid>
+        }
       </Box>
       <Box className={classes.box}>
         <Grid 
-          container 
+          container
+          direction="row"
           justifyContent="center"
           alignItems="center" 
           spacing={1}
