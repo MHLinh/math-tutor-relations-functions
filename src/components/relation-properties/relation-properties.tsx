@@ -2,12 +2,10 @@ import React, { useState, useCallback, useEffect, useMemo } from "react"
 import {
   Box,
   Container,
-  Button
 } from "@mui/material"
 import { makeStyles } from "@mui/styles"
 import { 
   NUM_OF_ELEMENTS,
-  directedGraphNodes,
   generateMatrix, 
 } from "utils"
 import { paddingStyle } from "theme/styles"
@@ -58,8 +56,7 @@ export function RelationProperties() {
     <Container className={classes.container}>
       <Box className={classes.box}>
         <RelationOutput 
-          matrix={relation} 
-          nodes={directedGraphNodes} 
+          matrix={relation}
           type={outputType}
         />
       </Box>
@@ -70,7 +67,6 @@ export function RelationProperties() {
         <RelationInput 
           matrixContextValue={contextValue}
           matrix={relation}
-          numOfElements={NUM_OF_ELEMENTS}
           type={inputType}
         />
       </Box>
@@ -92,7 +88,7 @@ export function RelationProperties() {
       <Box className={classes.box}>
         <SaveAndLoadRelation 
           matrixContextValue={contextValue}
-          type="relation-properties-all" 
+          type="relation" 
         />
       </Box>
     </Container>

@@ -6,12 +6,15 @@ import {
 import { makeStyles } from "@mui/styles"
 import { 
   NUM_OF_ELEMENTS,
-  directedGraphNodes,
   generateMatrix, 
 } from "utils"
 import { paddingStyle } from "theme/styles"
 import { IMatrixContext } from "components/matrix-context/matrix-context"
 import { RelationOutput } from "components/relation-output/relation-output"
+import { 
+  relationOutputTypes, 
+  RelationOutputSelection 
+} from "components/relation-output/relation-output-selection"
 import { RelationInput } from "components/relation-input/relation-input"
 import { 
   relationInputTypes, 
@@ -29,6 +32,7 @@ import { RelationAntisymmetricCheck } from "./relation-antisymmetric-check"
  */
 export function RelationAntisymmetric() {
   const [relation, setRelation] = useState<number[][]>(generateMatrix(NUM_OF_ELEMENTS))
+  const [outputType, setOutputType] = useState(relationOutputTypes[1].id)
   const [inputType, setInputType] = useState(relationInputTypes[0].id)
   const classes = useStyles()
 
@@ -36,6 +40,10 @@ export function RelationAntisymmetric() {
     setRelation(matrix)
   }, [setRelation])
   
+  const wrapperSetOutputType= useCallback((type: string) => {
+    setOutputType(type)
+  }, [setOutputType])
+
   const wrapperSetInputType= useCallback((type: string) => {
     setInputType(type)
   }, [setInputType])
@@ -49,9 +57,8 @@ export function RelationAntisymmetric() {
     <Container className={classes.container}>
       <Box className={classes.box}>
         <RelationOutput 
-          matrix={relation} 
-          nodes={directedGraphNodes} 
-          type="pairs"
+          matrix={relation}
+          type={outputType}
         />
       </Box>
       <Box className={classes.box}>
@@ -61,8 +68,13 @@ export function RelationAntisymmetric() {
         <RelationInput 
           matrixContextValue={contextValue}
           matrix={relation}
-          numOfElements={NUM_OF_ELEMENTS}
           type={inputType}
+        />
+      </Box>
+      <Box className={classes.box}>
+        <RelationOutputSelection 
+          selectedType={outputType}
+          setSelectedType={wrapperSetOutputType}
         />
       </Box>
       <Box className={classes.box}>
@@ -77,7 +89,7 @@ export function RelationAntisymmetric() {
       <Box className={classes.box}>
         <SaveAndLoadRelation 
           matrixContextValue={contextValue}
-          type="relation-properties-antisymmetric" 
+          type="relation" 
         />
       </Box>
     </Container>

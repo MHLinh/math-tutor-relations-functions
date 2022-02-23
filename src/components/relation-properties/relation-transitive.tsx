@@ -6,12 +6,15 @@ import {
 import { makeStyles } from "@mui/styles"
 import { 
   NUM_OF_ELEMENTS,
-  directedGraphNodes,
   generateMatrix, 
 } from "utils"
 import { paddingStyle } from "theme/styles"
 import { IMatrixContext } from "components/matrix-context/matrix-context"
 import { RelationOutput } from "components/relation-output/relation-output"
+import { 
+  relationOutputTypes, 
+  RelationOutputSelection 
+} from "components/relation-output/relation-output-selection"
 import { RelationInput } from "components/relation-input/relation-input"
 import { 
   relationInputTypes, 
@@ -29,6 +32,7 @@ import { RelationTransitiveCheck } from "./relation-transitive-check"
  */
 export function RelationTransitive() {
   const [relation, setRelation] = useState<number[][]>(generateMatrix(NUM_OF_ELEMENTS))
+  const [outputType, setOutputType] = useState(relationOutputTypes[1].id)
   const [inputType, setInputType] = useState(relationInputTypes[0].id)
   const classes = useStyles()
 
@@ -36,6 +40,10 @@ export function RelationTransitive() {
     setRelation(matrix)
   }, [setRelation])
   
+  const wrapperSetOutputType= useCallback((type: string) => {
+    setOutputType(type)
+  }, [setOutputType])
+
   const wrapperSetInputType= useCallback((type: string) => {
     setInputType(type)
   }, [setInputType])
@@ -50,8 +58,7 @@ export function RelationTransitive() {
       <Box className={classes.box}>
         <RelationOutput 
           matrix={relation} 
-          nodes={directedGraphNodes} 
-          type="pairs"
+          type={outputType}
         />
       </Box>
       <Box className={classes.box}>
@@ -61,8 +68,13 @@ export function RelationTransitive() {
         <RelationInput 
           matrixContextValue={contextValue}
           matrix={relation}
-          numOfElements={NUM_OF_ELEMENTS}
           type={inputType}
+        />
+      </Box>
+      <Box className={classes.box}>
+        <RelationOutputSelection 
+          selectedType={outputType}
+          setSelectedType={wrapperSetOutputType}
         />
       </Box>
       <Box className={classes.box}>
@@ -77,7 +89,7 @@ export function RelationTransitive() {
       <Box className={classes.box}>
         <SaveAndLoadRelation 
           matrixContextValue={contextValue}
-          type="relation-properties-transitive" 
+          type="relation" 
         />
       </Box>
     </Container>

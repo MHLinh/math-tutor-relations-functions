@@ -80,7 +80,6 @@ export function RelationWarshalls() {
             <RelationInput 
               matrixContextValue={contextValue}
               matrix={relation}
-              numOfElements={NUM_OF_ELEMENTS}
               type={inputType}
             />
           </Box>
@@ -96,7 +95,7 @@ export function RelationWarshalls() {
           <Box>
             <SaveAndLoadRelation 
               matrixContextValue={contextValue}
-              type="relation-properties-warshalls" 
+              type="relation" 
             />
           </Box>
           <Box className={classes.box}>
