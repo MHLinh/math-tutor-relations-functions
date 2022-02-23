@@ -58,8 +58,7 @@ export function RelationReflexive() {
     <Container className={classes.container}>
       <Box className={classes.box}>
         <RelationOutput 
-          matrix={relation} 
-          nodes={directedGraphNodes} 
+          matrix={relation}
           type={outputType}
         />
       </Box>

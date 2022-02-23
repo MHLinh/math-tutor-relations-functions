@@ -6,7 +6,6 @@ import {
 import { makeStyles } from "@mui/styles"
 import { 
   NUM_OF_ELEMENTS,
-  directedGraphNodes,
   generateMatrix, 
 } from "utils"
 import { paddingStyle } from "theme/styles"
@@ -58,8 +57,7 @@ export function RelationIrreflexive() {
     <Container className={classes.container}>
       <Box className={classes.box}>
         <RelationOutput 
-          matrix={relation} 
-          nodes={directedGraphNodes} 
+          matrix={relation}
           type={outputType}
         />
       </Box>
