@@ -101,7 +101,7 @@ export function SaveRelation(props: ISaveRelation) {
           >
             <Grid item>
               <Typography id="save-relation-title" align="center" className={classes.title}>
-                Save the current selection
+                Save the current relation
               </Typography>
             </Grid>
             <Grid item>
