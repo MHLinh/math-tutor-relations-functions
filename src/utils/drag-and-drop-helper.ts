@@ -19,7 +19,7 @@ const generateItem = (rowIndex:number, colIndex: number, order: number): IItem =
 /**
  * A function for converting a relation as a matrix into list of drag and drop items.
  * @param matrix - a matrix of 0's and 1's representing a relation
- * @returns 
+ * @returns the state of the drag and drop input
  */
 export const getDragAndDropState = (matrix: number[][]): IState => {
   const items: IItem[] = []
