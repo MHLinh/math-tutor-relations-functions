@@ -210,7 +210,7 @@ export function LoadRelation(props: ILoadRelation) {
         handleClose={handleClose}
         handleUndo={handleUndo}
         severity="success"
-        text="The relation was loaded successfully."
+        text="The relation was deleted successfully."
       />
       <CustomAlert 
         open={openErrorDelete}
