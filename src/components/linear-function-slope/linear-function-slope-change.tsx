@@ -79,7 +79,7 @@ export function LinearFunctionSlopeChange() {
       <Box className={classes.box}>
         <Typography align="center" className={classes.text}>
           Slope of a linear function by
-          modifying the X and Y change
+          modifying the change in X and Y
         </Typography>
       </Box>
       <Box className={classes.center}>
