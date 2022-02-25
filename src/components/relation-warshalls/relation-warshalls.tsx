@@ -37,11 +37,11 @@ export function RelationWarshalls() {
   const [steps, setSteps] = useState<number[][][]>([])
   const classes = useStyles()
 
-  const wrapperSetRelation= useCallback((matrix: number[][]) => {
+  const wrapperSetRelation = useCallback((matrix: number[][]) => {
     setRelation(matrix)
   }, [setRelation])
   
-  const wrapperSetInputType= useCallback((type: string) => {
+  const wrapperSetInputType = useCallback((type: string) => {
     setInputType(type)
   }, [setInputType])
 
