@@ -35,15 +35,15 @@ export function RelationProperties() {
   const [inputType, setInputType] = useState(relationInputTypes[0].id)
   const classes = useStyles()
 
-  const wrapperSetRelation= useCallback((matrix: number[][]) => {
+  const wrapperSetRelation = useCallback((matrix: number[][]) => {
     setRelation(matrix)
   }, [setRelation])
   
-  const wrapperSetOutputType= useCallback((type: string) => {
+  const wrapperSetOutputType = useCallback((type: string) => {
     setOutputType(type)
   }, [setOutputType])
 
-  const wrapperSetInputType= useCallback((type: string) => {
+  const wrapperSetInputType = useCallback((type: string) => {
     setInputType(type)
   }, [setInputType])
 

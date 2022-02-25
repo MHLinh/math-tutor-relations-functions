@@ -28,15 +28,15 @@ export function FunctionProperties() {
   const [relation, setRelation] = useState<number[][]>(generateRectMatrix(xSize, ySize))
   const classes = useStyles()
 
-  const wrapperSetXSize= useCallback((value: number) => {
+  const wrapperSetXSize = useCallback((value: number) => {
     setXSize(value)
   }, [setXSize])
 
-  const wrapperSetYSize= useCallback((value: number) => {
+  const wrapperSetYSize = useCallback((value: number) => {
     setYSize(value)
   }, [setYSize])
 
-  const wrapperSetRelation= useCallback((matrix: number[][]) => {
+  const wrapperSetRelation = useCallback((matrix: number[][]) => {
     setRelation(matrix)
   }, [setRelation])
   
