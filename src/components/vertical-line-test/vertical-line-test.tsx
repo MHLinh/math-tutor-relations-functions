@@ -124,6 +124,11 @@ export function VerticalLineTest() {
             max={max}
             marks={marks}
           />
+          <Typography align="left">
+            Check if the relation is a function by moving the vertical line through all of the points.
+            If the vertical line crosses multiple points at the same time (turns red),
+            then the relation is not a function.
+          </Typography>
         </Box>
       </Box>
       <Box className={classes.box}>
