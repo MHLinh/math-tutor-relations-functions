@@ -13,12 +13,15 @@ import {
   useMediaQuery,
 } from "@mui/material"
 import { makeStyles } from "@mui/styles"
+import _ from "lodash"
 import "katex/dist/katex.min.css"
 import Latex from "react-latex-next"
 import {  center, paddingStyle  } from "theme/styles"
 import { generateSliderMarks, roundToTwoDecimal } from "utils"
 import FunctionPlotComponent from "components/function-plot/function-plot-component"
 import { FunctionPlotOptions } from "components/function-plot/function-plot-types"
+import { IPointsContext } from "components/points-context/points-context"
+import { SaveAndLoadPoints } from "components/database/save-and-load-points"
 
 const step = 1
 const min = -6
@@ -30,10 +33,7 @@ const marks = generateSliderMarks(step, min, max)
  * to determine the slope of a function going through thw two points.
  */
 export function LinearFunctionSlopePoints() {
-  const [x1, setX1] = useState(-1)
-  const [y1, setY1] = useState(-1)
-  const [x2, setX2] = useState(1)
-  const [y2, setY2] = useState(1)
+  const [points, setPoints] = useState([[-1, -1], [1, 1]])
 
   const classes = useStyles()
   const { breakpoints } = useTheme()
@@ -43,12 +43,15 @@ export function LinearFunctionSlopePoints() {
                 ? 300
                 : 400
 
+  const x1 = points[0][0]
+  const y1 = points[0][1]
+  const x2 = points[1][0]
+  const y2 = points[1][1]
   const xChange = x1 - x2
   const yChange = y1 - y2
   const gradient = yChange / xChange
   const c = y1 - gradient * x1
 
-  const points = [[x1, y1], [x2, y2]]
   const options: FunctionPlotOptions = {
     target: "#plot",
     width: size,
@@ -93,20 +96,37 @@ export function LinearFunctionSlopePoints() {
   
 
   const handleChangeX1 = (event: SelectChangeEvent) => {
-    setX1(parseInt(event.target.value, 10))
+    const tempPoints =  _.cloneDeep(points)
+    tempPoints[0][0] = parseInt(event.target.value, 10)
+    setPoints(tempPoints)
   }
 
   const handleChangeY1 = (event: SelectChangeEvent) => {
-    setY1(parseInt(event.target.value, 10))
+    const tempPoints =  _.cloneDeep(points)
+    tempPoints[0][1] = parseInt(event.target.value, 10)
+    setPoints(tempPoints)
   }
 
   const handleChangeX2 = (event: SelectChangeEvent) => {
-    setX2(parseInt(event.target.value, 10))
+    const tempPoints =  _.cloneDeep(points)
+    tempPoints[1][0] = parseInt(event.target.value, 10)
+    setPoints(tempPoints)
   }
 
   const handleChangeY2 = (event: SelectChangeEvent) => {
-    setY2(parseInt(event.target.value, 10))
+    const tempPoints =  _.cloneDeep(points)
+    tempPoints[1][1] = parseInt(event.target.value, 10)
+    setPoints(tempPoints)
   }
+
+  const wrapperSetPoints = useCallback((newPoints: number[][]) => {
+    setPoints(newPoints)
+  }, [setPoints])
+
+  const contextValue: IPointsContext = useMemo(() => ({
+    points, 
+    setter: wrapperSetPoints
+  }), [points])
 
   return (
     <Container className={classes.container}>
@@ -241,6 +261,12 @@ export function LinearFunctionSlopePoints() {
             Change the coordinates of the points to modify the slope of the function.
           </Typography>
         </Box>
+      </Box>
+      <Box className={classes.box}>
+        <SaveAndLoadPoints
+          pointsContextValue={contextValue}
+          type="slope" 
+        />
       </Box>
     </Container>
   )
