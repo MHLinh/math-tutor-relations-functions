@@ -8,7 +8,7 @@ import {
   Typography,
 } from "@mui/material"
 import { makeStyles } from "@mui/styles"
-import { MatrixContext } from "components/matrix-context/matrix-context"
+import { PointsContext } from "components/points-context/points-context"
 import { CustomAlert } from "components/custom-alert/custom-alert"
 import { db } from "./db"
 
@@ -19,19 +19,19 @@ const Status = {
   errorSave: "errorSave"
 }
 
-interface ISaveRelation {
-  type: string, // The type of relation to be saved
+interface ISavePoints {
+  type: string, // The type of points to be saved
 }
 
 /**
- * A component handling the saving of a relation to IndexedDB
+ * A component handling the saving of a points to IndexedDB
  */
-export function SaveRelation(props: ISaveRelation) {
+export function SavePoints(props: ISavePoints) {
   const { type } = props
   const [name, setName] = useState("Unnamed")
   const [openSave, setOpenSave] = useState(false)
   const [status, setStatus] = useState(Status.idle)
-  const { matrix } = useContext(MatrixContext)
+  const { points } = useContext(PointsContext)
 
   const openSuccess = status === Status.successSave
   const openError = status === Status.errorSave
@@ -53,11 +53,11 @@ export function SaveRelation(props: ISaveRelation) {
   const handleSave = async () => {
     if(name !== "") {
       try {
-        // Save the relation
-        await db.relations.add({
+        // Save the points
+        await db.points.add({
           name,
           type,
-          matrix
+          points
         })
 
         setName("Unnamed")
@@ -83,12 +83,12 @@ export function SaveRelation(props: ISaveRelation) {
         variant="contained"
         onClick={handleOpenSave}
       >
-        Save relation
+        Save points
       </Button>
       <Modal
         open={openSave}
         onClose={handleCloseSave}
-        aria-labelledby="save-relation-title"
+        aria-labelledby="save-points-title"
       >
         <Box className={classes.boxModal}>
           <Grid 
@@ -98,14 +98,14 @@ export function SaveRelation(props: ISaveRelation) {
             spacing={2}
           >
             <Grid item>
-              <Typography id="save-relation-title" align="center" className={classes.title}>
-                Save the current relation
+              <Typography id="save-points-title" align="center" className={classes.title}>
+                Save the current points
               </Typography>
             </Grid>
             <Grid item>
               <TextField
                 required
-                id="relation-name"
+                id="points-name"
                 label="Name"
                 defaultValue={name}
                 onChange={handleChange}
@@ -132,13 +132,13 @@ export function SaveRelation(props: ISaveRelation) {
         open={openSuccess}
         handleClose={handleClose}
         severity="success"
-        text="The relation was saved successfully."
+        text="The points were saved successfully."
       />
       <CustomAlert 
         open={openError}
         handleClose={handleClose}
         severity="error"
-        text="An error occurred while saving the relation. Please try again."
+        text="An error occurred while saving the points. Please try again."
       />
     </Box>
   )

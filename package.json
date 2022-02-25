@@ -17,6 +17,7 @@
     "@types/react-dom": "^16.9.14",
     "dexie": "^3.2.0",
     "dexie-react-hooks": "^1.1.1",
+    "function-plot": "^1.22.8",
     "katex": "^0.15.2",
     "konva": "^8.3.2",
     "lodash": "^4.17.21",

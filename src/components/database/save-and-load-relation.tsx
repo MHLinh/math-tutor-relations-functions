@@ -9,7 +9,7 @@ import { LoadRelation } from "./load-relation"
 
 interface ISaveAndLoadRelation {
   matrixContextValue: IMatrixContext, // Matrix context for accessing the matrix and its setter
-  type: string,                       // The type of the relation (for displaying in correct pages)
+  type: string,                       // The type of the saved data
 }
 
 /**

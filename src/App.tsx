@@ -17,7 +17,8 @@ import {
   RelationAntisymmetricPage,
   RelationTransitivePage,
   RelationWarshallsPage,
-  FunctionPropertiesPage
+  FunctionPropertiesPage,
+  VerticalLineTestPage
  } from "pages"
 import { theme } from "theme"
 
@@ -47,6 +48,7 @@ function App() {
             <Route path="/relation-properties-transitive" element={<RelationTransitivePage />} />
             <Route path="/relation-warshalls" element={<RelationWarshallsPage />} />
             <Route path="/function-properties" element={<FunctionPropertiesPage />} />
+            <Route path="/function-vertical-line-test" element={<VerticalLineTestPage />} />
           </Routes>
         </Box>
       </ThemeProvider>

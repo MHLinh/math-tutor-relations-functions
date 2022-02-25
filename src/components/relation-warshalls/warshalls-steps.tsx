@@ -37,7 +37,7 @@ export function WarshallsSteps(props: IWarshallsSteps) {
   const { breakpoints } = useTheme()
   const small = useMediaQuery(breakpoints.down("sm"))
 
-  const wrapperSetOutputType= useCallback((type: string) => {
+  const wrapperSetOutputType = useCallback((type: string) => {
     setOutputType(type)
   }, [setOutputType])
 

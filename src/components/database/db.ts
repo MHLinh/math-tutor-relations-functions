@@ -3,8 +3,15 @@ import Dexie, { Table } from "dexie"
 export interface IRelation {
   id?: number         // The id of the relation
   name: string        // The name of the relation set by user
-  type: string        // The type of the relation (for displaying in correct pages)
+  type: string        // The type for saving in the database
   matrix: number[][]  // The relation stored in a matrix
+}
+
+export interface IPoints {
+  id?: number         // The id of the list of points
+  name: string        // The name of the list of points set by user
+  type: string        // The type for saving in the database
+  points: number[][]  // The points stored as a list
 }
 
 /**
@@ -12,12 +19,15 @@ export interface IRelation {
  * relations into and from IndexedDB
  */
 export class DatabaseDexie extends Dexie {
-  relations!: Table<IRelation> 
+  relations!: Table<IRelation>
+  
+  points!: Table<IPoints>
 
   constructor() {
     super("myDatabase")
     this.version(1).stores({
-      relations: "++id, name, type, matrix"
+      relations: "++id, name, type, matrix",
+      points: "++id, name, type, matrix"
     })
   }
 }

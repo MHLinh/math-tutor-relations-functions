@@ -8,13 +8,12 @@ import {
 } from "@mui/material"
 import { makeStyles } from "@mui/styles"
 import { useLiveQuery } from "dexie-react-hooks"
-import { NUM_OF_ELEMENTS, generateMatrix } from "utils"
-import { MatrixContext } from "components/matrix-context/matrix-context"
-import { IRelationsListContext, RelationsListContext } from "components/relations-list/relations-list-context"
-import { RelationsList } from "components/relations-list/relations-list"
+import { PointsContext} from "components/points-context/points-context"
+import { IPointsListContext, PointsListContext } from "components/points-list/points-list-context"
+import { PointsList } from "components/points-list/points-list"
 import { CustomAlert } from "components/custom-alert/custom-alert"
 import { CustomAlertDelete } from "components/custom-alert/custom-alert-delete"
-import { db, IRelation } from "./db"
+import { db, IPoints } from "./db"
 
 // Status deciding what alert to show.
 const Status = {
@@ -27,27 +26,25 @@ const Status = {
   errorUndo: "errorUndo"
 }
 
-interface ILoadRelation {
-  type: string, // The type of relation to be loaded
+interface ILoadPoints {
+  type: string, // The type of points to be loaded
 }
 
 /**
- * A component handling the loading of a relation from IndexedDB,
- * with the possibility to delete saved relations.
+ * A component handling the loading of a points from IndexedDB,
+ * with the possibility to delete saved points.
  */
-export function LoadRelation(props: ILoadRelation) {
+export function LoadPoints(props: ILoadPoints) {
   const { type } = props
   const [openLoad, setOpenLoad] = useState(false)
   const [status, setStatus] = useState(Status.idle)
   const [selected, setSelected] = useState(-1)
-  const [recentlyDeleted, setRecentlyDeleted] = useState<IRelation>({
+  const [recentlyDeleted, setRecentlyDeleted] = useState<IPoints>({
     name: "",
     type,
-    matrix: []
+    points: []
   })
-  const { setter } = useContext(MatrixContext)
-
-  const emptyMatrix = generateMatrix(NUM_OF_ELEMENTS)
+  const { setter } = useContext(PointsContext)
 
   const openSuccessLoad = status === Status.successLoad
   const openErrorLoad = status === Status.errorLoad
@@ -58,11 +55,11 @@ export function LoadRelation(props: ILoadRelation) {
   
   const classes = useStyles()
 
-  const relations: IRelation[] | undefined = useLiveQuery(
+  const points: IPoints[] | undefined = useLiveQuery(
     async () => {
       try {
         // Query Dexie's API
-          const result = await db.relations
+          const result = await db.points
           .where({ type })
           .toArray()
 
@@ -83,22 +80,22 @@ export function LoadRelation(props: ILoadRelation) {
 
   const handleDelete = async (id: number) => {
     try {
-      //  Save the recently deleted relation to allow for undoing deletion
-      const toDelete = await db.relations.get(id)
+      //  Save the recently deleted points to allow for undoing deletion
+      const toDelete = await db.points.get(id)
       if(toDelete) {
         setRecentlyDeleted(toDelete)
       }
 
-      await db.relations.delete(id)
+      await db.points.delete(id)
       setStatus(Status.successDelete)
     } catch (error) {
       setStatus(Status.errorDelete)
     }
   }
 
-  // Context provided to relations list to allow loading the relation
-  // and deleting chosen relations.
-  const contextValue: IRelationsListContext = useMemo(() => ({
+  // Context provided to points list to allow loading the relation
+  // and deleting chosen points.
+  const contextValue: IPointsListContext = useMemo(() => ({
     selected, 
     setter: wrapperSetSelected,
     deleteFunction: handleDelete
@@ -115,11 +112,11 @@ export function LoadRelation(props: ILoadRelation) {
 
   const handleLoad = async () => {
     try {
-      const matrix = relations
-        ? relations[selected].matrix
-        : emptyMatrix
+      const newPoints = points
+        ? points[selected].points
+        : []
 
-      setter(matrix)
+      setter(newPoints)
       setStatus(Status.successLoad)
       handleCloseLoad()
     } catch(error) {
@@ -135,9 +132,9 @@ export function LoadRelation(props: ILoadRelation) {
   }
 
   const handleUndo = async () => {
-    if(recentlyDeleted.matrix !== []) {
+    if(recentlyDeleted.points !== []) {
       try {
-        await db.relations.add(recentlyDeleted)
+        await db.points.add(recentlyDeleted)
         setStatus(Status.idle)
       } catch (error) {
         setStatus(Status.errorUndo)
@@ -171,9 +168,9 @@ export function LoadRelation(props: ILoadRelation) {
               </Typography>
             </Grid>
             <Grid item>
-              <RelationsListContext.Provider value={contextValue}>
-                <RelationsList data={relations || [] } />
-              </RelationsListContext.Provider>
+              <PointsListContext.Provider value={contextValue}>
+                <PointsList data={points || [] } />
+              </PointsListContext.Provider>
             </Grid>
             <Grid item>
               <Button
@@ -191,32 +188,32 @@ export function LoadRelation(props: ILoadRelation) {
         open={openSuccessLoad}
         handleClose={handleClose}
         severity="success"
-        text="The relation was loaded successfully."
+        text="The points were loaded successfully."
       />
       <CustomAlert 
         open={openErrorLoad}
         handleClose={handleClose}
         severity="error"
-        text="An error occurred while loading the relations. Please try again."
+        text="An error occurred while loading the points. Please try again."
       />
       <CustomAlert 
         open={openMissingLoad}
         handleClose={handleClose}
         severity="error"
-        text="Please select a relation to load."
+        text="Please select a points to load."
       />
       <CustomAlertDelete
         open={openSuccessDelete}
         handleClose={handleClose}
         handleUndo={handleUndo}
         severity="success"
-        text="The relation was deleted successfully."
+        text="The points was deleted successfully."
       />
       <CustomAlert 
         open={openErrorDelete}
         handleClose={handleClose}
         severity="error"
-        text="An error occurred while deleting the relation. Please try again."
+        text="An error occurred while deleting the points. Please try again."
       />
       <CustomAlertDelete 
         open={openErrorUndo}
