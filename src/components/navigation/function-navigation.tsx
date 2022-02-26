@@ -10,7 +10,8 @@ export function FunctionNavigation() {
 
   const paths = [
     { name: "Properties of a function", path: "/function-properties" },
-    { name: "Vertical line test", path: "/function-vertical-line-test" },
+    { name: "Vertical line test", path: "/vertical-line-test" },
+    { name: "Slope of linear function", path: "/linear-function-slope" },
   ]
 
   return (

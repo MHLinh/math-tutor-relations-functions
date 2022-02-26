@@ -16,23 +16,27 @@ import { FunctionPlotOptions } from "components/function-plot/function-plot-type
 import { IPointsContext } from "components/points-context/points-context"
 import { SaveAndLoadPoints } from "components/database/save-and-load-points"
 
+const step = 1
+const min = -6
+const max = 6
+const marks = generateSliderMarks(step, min, max)
+
+/**
+ * A component displaying a graph of points a moveable vertical line
+ * for the vertical line test to check whether a relation is a function.
+ */
 export function VerticalLineTest() {
+  const [position, setPosition] = useState(min)
+  const [points, setPoints] = useState(generatePoints(min - 1, max - 1, 10))
   const { breakpoints } = useTheme()
   const small = useMediaQuery(breakpoints.down("sm"))
 
-  const step = 1
-  const min = -6
-  const max = 6
   const size = small 
                 ? 300
                 : 500
-  const [position, setPosition] = useState(min)
-  const [points, setPoints] = useState(generatePoints(min - 1, max - 1, 10))
-
+  
   const classes = useStyles()
   
-  const marks = generateSliderMarks(step, min, max)
-
   const multiplePoints = verticalLineTest(position, points)
 
   const options: FunctionPlotOptions = {

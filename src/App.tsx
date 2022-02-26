@@ -18,7 +18,10 @@ import {
   RelationTransitivePage,
   RelationWarshallsPage,
   FunctionPropertiesPage,
-  VerticalLineTestPage
+  VerticalLineTestPage,
+  LinearFunctionSlopeNavigationPage,
+  LinearFunctionSlopeChangePage,
+  LinearFunctionSlopePointsPage
  } from "pages"
 import { theme } from "theme"
 
@@ -48,7 +51,10 @@ function App() {
             <Route path="/relation-properties-transitive" element={<RelationTransitivePage />} />
             <Route path="/relation-warshalls" element={<RelationWarshallsPage />} />
             <Route path="/function-properties" element={<FunctionPropertiesPage />} />
-            <Route path="/function-vertical-line-test" element={<VerticalLineTestPage />} />
+            <Route path="/vertical-line-test" element={<VerticalLineTestPage />} />
+            <Route path="/linear-function-slope" element={<LinearFunctionSlopeNavigationPage />} />
+            <Route path="/linear-function-slope-change" element={<LinearFunctionSlopeChangePage />} />
+            <Route path="/linear-function-slope-points" element={<LinearFunctionSlopePointsPage />} />
           </Routes>
         </Box>
       </ThemeProvider>
