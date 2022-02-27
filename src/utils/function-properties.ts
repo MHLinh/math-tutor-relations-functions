@@ -1,9 +1,32 @@
 /**
- * A function to determine whether a relation is a function.
+ * A function to determine whether all elements 
+ * in the domain have been mapped to an element in the codomain.
  * @param matrix - a matrix of 0's and 1's representing a relation
- * @returns whether the relation is a function
+ * @returns whether all domain elements have been mapped.
  */
-export function isFunction(matrix: number[][]): boolean {
+ export function isDomainMapped(matrix: number[][]): boolean {
+  for(let i = 0; i < matrix.length; i++) {
+    let found = false
+    for(let j = 0; j < matrix[0].length; j++) {
+      if(matrix[i][j] === 1) {
+        found = true
+        break
+      }
+    }
+    if(!found) {
+      return false
+    }
+  }
+  return true
+}
+
+/**
+ * A function to determine whether elements of a domain 
+ * map to more than one element in the codomain.
+ * @param matrix - a matrix of 0's and 1's representing a relation
+ * @returns whether an element in the domain is mapped to two different elements.
+ */
+export function isOneMapping(matrix: number[][]): boolean {
   for(let i = 0; i < matrix.length; i++) {
     let found = false
     for(let j = 0; j < matrix[0].length; j++) {
@@ -50,12 +73,10 @@ export function isOnto(matrix: number[][]): boolean {
  * @returns whether the function is a one-to-one function
  */
  export function isOneToOne(matrix: number[][]): boolean {
-  // f maps distinct elements to distinct elements
-  for(let i = 0; i < matrix.length; i++) {
+  for(let j = 0; j < matrix[0].length; j++) {
     let found = false
-    for(let j = 0; j < matrix[0].length; j++) {
+    for(let i = 0; i < matrix.length; i++) {
       if(matrix[i][j] === 1) {
-        // f(x) can only have 2 values
         if(!found) {
           found = true
         } else {
@@ -65,29 +86,6 @@ export function isOnto(matrix: number[][]): boolean {
     }
   }
   return true
-}
-
-/**
- * A function to determine whether a function is a many-to-one function.
- * Prerequisite: relation is a function.
- * @param matrix - a matrix of 0's and 1's representing a relation
- * @returns whether the function is a many-to-one function
- */
- export function isManyToOne(matrix: number[][]): boolean {
-  // f maps multiple x to the same y
-  for(let j = 0; j < matrix[0].length; j++) {
-    let found = false
-    for(let i = 0; i < matrix.length; i++) {
-      if(matrix[i][j] === 1) {
-        if(!found) {
-          found = true
-        } else {
-          return true
-        }
-      }
-    }
-  }
-  return false
 }
 
 /**
