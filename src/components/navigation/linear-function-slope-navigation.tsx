@@ -9,8 +9,8 @@ export function LinearFunctionSlopeNavigation() {
   const text = "Study the slope of a linear function"
 
   const paths = [
-    { name: "Slope of linear function change in X/Y", path: "/linear-function-slope-change" },
-    { name: "Slope of linear function two points", path: "/linear-function-slope-points" },
+    { name: "Slope of a linear function - change in X/Y", path: "/linear-function-slope-change" },
+    { name: "Slope of a linear function - defined by two points", path: "/linear-function-slope-points" },
   ]
 
   return (
