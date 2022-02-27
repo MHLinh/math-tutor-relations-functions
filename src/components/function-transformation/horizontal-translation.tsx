@@ -53,7 +53,7 @@ export function HorizontalTranslation() {
     grid: true,
     data: [
       {
-        fn: `cos(x + ${param})`,
+        fn: `(x + ${param})^2 - 4`,
         graphType: "polyline"
       }
     ]
@@ -103,6 +103,10 @@ export function HorizontalTranslation() {
           />
           <Typography align="left">
             Translate the function horizontally by using the slider.
+            <br />
+            Positive constant translates the function left.
+            <br />
+            Negative constant translates the function right. 
           </Typography>
         </Box>
       </Box>

@@ -106,6 +106,10 @@ export function HorizontalCompressionStretching() {
           />
           <Typography align="left">
             Compress or stretch the function horizontally by using the slider.
+            <br />
+            {"C > 1"} compresses the function.
+            <br />
+            {"0 < C < 1"} stretches the function. 
           </Typography>
         </Box>
       </Box>
