@@ -12,6 +12,7 @@ export function FunctionNavigation() {
     { name: "Properties of a function", path: "/function-properties" },
     { name: "Vertical line test", path: "/vertical-line-test" },
     { name: "Slope of a linear function", path: "/linear-function-slope" },
+    { name: "Quadratic function", path: "/quadratic-function" },
   ]
 
   return (

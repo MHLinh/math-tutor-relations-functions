@@ -21,7 +21,10 @@ import {
   VerticalLineTestPage,
   LinearFunctionSlopeNavigationPage,
   LinearFunctionSlopeChangePage,
-  LinearFunctionSlopePointsPage
+  LinearFunctionSlopePointsPage,
+  QuadraticFunctionNavigationPage,
+  QuadraticFunctionVertexPage,
+  QuadraticFunctionRootsPage
  } from "pages"
 import { theme } from "theme"
 
@@ -55,6 +58,9 @@ function App() {
             <Route path="/linear-function-slope" element={<LinearFunctionSlopeNavigationPage />} />
             <Route path="/linear-function-slope-change" element={<LinearFunctionSlopeChangePage />} />
             <Route path="/linear-function-slope-points" element={<LinearFunctionSlopePointsPage />} />
+            <Route path="/quadratic-function" element={<QuadraticFunctionNavigationPage />} />
+            <Route path="/quadratic-function-vertex" element={<QuadraticFunctionVertexPage />} />
+            <Route path="/quadratic-function-roots" element={<QuadraticFunctionRootsPage />} />
           </Routes>
         </Box>
       </ThemeProvider>
