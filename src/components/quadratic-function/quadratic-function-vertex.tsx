@@ -45,7 +45,7 @@ export function QuadraticFunctionVertex() {
 
   const h = -params.b / (2 * params.a)
   const k = params.a * h**2 + params.b * h  + params.c
-  
+
   const vertex = `Vertex $= (${roundToTwoDecimal(h)},${roundToTwoDecimal(k)})$`
   const points = [[h,k]]
   const options: FunctionPlotOptions = {
@@ -62,7 +62,8 @@ export function QuadraticFunctionVertex() {
     grid: true,
     data: [
       {
-        fn: `${params.a}x^2 + ${params.b}x + ${params.c}`
+        fn: `${params.a}x^2 + ${params.b}x + ${params.c}`,
+        graphType: "polyline"
       },
       {
         points,
