@@ -71,6 +71,7 @@ export function LinearFunctionSlopePoints() {
         fn: xChange === 0 
           ? "0"
           : `${gradient}x + ${c}`,
+        graphType: "polyline",
         attr: {
           opacity: xChange === 0 
             ? 0

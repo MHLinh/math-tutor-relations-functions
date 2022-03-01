@@ -13,6 +13,7 @@ export function FunctionNavigation() {
     { name: "Vertical line test", path: "/vertical-line-test" },
     { name: "Slope of a linear function", path: "/linear-function-slope" },
     { name: "Quadratic function", path: "/quadratic-function" },
+    { name: "Function transformation", path: "/function-transformation" },
   ]
 
   return (

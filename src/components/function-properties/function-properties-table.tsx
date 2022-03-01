@@ -6,10 +6,10 @@ import {
 } from "@mui/material"
 import { makeStyles } from "@mui/styles"
 import {
-  isFunction,
+  isDomainMapped,
+  isOneMapping,
   isOnto,
   isOneToOne,
-  isManyToOne,
   isIdentity
 } from "utils"
 import { palette, center } from "theme"
@@ -25,18 +25,25 @@ export function FunctionPropertiesTable(props: IFunctionPropertiesTable) {
   const { matrix } = props
   const classes = useStyles()
 
-  const isFunc = isFunction(matrix)
-  const onto = isFunc && isOnto(matrix)
-  const oneToOne = isFunc && isOneToOne(matrix)
-  const manyToOne = isFunc && isManyToOne(matrix)
-  const identity = isFunc && isIdentity(matrix)
+  const oneMapping = isOneMapping(matrix)
+
+  const isFunction = isDomainMapped(matrix) && oneMapping
+
+  const onto = isFunction && isOnto(matrix)
+
+  const oneToOneValue = isOneToOne(matrix)
+  const oneToOne = isFunction &&  oneToOneValue
+  const manyToOne = isFunction && !oneToOneValue
+
+  const identity = isFunction && isIdentity(matrix)
 
   const bijection = onto && oneToOne
-  const manyToMany = !isFunc && manyToOne
+
+  const manyToMany = !oneMapping && !oneToOneValue
 
   const properties = [
     { property: "Relation", status: true},
-    { property: "Function", status: isFunc },
+    { property: "Function", status: isFunction },
     { property: "Onto", status: onto },
     { property: "One-to-one", status: oneToOne },
     { property: "Bijection", status: bijection },

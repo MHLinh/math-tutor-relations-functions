@@ -33,7 +33,7 @@ export function VerticalLineTest() {
 
   const size = small 
                 ? 300
-                : 500
+                : 400
   
   const classes = useStyles()
   

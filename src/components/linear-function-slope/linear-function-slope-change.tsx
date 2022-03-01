@@ -51,9 +51,12 @@ export function LinearFunctionSlopeChange() {
     },
     disableZoom: true,
     grid: true,
-    data: [{
-      fn: `${gradient}x + 2`
-    }]
+    data: [
+      {
+        fn: `${gradient}x + 2`,
+        graphType: "polyline"
+      }
+    ]
   }
   
   const slopeText = `Slope $= \\frac{\\Delta Y}{\\Delta X} = \\frac{${yChange}}{${xChange}} \\approx ${roundToTwoDecimal(gradient)}$`

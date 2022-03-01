@@ -74,7 +74,8 @@ export function QuadraticFunctionRoots() {
     grid: true,
     data: [
       {
-        fn: `${params.a}x^2 + ${params.b}x + ${params.c}`
+        fn: `${params.a}x^2 + ${params.b}x + ${params.c}`,
+        graphType: "polyline"
       },
       {
         points,

@@ -24,7 +24,14 @@ import {
   LinearFunctionSlopePointsPage,
   QuadraticFunctionNavigationPage,
   QuadraticFunctionVertexPage,
-  QuadraticFunctionRootsPage
+  QuadraticFunctionRootsPage,
+  FunctionTransformationNavigationPage,
+  VerticalTranslationPage,
+  HorizontalTranslationPage,
+  VerticalCompressionStretchingPage,
+  HorizontalCompressionStretchingPage,
+  ReflectionPage,
+  FunctionTransformationPage
  } from "pages"
 import { theme } from "theme"
 
@@ -32,7 +39,7 @@ function App() {
 
   return (
     <Router>
-      {/* <ScrollToTop /> */}
+      <ScrollToTop />
       <ThemeProvider theme={theme}>
         <Box 
           sx={{
@@ -61,6 +68,25 @@ function App() {
             <Route path="/quadratic-function" element={<QuadraticFunctionNavigationPage />} />
             <Route path="/quadratic-function-vertex" element={<QuadraticFunctionVertexPage />} />
             <Route path="/quadratic-function-roots" element={<QuadraticFunctionRootsPage />} />
+            <Route path="/function-transformation" element={<FunctionTransformationNavigationPage />} />
+            <Route 
+              path="/function-transformation-vertical-translation" 
+              element={<VerticalTranslationPage />} 
+            />
+            <Route 
+              path="/function-transformation-horizontal-translation" 
+              element={<HorizontalTranslationPage />} 
+            />
+            <Route 
+              path="/function-transformation-vertical-compression-stretching" 
+              element={<VerticalCompressionStretchingPage />} 
+            />
+            <Route 
+              path="/function-transformation-horizontal-compression-stretching" 
+              element={<HorizontalCompressionStretchingPage />} 
+            />
+            <Route  path="/function-transformation-reflection" element={<ReflectionPage />} />
+            <Route  path="/function-transformation-all" element={<FunctionTransformationPage />} />
           </Routes>
         </Box>
       </ThemeProvider>

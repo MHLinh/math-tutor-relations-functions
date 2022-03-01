@@ -1,3 +1,5 @@
+import { roundToTwoDecimal } from "./round-to-two-decimal"
+
 interface Mark {
   value: number,
   label: string
@@ -12,7 +14,7 @@ interface Mark {
  */
 export function generateSliderMarks(step: number, min: number, max: number): Mark[] {
   const marks: Mark[] = []
-  for(let i = min; i <= max; i += step) {
+  for(let i = min; i <= max; i = roundToTwoDecimal(i + step)) {
     marks.push({
       value: i,
       label: `${i}`
