@@ -1,7 +1,8 @@
-import React, { useState } from "react"
+import React, { useState, useCallback } from "react"
 import {
   Box,
   Container,
+  Grid,
   Slider,
   Typography,
   useTheme,
@@ -10,10 +11,12 @@ import {
 import { makeStyles } from "@mui/styles"
 import "katex/dist/katex.min.css"
 import Latex from "react-latex-next"
-import {  center, paddingStyle  } from "theme/styles"
-import { generateSliderMarks } from "utils"
+import { center } from "theme/styles"
+import { generateSliderMarks, getFunctionEquation } from "utils"
 import FunctionPlotComponent from "components/function-plot/function-plot-component"
 import { FunctionPlotOptions } from "components/function-plot/function-plot-types"
+import { FunctionEquationSelection } from "components/function-equation/function-equation-selection"
+import { Equation } from "components/function-equation/function-equation-types"
 
 const step = 1
 const min = -6
@@ -26,17 +29,27 @@ const marks = generateSliderMarks(step, min, max)
  */
 export function VerticalTranslation() {
   const [param, setParam] = useState(0)
+  const [functionType, setFunctionType] = useState(Equation.Linear)
+
+  const wrapperSetFunctionType = useCallback((type: Equation) => {
+    setFunctionType(type)
+  }, [setFunctionType])
+
+  const classes = useStyles()
   const { breakpoints } = useTheme()
   const small = useMediaQuery(breakpoints.down("sm"))
 
   const size = small 
                 ? 300
                 : 400
-  
-  const classes = useStyles()
-  
+    
   const equation = "$y = f(x) + C$"
   const paramValue = `$C = ${param}$`
+
+  const plotEquation = getFunctionEquation(
+    functionType, 1, 1, 0, param, "", ""
+  )
+
   const options: FunctionPlotOptions = {
     target: "#plot",
     width: size,
@@ -53,7 +66,7 @@ export function VerticalTranslation() {
     grid: true,
     data: [
       {
-        fn: `x^2 - 4 + ${param}`,
+        fn: plotEquation,
         graphType: "polyline"
       }
     ]
@@ -68,48 +81,67 @@ export function VerticalTranslation() {
   }
 
   return (
-    <Container className={classes.container}>
+    <Container>
       <Box className={classes.box}>
         <Typography align="center" className={classes.text}>
           Vertical translation of a function
         </Typography>
       </Box>
-      <Box className={classes.center}>
-        <FunctionPlotComponent 
-          options={options}
-        />
-      </Box>
-      <Box className={classes.box}>
-        <Typography align="center" className={classes.latex}>
-          <Latex>{equation}</Latex>
-        </Typography>
-        <Typography align="center" className={classes.latex}>
-          <Latex>{paramValue}</Latex>
-        </Typography>
-      </Box>
-      <Box className={classes.center}>
-        <Box className={classes.slider}>
-          <Typography>
-            Constant C value
-          </Typography>
-          <Slider 
-            aria-label="c-value"
-            value={param}
-            onChangeCommitted={handleChange}
-            step={step}
-            min={min}
-            max={max}
-            marks={marks}
-          />
-          <Typography align="left">
-            Translate the function vertically by using the slider.
-            <br />
-            Positive constant translates the function upwards.
-            <br />
-            Negative constant translates the function downward. 
-          </Typography>
-        </Box>
-      </Box>
+      <Grid 
+        container
+        direction="row"
+        justifyContent="center"
+        spacing={1}
+      >
+        <Grid item md={6}>
+          <Box className={classes.center}>
+            <FunctionPlotComponent 
+              options={options}
+            />
+          </Box>
+          <Box className={classes.box}>
+            <Typography align="center" className={classes.latex}>
+              <Latex>{equation}</Latex>
+            </Typography>
+            <Typography align="center" className={classes.latex}>
+              <Latex>{paramValue}</Latex>
+            </Typography>
+          </Box>
+        </Grid>
+        <Grid item md={6}>
+          <Box className={classes.centerBox}>
+            <Box className={classes.slider}>
+              <Typography>
+                Constant C value
+              </Typography>
+              <Slider 
+                aria-label="c-value"
+                value={param}
+                onChangeCommitted={handleChange}
+                step={step}
+                min={min}
+                max={max}
+                marks={marks}
+              />
+            </Box>
+          </Box>
+          <Box className={classes.centerBox}>
+            <FunctionEquationSelection
+              selectedType={functionType}
+              setSelectedType={wrapperSetFunctionType}
+            />
+          </Box>
+          <Box className={classes.box}>
+            <Typography align="left">
+              Translate the function vertically by using the slider.
+              <br />
+              Positive constant translates the function upwards.
+              <br />
+              Negative constant translates the function downward. 
+            </Typography>
+          </Box>
+        </Grid>
+      </Grid>
     </Container>
   )
 }
@@ -122,8 +154,10 @@ const useStyles = makeStyles((theme: any) => ({
   center: {
     ...center,
   },
-  container: {
-    ...paddingStyle,
+  centerBox: {
+    ...center,
+    paddingBottom: theme.spacing(1),
+    paddingTop: theme.spacing(1),
   },
   latex: {
     fontSize: theme.typography.pxToRem(16),

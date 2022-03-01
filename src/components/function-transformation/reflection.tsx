@@ -1,9 +1,9 @@
-import React, { useState } from "react"
+import React, { useState, useCallback } from "react"
 import {
   Box,
   Button,
   Container,
-  Slider,
+  Grid,
   Typography,
   useTheme,
   useMediaQuery,
@@ -11,10 +11,12 @@ import {
 import { makeStyles } from "@mui/styles"
 import "katex/dist/katex.min.css"
 import Latex from "react-latex-next"
-import {  center, paddingStyle  } from "theme/styles"
-import { generateSliderMarks } from "utils"
+import { center } from "theme/styles"
+import { generateSliderMarks, getFunctionEquation } from "utils"
 import FunctionPlotComponent from "components/function-plot/function-plot-component"
 import { FunctionPlotOptions } from "components/function-plot/function-plot-types"
+import { FunctionEquationSelection } from "components/function-equation/function-equation-selection"
+import { Equation } from "components/function-equation/function-equation-types"
 
 const step = 1
 const min = -6
@@ -28,6 +30,11 @@ const marks = generateSliderMarks(step, min, max)
 export function Reflection() {
   const [xReflect, setXReflect] = useState(1)
   const [yReflect, setYReflect] = useState(1)
+  const [functionType, setFunctionType] = useState(Equation.Linear)
+
+  const wrapperSetFunctionType = useCallback((type: Equation) => {
+    setFunctionType(type)
+  }, [setFunctionType])
 
   const classes = useStyles()
   const { breakpoints } = useTheme()
@@ -37,13 +44,17 @@ export function Reflection() {
                 ? 300
                 : 400
   
-  const signX = xReflect === 1
+  const xSign = xReflect === 1
                   ? ""
                   : "-"
   const ySign = yReflect === 1
                   ? ""
                   : "-"
-  const equation = `$y = ${signX}f(${ySign}x) + C$`
+  const equation = `$y = ${xSign}f(${ySign}x) + C$`
+
+  const plotEquation = getFunctionEquation(
+    functionType, 1, 1, 0, 0, xSign, ySign
+  )
 
   const options: FunctionPlotOptions = {
     target: "#plot",
@@ -61,7 +72,7 @@ export function Reflection() {
     grid: true,
     data: [
       {
-        fn: `${xReflect}((${yReflect}x-1)^3 - 1)`,
+        fn: plotEquation,
         graphType: "polyline"
       }
     ]
@@ -77,38 +88,72 @@ export function Reflection() {
   }
 
   return (
-    <Container className={classes.container}>
+    <Container>
       <Box className={classes.box}>
         <Typography align="center" className={classes.text}>
           Reflection along the x-axis and y-axis
         </Typography>
       </Box>
-      <Box className={classes.center}>
-        <FunctionPlotComponent 
-          options={options}
-        />
-      </Box>
-      <Box className={classes.box}>
-        <Typography align="center" className={classes.latex}>
-          <Latex>{equation}</Latex>
-        </Typography>
-      </Box>
-      <Box className={classes.buttonBox}>
-        <Button 
-          variant="contained" 
-          onClick={handleXReflect}
-        >
-          Reflect along x-axis
-        </Button>
-      </Box>
-      <Box className={classes.buttonBox}>
-        <Button 
-          variant="contained" 
-          onClick={handleYReflect}
-        >
-          Reflect along y-axis
-        </Button>
-      </Box>
+      <Grid 
+        container
+        direction="row"
+        justifyContent="center"
+        spacing={1}
+      >
+        <Grid item md={6}>
+          <Box className={classes.center}>
+            <FunctionPlotComponent 
+              options={options}
+            />
+          </Box>
+          <Box className={classes.box}>
+            <Typography align="center" className={classes.latex}>
+              <Latex>{equation}</Latex>
+            </Typography>
+          </Box>
+        </Grid>
+        <Grid item md={6}>
+          <Box className={classes.box}>
+            <Box className={classes.box}>
+              <Grid 
+                container
+                direction="row"
+                justifyContent="center"
+                alignItems="center" 
+                spacing={1}
+              >
+                <Grid item>
+                  <Button 
+                    variant="contained" 
+                    onClick={handleXReflect}
+                  >
+                    Reflect along x-axis
+                  </Button>
+                </Grid>
+                <Grid item>
+                  <Button 
+                    variant="contained" 
+                    onClick={handleYReflect}
+                  >
+                    Reflect along y-axis
+                  </Button>
+                </Grid>
+              </Grid>
+            </Box>
+            <Box className={classes.centerBox}>
+              <FunctionEquationSelection
+                selectedType={functionType}
+                setSelectedType={wrapperSetFunctionType}
+              />
+            </Box>
+            <Box className={classes.box}>
+              <Typography align="left">
+                Reflect the function along the axis using the buttons.
+              </Typography>
+            </Box>
+          </Box>
+        </Grid>
+      </Grid>
     </Container>
   )
 }
@@ -118,16 +163,13 @@ const useStyles = makeStyles((theme: any) => ({
     paddingBottom: theme.spacing(1),
     paddingTop: theme.spacing(1),
   },
-  buttonBox: {
-    ...center,
-    paddingBottom: theme.spacing(1),
-    paddingTop: theme.spacing(1),
-  },
   center: {
     ...center,
   },
-  container: {
-    ...paddingStyle,
+  centerBox: {
+    ...center,
+    paddingBottom: theme.spacing(1),
+    paddingTop: theme.spacing(1),
   },
   latex: {
     fontSize: theme.typography.pxToRem(16),
