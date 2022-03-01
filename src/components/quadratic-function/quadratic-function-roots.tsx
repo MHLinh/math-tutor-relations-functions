@@ -112,151 +112,157 @@ export function QuadraticFunctionRoots() {
   }
 
   return (
-    <Container className={classes.container}>
+    <Container>
       <Box className={classes.box}>
         <Typography align="center" className={classes.text}>
           Roots of a quadratic function
         </Typography>
       </Box>
-      <Box className={classes.center}>
-        <FunctionPlotComponent 
-          options={options}
-        />
-      </Box>
-      <Box className={classes.box}>
-        <Typography align="center" className={classes.latex}>
-          <Latex>{deltaValue}</Latex>
-        </Typography>
-        <Typography align="center" className={classes.latex}>
-          <Latex>{roots}</Latex>
-        </Typography>
-      </Box>
-      <Box className={classes.center}>
-        <Grid 
-          container
-          justifyContent="center"
-          direction={small 
-            ? "column"
-            : "row"
-          }
-          spacing={2}
-        >
-          {/* Parameters input */}
-          <Grid
-            container
-            item
-            direction="column"
-            alignItems="center"
-            spacing={2}
-            xs={5}
-          >
-            <Grid item>
-              <Typography className={classes.latex}>
-                <Latex>{equation}</Latex>
-              </Typography>
-            </Grid>
+      <Grid 
+        container
+        direction="row"
+        justifyContent="center"
+        spacing={1}
+      >
+        <Grid item md={5}>
+          <Box className={classes.center}>
+            <FunctionPlotComponent 
+              options={options}
+            />
+          </Box>
+          <Box className={classes.box}>
+            <Typography align="center" className={classes.latex}>
+              <Latex>{deltaValue}</Latex>
+            </Typography>
+            <Typography align="center" className={classes.latex}>
+              <Latex>{roots}</Latex>
+            </Typography>
+          </Box>
+        </Grid>
+        <Grid item md={5}>
+          <Box className={classes.center}>
             <Grid 
               container
-              item
-              direction="row"
-              alignItems="center"
               justifyContent="center"
+              direction="column"
               spacing={2}
             >
-              <Grid item>
-                <Typography className={classes.param}>
-                  a =
-                </Typography>
+              {/* Parameters input */}
+              <Grid
+                container
+                item
+                direction="column"
+                alignItems="center"
+                spacing={2}
+              >
+                <Grid item>
+                  <Typography className={classes.latex}>
+                    <Latex>{equation}</Latex>
+                  </Typography>
+                </Grid>
+                <Grid 
+                  container
+                  item
+                  direction="row"
+                  alignItems="center"
+                  justifyContent="center"
+                  spacing={2}
+                >
+                  <Grid item>
+                    <Typography className={classes.param}>
+                      a =
+                    </Typography>
+                  </Grid>
+                  <Grid item>
+                    <NumberFormat
+                      id="input-a"
+                      value={params.a}
+                      customInput={TextField} 
+                      variant="outlined"
+                      autoComplete="off"
+                      onChange={handleChangeA}
+                      className={classes.input}
+                    />
+                  </Grid>
+                </Grid>
+                <Grid 
+                  container 
+                  item
+                  direction="row"
+                  alignItems="center"
+                  justifyContent="center"
+                  spacing={2}
+                >
+                  <Grid item>
+                    <Typography className={classes.param}>
+                      b =
+                    </Typography>
+                  </Grid>
+                  <Grid item>
+                    <NumberFormat
+                      id="input-b"
+                      value={params.b}
+                      customInput={TextField} 
+                      variant="outlined"
+                      autoComplete="off"
+                      onChange={handleChangeB}
+                      className={classes.input}
+                    />
+                  </Grid>
+                </Grid>
+                <Grid 
+                  container 
+                  item
+                  direction="row"
+                  alignItems="center"
+                  justifyContent="center"
+                  spacing={2}
+                >
+                  <Grid item>
+                    <Typography className={classes.param}>
+                      c =
+                    </Typography>
+                  </Grid>
+                  <Grid item>
+                    <NumberFormat
+                      id="input-c"
+                      value={params.c}
+                      customInput={TextField} 
+                      variant="outlined"
+                      autoComplete="off"
+                      onChange={handleChangeC}
+                      className={classes.input}
+                    />
+                  </Grid>
+                </Grid>
               </Grid>
-              <Grid item>
-                <NumberFormat
-                  id="input-a"
-                  value={params.a}
-                  customInput={TextField} 
-                  variant="outlined"
-                  autoComplete="off"
-                  onChange={handleChangeA}
-                  className={classes.input}
-                />
+              <Grid
+                container
+                item
+                justifyContent="center"  
+              >
+                <Grid item>
+                  <Typography className={classes.latex}>
+                    <Latex>{deltaEquation}</Latex>
+                  </Typography>
+                  <Typography className={classes.latex}>
+                    <Latex>{deltaSmaller}</Latex>
+                  </Typography>
+                  <Typography className={classes.latex}>
+                    <Latex>{deltaEqual}</Latex>
+                  </Typography>
+                  <Typography className={classes.latex}>
+                    <Latex>{deltaLarger}</Latex>
+                  </Typography>
+                  <Typography className={classes.latex}>
+                    <Latex>{rootsEquation}</Latex>
+                  </Typography>
+                </Grid>
               </Grid>
             </Grid>
-            <Grid 
-              container 
-              item
-              direction="row"
-              alignItems="center"
-              justifyContent="center"
-              spacing={2}
-            >
-              <Grid item>
-                <Typography className={classes.param}>
-                  b =
-                </Typography>
-              </Grid>
-              <Grid item>
-                <NumberFormat
-                  id="input-b"
-                  value={params.b}
-                  customInput={TextField} 
-                  variant="outlined"
-                  autoComplete="off"
-                  onChange={handleChangeB}
-                  className={classes.input}
-                />
-              </Grid>
-            </Grid>
-            <Grid 
-              container 
-              item
-              direction="row"
-              alignItems="center"
-              justifyContent="center"
-              spacing={2}
-            >
-              <Grid item>
-                <Typography className={classes.param}>
-                  c =
-                </Typography>
-              </Grid>
-              <Grid item>
-                <NumberFormat
-                  id="input-c"
-                  value={params.c}
-                  customInput={TextField} 
-                  variant="outlined"
-                  autoComplete="off"
-                  onChange={handleChangeC}
-                  className={classes.input}
-                />
-              </Grid>
-            </Grid>
-          </Grid>
-          <Grid
-            container
-            item
-            justifyContent="center"
-            xs={5}  
-          >
-            <Grid item>
-              <Typography className={classes.latex}>
-                <Latex>{deltaEquation}</Latex>
-              </Typography>
-              <Typography className={classes.latex}>
-                <Latex>{deltaSmaller}</Latex>
-              </Typography>
-              <Typography className={classes.latex}>
-                <Latex>{deltaEqual}</Latex>
-              </Typography>
-              <Typography className={classes.latex}>
-                <Latex>{deltaLarger}</Latex>
-              </Typography>
-              <Typography className={classes.latex}>
-                <Latex>{rootsEquation}</Latex>
-              </Typography>
-            </Grid>
-          </Grid>
+          </Box>
         </Grid>
-      </Box>
+      </Grid>
     </Container>
   )
 }
@@ -268,9 +274,6 @@ const useStyles = makeStyles((theme: any) => ({
   },
   center: {
     ...center,
-  },
-  container: {
-    ...paddingStyle,
   },
   latex: {
     fontSize: theme.typography.pxToRem(16),
