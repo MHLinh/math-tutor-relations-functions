@@ -1,7 +1,8 @@
-import React, { useState, useCallback, useMemo } from "react"
+import React, { useState } from "react"
 import {
   Box,
   Container,
+  Grid,
   Slider,
   Typography,
   useTheme,
@@ -10,7 +11,7 @@ import {
 import { makeStyles } from "@mui/styles"
 import "katex/dist/katex.min.css"
 import Latex from "react-latex-next"
-import {  center, paddingStyle  } from "theme/styles"
+import { center } from "theme/styles"
 import { generateSliderMarks, roundToTwoDecimal } from "utils"
 import FunctionPlotComponent from "components/function-plot/function-plot-component"
 import { FunctionPlotOptions } from "components/function-plot/function-plot-types"
@@ -78,54 +79,65 @@ export function LinearFunctionSlopeChange() {
   }
 
   return (
-    <Container className={classes.container}>
+    <Container>
       <Box className={classes.box}>
         <Typography align="center" className={classes.text}>
           Slope of a linear function by
           modifying the change in X and Y
         </Typography>
       </Box>
-      <Box className={classes.center}>
-        <FunctionPlotComponent 
-          options={options}
-        />
-      </Box>
-      <Box className={classes.box}>
-        <Typography align="center" className={classes.latex}>
-          <Latex>{slopeText}</Latex>
-        </Typography>
-      </Box>
-      <Box className={classes.center}>
-        <Box className={classes.slider}>
-          <Typography>
-            <Latex>{xLabel}</Latex>
-          </Typography>
-          <Slider 
-            aria-label="x-change"
-            value={xChange}
-            onChangeCommitted={handleXChange}
-            min={min}
-            max={max}
-            marks={marksX}
-          />
-          <Typography>
-            <Latex>{yLabel}</Latex>
-          </Typography>
-          <Slider 
-            aria-label="y-change"
-            value={yChange}
-            onChangeCommitted={handleYChange}
-            min={min}
-            max={max}
-            marks={marksY}
-          />
+      <Grid 
+        container
+        direction="row"
+        justifyContent="center"
+        spacing={1}
+      >
+        <Grid item md={5}>
+          <Box className={classes.center}>
+            <FunctionPlotComponent 
+              options={options}
+            />
+          </Box>
           <Box className={classes.box}>
-            <Typography align="left">
-              Modify the change in X and Y to modify the slope of the function.
+            <Typography align="center" className={classes.latex}>
+              <Latex>{slopeText}</Latex>
             </Typography>
           </Box>
-        </Box>
-      </Box>
+        </Grid>
+        <Grid item md={5}>
+          <Box className={classes.center}>
+            <Box className={classes.slider}>
+              <Typography>
+                <Latex>{xLabel}</Latex>
+              </Typography>
+              <Slider 
+                aria-label="x-change"
+                value={xChange}
+                onChangeCommitted={handleXChange}
+                min={min}
+                max={max}
+                marks={marksX}
+              />
+              <Typography>
+                <Latex>{yLabel}</Latex>
+              </Typography>
+              <Slider 
+                aria-label="y-change"
+                value={yChange}
+                onChangeCommitted={handleYChange}
+                min={min}
+                max={max}
+                marks={marksY}
+              />
+              <Box className={classes.box}>
+                <Typography align="left">
+                  Modify the change in X and Y to modify the slope of the function.
+                </Typography>
+              </Box>
+            </Box>
+          </Box>
+        </Grid>
+      </Grid>
     </Container>
   )
 }
@@ -137,9 +149,6 @@ const useStyles = makeStyles((theme: any) => ({
   },
   center: {
     ...center,
-  },
-  container: {
-    ...paddingStyle,
   },
   latex: {
     fontSize: theme.typography.pxToRem(16),
