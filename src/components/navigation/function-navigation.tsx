@@ -9,6 +9,7 @@ export function FunctionNavigation() {
   const text = "Study functions"
 
   const paths = [
+    { name: "Domain of a function", path: "/function-domain" },
     { name: "Properties of a function", path: "/function-properties" },
     { name: "Vertical line test", path: "/vertical-line-test" },
     { name: "Slope of a linear function", path: "/linear-function-slope" },

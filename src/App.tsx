@@ -31,7 +31,10 @@ import {
   VerticalCompressionStretchingPage,
   HorizontalCompressionStretchingPage,
   ReflectionPage,
-  FunctionTransformationPage
+  FunctionTransformationPage,
+  FunctionDomainNavigationPage,
+  FunctionDomainContinuousPage,
+  FunctionDomainDiscretePage
  } from "pages"
 import { theme } from "theme"
 
@@ -87,6 +90,9 @@ function App() {
             />
             <Route  path="/function-transformation-reflection" element={<ReflectionPage />} />
             <Route  path="/function-transformation-all" element={<FunctionTransformationPage />} />
+            <Route  path="/function-domain" element={<FunctionDomainNavigationPage />} />
+            <Route  path="/function-domain-continuous" element={<FunctionDomainContinuousPage />} />
+            <Route  path="/function-domain-discrete" element={<FunctionDomainDiscretePage />} />
           </Routes>
         </Box>
       </ThemeProvider>
