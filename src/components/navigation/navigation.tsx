@@ -67,12 +67,12 @@ export function Navigation(props: INavigation) {
 
 const useStyles = makeStyles((theme: any) => ({
   button: {
-    height: 60,
+    height: 70,
     width: 300,
   },
   buttonText: {
     fontWeight: 500,
-    fontSize: theme.typography.pxToRem(12),
+    fontSize: theme.typography.pxToRem(10),
     [theme.breakpoints.up("md")]: {
       fontSize: theme.typography.pxToRem(14),
     },

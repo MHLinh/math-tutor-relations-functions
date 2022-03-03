@@ -92,7 +92,7 @@ export function LinearFunctionSlopeChange() {
         justifyContent="center"
         spacing={1}
       >
-        <Grid item md={5}>
+        <Grid item md={6} lg={5}>
           <Box className={classes.center}>
             <FunctionPlotComponent 
               options={options}
@@ -104,7 +104,7 @@ export function LinearFunctionSlopeChange() {
             </Typography>
           </Box>
         </Grid>
-        <Grid item md={5}>
+        <Grid item md={6} lg={5}>
           <Box className={classes.center}>
             <Box className={classes.slider}>
               <Typography>
