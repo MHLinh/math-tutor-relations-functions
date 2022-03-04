@@ -15,6 +15,7 @@ export function FunctionNavigation() {
     { name: "Slope of a linear function", path: "/linear-function-slope" },
     { name: "Quadratic function", path: "/quadratic-function" },
     { name: "Function transformation", path: "/function-transformation" },
+    { name: "Function composition", path: "/function-composition" },
   ]
 
   return (
