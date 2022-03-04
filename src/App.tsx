@@ -1,7 +1,7 @@
 import React from "react"
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import { Box } from "@mui/material"
-import { makeStyles, ThemeProvider } from "@mui/styles"
+import { ThemeProvider } from "@mui/styles"
 import {
   ScrollToTop,
   NavigationButtons,
@@ -31,7 +31,13 @@ import {
   VerticalCompressionStretchingPage,
   HorizontalCompressionStretchingPage,
   ReflectionPage,
-  FunctionTransformationPage
+  FunctionTransformationPage,
+  FunctionDomainNavigationPage,
+  FunctionDomainContinuousPage,
+  FunctionDomainDiscretePage,
+  FunctionCompositionNavigationPage,
+  FunctionCompositionCheckPage,
+  FunctionCompositionPlotPage
  } from "pages"
 import { theme } from "theme"
 
@@ -87,6 +93,12 @@ function App() {
             />
             <Route  path="/function-transformation-reflection" element={<ReflectionPage />} />
             <Route  path="/function-transformation-all" element={<FunctionTransformationPage />} />
+            <Route  path="/function-domain" element={<FunctionDomainNavigationPage />} />
+            <Route  path="/function-domain-continuous" element={<FunctionDomainContinuousPage />} />
+            <Route  path="/function-domain-discrete" element={<FunctionDomainDiscretePage />} />
+            <Route  path="/function-composition" element={<FunctionCompositionNavigationPage />} />
+            <Route  path="/function-composition-check" element={<FunctionCompositionCheckPage />} />
+            <Route  path="/function-composition-plot" element={<FunctionCompositionPlotPage />} />
           </Routes>
         </Box>
       </ThemeProvider>
