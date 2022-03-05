@@ -83,7 +83,7 @@ export function isSymmetric(matrix: number[][]): boolean {
 export function checkSymmetric(matrix: number[][]): string[] {
   const pairs: string[] = []
   for(let i = 0; i < matrix.length; i++) {
-    for(let j = 0; j < matrix.length; j++) {
+    for(let j = i; j < matrix.length; j++) {
       if(matrix[i][j] !== matrix[j][i]) {
         if(matrix[i][j] === 1) {
           pairs.push(`(${j+1},${i+1})`)
