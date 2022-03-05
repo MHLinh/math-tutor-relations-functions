@@ -19,8 +19,8 @@ export function RelationAntisymmetricCheck(props: IRelationAntisymmetricCheck) {
   const antisymmetric = pairs.length === 0
   const stringPairs = pairs.join(", ")
   const verb = pairs.length > 1
-    ? "are"
-    : "is"
+    ? "are "
+    : "is "
 
   return (
     <Box>
