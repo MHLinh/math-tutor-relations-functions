@@ -198,9 +198,9 @@ test("determine if the function is one to one - true 2", () => {
 test("determine if the function is one to one - true 3", () => {
   const matrix = [
     [0, 0, 1, 0],
-    [0, 0, 1, 0],
+    [0, 1, 0, 0],
     [0, 0, 0, 1],
-    [0, 0, 0, 1],
+    [1, 0, 0, 0],
   ]
   expect(isOneToOne(matrix)).toBe(true)  
 })
