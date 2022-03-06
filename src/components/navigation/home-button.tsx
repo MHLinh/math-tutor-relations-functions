@@ -12,7 +12,7 @@ export function HomeButton() {
 
   return (
     <IconButton
-      aria-label="back-button"
+      aria-label="home-button"
       size="large"
       color="info"
       component={NavLink}

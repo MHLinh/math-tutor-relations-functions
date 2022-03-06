@@ -49,6 +49,7 @@ export function Navigation(props: INavigation) {
             className={classes.gridItem}
           >
             <Button
+              data-testid={path.substring(1)}
               variant="contained"
               component={NavLink}
               to={path}
