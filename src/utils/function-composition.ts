@@ -1,4 +1,4 @@
-import { NumberSet, SubsetOf } from "components"
+import { NumberSet, SubsetOf } from "components/function-composition/function-composition-types"
 
 /**
  * Check whether f(g(x)) can be composed,

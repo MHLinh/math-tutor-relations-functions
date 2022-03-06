@@ -27,7 +27,7 @@ const marks = generateSliderMarks(step, min, max)
  */
 export function VerticalLineTest() {
   const [position, setPosition] = useState(min)
-  const [points, setPoints] = useState(generatePoints(min - 1, max - 1, 10))
+  const [points, setPoints] = useState(generatePoints(min + 1, max - 1, 10))
   const { breakpoints } = useTheme()
   const small = useMediaQuery(breakpoints.down("sm"))
 
