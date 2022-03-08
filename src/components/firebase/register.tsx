@@ -34,7 +34,8 @@ export function Register (){
   const navigate = useNavigate()
   const { 
     status, 
-    message, 
+    message,
+    processing, 
     resetManager, 
     registerWithEmailAndPassword, 
     logInWithGoogle 
@@ -44,14 +45,13 @@ export function Register (){
 
   useEffect(() => {
     if (loading) {
-      // maybe trigger a loading screen
       return
     }
 
-    if (user) {
-      navigate("/")
+    if (user && !processing) {
+      navigate("/dashboard")
     }
-  }, [user, loading])
+  }, [user, loading, processing])
 
   const handleChangeName= (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value)
@@ -170,6 +170,9 @@ export function Register (){
           </Typography>
           <Typography align="center">
             Already have an account? <Link to="/login">Login now.</Link>
+          </Typography>
+          <Typography align="left" variant="caption">
+            Please verify your email through the verification we will send you after registering.
           </Typography>
         </Stack>
       </Box>

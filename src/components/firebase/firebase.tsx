@@ -58,7 +58,6 @@ const googleProvider = new GoogleAuthProvider()
 
 enum Status {
   idle = "IDLE",
-  successRegister = "SUCCESS_REGISTER",
   errorRegister = "ERROR_REGISTER",
   errorLogIn = "ERROR_LOG_IN",
   successReset = "SUCCESS_RESET",
@@ -71,11 +70,18 @@ enum Status {
 export function useAuthenticationManager() {
   const [status, setStatus] = useState(Status.idle)
   const [message, setMessage] = useState("")
+  const [processing, setProcessing] = useState(false)
 
   const resetManager = () => {
     setStatus(Status.idle)
     setMessage("")
   }
+
+  /**
+   * The authentication part of the code was written with the help of the article 
+   * https://blog.logrocket.com/user-authentication-firebase-react-apps/,
+   * author: Yusuff Faruq, published: 10.01.2022, accessed: 07.03.2022.
+   */
 
   /**
    * A function for handling registering new user with email and password.
@@ -85,6 +91,7 @@ export function useAuthenticationManager() {
    * 
   */
   const registerWithEmailAndPassword = async (name: string, email: string, password: string) => {
+    setProcessing(true)
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password)
       const { user } = res
@@ -96,8 +103,6 @@ export function useAuthenticationManager() {
       })
   
       await sendEmailVerification(user)
-      
-      setStatus(Status.successRegister)
     } catch (error) {
       console.error(error)
       if (error instanceof Error) {
@@ -105,6 +110,7 @@ export function useAuthenticationManager() {
         setMessage(error.message)
       }
     }
+    setProcessing(false)
   }
 
   /**
@@ -176,15 +182,15 @@ export function useAuthenticationManager() {
   return { 
     status, 
     message,
+    processing,
     resetManager,
     registerWithEmailAndPassword, 
     logInWithEmailAndPassword,
     sendPasswordReset,
     logInWithGoogle,
     logout
-    }
+  }
 }
-
 
 interface IAuthenticationAlert {
   status: Status,             // The status of the authentication
@@ -197,7 +203,6 @@ interface IAuthenticationAlert {
  */
 export function AuthenticationAlert(props: IAuthenticationAlert) {
   const { status, message, resetManager} = props
-  const openSuccessRegister = status === Status.successRegister
   const openErrorRegister = status === Status.errorRegister
   const openErrorLogIn = status === Status.errorLogIn
   const openSuccessReset = status === Status.successReset
@@ -212,12 +217,6 @@ export function AuthenticationAlert(props: IAuthenticationAlert) {
 
   return (
    <Box>
-     <CustomAlert 
-        open={openSuccessRegister}
-        handleClose={handleClose}
-        severity="success"
-        text="The registration was successful! We sent you a verification email."
-      />
       <CustomAlert 
         open={openErrorRegister}
         handleClose={handleClose}
