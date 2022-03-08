@@ -12,7 +12,7 @@ import {
 import { makeStyles } from "@mui/styles"
 import DeleteIcon from "@mui/icons-material/Delete"
 import { FixedSizeList, ListChildComponentProps } from "react-window"
-import { IPoints } from "components/database/db"
+import { IPoints } from "components/dexie/dexie"
 import { PointsListContext } from "./points-list-context"
 
 interface IPointsList {
