@@ -8,6 +8,10 @@ import {
 } from "components"
 import { 
   HomePage,
+  LoginPage,
+  RegisterPage,
+  ResetPasswordPage,
+  DashboardPage,
   RelationRepresentationPage,
   RelationPropertiesNavigationPage,
   RelationPropertiesPage,
@@ -57,6 +61,10 @@ function App() {
           <NavigationButtons />
           <Routes>
             <Route path="/" element={<HomePage />}/>
+            <Route path="/login" element={<LoginPage />}/>
+            <Route path="/register" element={<RegisterPage />}/>
+            <Route path="/reset-password" element={<ResetPasswordPage />}/>
+            <Route path="/dashboard" element={<DashboardPage />}/>
             <Route path="/relation-representation" element={<RelationRepresentationPage />} />
             <Route path="/relation-properties" element={<RelationPropertiesNavigationPage />} />
             <Route path="/relation-properties-all" element={<RelationPropertiesPage />} />
