@@ -12,11 +12,12 @@ import {
 import { makeStyles } from "@mui/styles"
 import DeleteIcon from "@mui/icons-material/Delete"
 import { FixedSizeList, ListChildComponentProps } from "react-window"
-import { IRelation } from "components/database/db"
+import { IRelation } from "components/dexie/dexie"
+import { IRelationFirebase } from "components/firebase/firebase"
 import { RelationsListContext } from "./relations-list-context"
 
 interface IRelationsList {
-  data: IRelation[] // List of relations
+  data: IRelation[] | IRelationFirebase[] // List of relations
 }
 
 /**

@@ -4,7 +4,7 @@ import React, { createContext } from "react"
 export interface IRelationsListContext {
   selected: number,                     // Index of selected relation in list
   setter: (selected: number) => void    // Function to set the relation
-  deleteFunction: (id: number) => void  // Function to delete the relation
+  deleteFunction: (id: string) => void  // Function to delete the relation
 }
 
 /**
@@ -14,5 +14,5 @@ export interface IRelationsListContext {
 export const RelationsListContext = createContext<IRelationsListContext>({
   selected: -1,
   setter: (selected: number) => {},
-  deleteFunction: (id: number) => {}
+  deleteFunction: (id: string) => {}
 })

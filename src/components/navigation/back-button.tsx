@@ -12,7 +12,7 @@ export function BackButton() {
   const navigate = useNavigate()
   const location = useLocation()
 
-  const goBack = () => {
+  const handleClick = () => {
     navigate(-1)
   }
 
@@ -22,7 +22,7 @@ export function BackButton() {
         aria-label="back-button"
         size="large"
         color="info"
-        onClick={goBack}
+        onClick={handleClick}
       >
         <ArrowBackIcon fontSize="inherit" />
       </IconButton>
