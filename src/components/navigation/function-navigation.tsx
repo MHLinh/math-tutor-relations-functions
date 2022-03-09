@@ -9,9 +9,9 @@ export function FunctionNavigation() {
   const text = "Study functions"
 
   const paths = [
+    { name: "Vertical line test", path: "/vertical-line-test" },
     { name: "Domain of a function", path: "/function-domain" },
     { name: "Properties of a function", path: "/function-properties" },
-    { name: "Vertical line test", path: "/vertical-line-test" },
     { name: "Slope of a linear function", path: "/linear-function-slope" },
     { name: "Quadratic function", path: "/quadratic-function" },
     { name: "Function transformation", path: "/function-transformation" },
