@@ -44,7 +44,8 @@ import {
   FunctionDomainDiscretePage,
   FunctionCompositionNavigationPage,
   FunctionCompositionCheckPage,
-  FunctionCompositionPlotPage
+  FunctionCompositionPlotPage,
+  ErrorPage,
  } from "pages"
 import { theme } from "theme"
 
@@ -105,14 +106,16 @@ function App() {
               path="/function-transformation-horizontal-compression-stretching" 
               element={<HorizontalCompressionStretchingPage />} 
             />
-            <Route  path="/function-transformation-reflection" element={<ReflectionPage />} />
-            <Route  path="/function-transformation-all" element={<FunctionTransformationPage />} />
-            <Route  path="/function-domain" element={<FunctionDomainNavigationPage />} />
-            <Route  path="/function-domain-continuous" element={<FunctionDomainContinuousPage />} />
-            <Route  path="/function-domain-discrete" element={<FunctionDomainDiscretePage />} />
-            <Route  path="/function-composition" element={<FunctionCompositionNavigationPage />} />
-            <Route  path="/function-composition-check" element={<FunctionCompositionCheckPage />} />
-            <Route  path="/function-composition-plot" element={<FunctionCompositionPlotPage />} />
+            <Route path="/function-transformation-reflection" element={<ReflectionPage />} />
+            <Route path="/function-transformation-all" element={<FunctionTransformationPage />} />
+            <Route path="/function-domain" element={<FunctionDomainNavigationPage />} />
+            <Route path="/function-domain-continuous" element={<FunctionDomainContinuousPage />} />
+            <Route path="/function-domain-discrete" element={<FunctionDomainDiscretePage />} />
+            <Route path="/function-composition" element={<FunctionCompositionNavigationPage />} />
+            <Route path="/function-composition-check" element={<FunctionCompositionCheckPage />} />
+            <Route path="/function-composition-plot" element={<FunctionCompositionPlotPage />} />
+            <Route path="/error" element={<ErrorPage />} />
+            <Route path="*" element={<ErrorPage />} />
           </Routes>
         </Box>
       </ThemeProvider>
