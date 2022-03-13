@@ -16,6 +16,9 @@ export function RelationPropertiesNavigation() {
     { name: "Symmetric relation", path: "/relation-properties-symmetric" },
     { name: "Antisymmetric relation", path: "/relation-properties-antisymmetric" },
     { name: "Transitive relation", path: "/relation-properties-transitive" },
+    { name: "Equivalence relation", path: "/relation-properties-equivalence" },
+    { name: "Partial order", path: "/relation-properties-partial-order" },
+    { name: "Total order", path: "/relation-properties-total-order" },
   ]
 
   return (

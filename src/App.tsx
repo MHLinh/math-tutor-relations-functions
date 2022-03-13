@@ -20,6 +20,9 @@ import {
   RelationSymmetricPage,
   RelationAntisymmetricPage,
   RelationTransitivePage,
+  RelationEquivalencePage,
+  RelationPartialOrderPage,
+  RelationTotalOrderPage,
   RelationWarshallsPage,
   FunctionPropertiesPage,
   VerticalLineTestPage,
@@ -73,6 +76,9 @@ function App() {
             <Route path="/relation-properties-symmetric" element={<RelationSymmetricPage />} />
             <Route path="/relation-properties-antisymmetric" element={<RelationAntisymmetricPage />} />
             <Route path="/relation-properties-transitive" element={<RelationTransitivePage />} />
+            <Route path="/relation-properties-equivalence" element={<RelationEquivalencePage />} />
+            <Route path="/relation-properties-partial-order" element={<RelationPartialOrderPage />} />
+            <Route path="/relation-properties-total-order" element={<RelationTotalOrderPage />} />
             <Route path="/relation-warshalls" element={<RelationWarshallsPage />} />
             <Route path="/function-properties" element={<FunctionPropertiesPage />} />
             <Route path="/vertical-line-test" element={<VerticalLineTestPage />} />
