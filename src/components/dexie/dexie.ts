@@ -25,7 +25,7 @@ export class DatabaseDexie extends Dexie {
 
   constructor() {
     super("myDatabase")
-    this.version(1).stores({
+    this.version(2).stores({
       relations: "++id, name, type, matrix",
       points: "++id, name, type, matrix"
     })
