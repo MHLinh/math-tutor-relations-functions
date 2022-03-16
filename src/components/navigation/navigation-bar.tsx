@@ -9,9 +9,9 @@ import { LogInButton } from "./log-in-button"
 import { RegisterButton } from "./register-button"
 
 /**
- * A component displaying navigation buttons.
+ * A component displaying navigation bar.
  */
-export function NavigationButtons() {
+export function NavigationBar() {
 
   return (
     <Stack direction="row" justifyContent="space-between">

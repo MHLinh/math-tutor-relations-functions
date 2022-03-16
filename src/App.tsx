@@ -4,7 +4,7 @@ import { Box } from "@mui/material"
 import { ThemeProvider } from "@mui/styles"
 import {
   ScrollToTop,
-  NavigationButtons,
+  NavigationBar,
 } from "components"
 import { 
   HomePage,
@@ -62,7 +62,7 @@ function App() {
             paddingRight: 1,
           }}
         >
-          <NavigationButtons />
+          <NavigationBar />
           <Routes>
             <Route path="/" element={<HomePage />}/>
             <Route path="/login" element={<LoginPage />}/>
