@@ -148,7 +148,7 @@ export function LoadPointsDexie(props: ILoadPointsDexie) {
         variant="contained"
         onClick={handleOpenLoad}
       >
-        Load relation
+        Load points
       </Button>
       <Modal
         open={openLoad}

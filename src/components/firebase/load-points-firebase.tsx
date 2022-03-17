@@ -170,7 +170,7 @@ export function LoadPointsFirebase (props: ILoadPointsFirebase ) {
         variant="contained"
         onClick={handleOpenLoad}
       >
-        Load relation
+        Load points
       </Button>
       <Modal
         open={openLoad}
