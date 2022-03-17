@@ -7,7 +7,7 @@ import { PointsContext, IPointsContext } from "components/points-context/points-
 import { SavePoints } from "./save-points"
 import { LoadPoints } from "./load-points"
 
-interface ISaveAndLoadPoints {
+interface IDataServicePoints {
   pointsContextValue: IPointsContext, // Points context for accessing the points and its setter
   type: string,                       // The type of the saved data
 }
@@ -15,7 +15,7 @@ interface ISaveAndLoadPoints {
 /**
  * A component displaying save and load relation components.
  */
-export function SaveAndLoadPoints(props: ISaveAndLoadPoints) {
+export function DataServicePoints(props: IDataServicePoints) {
   const { pointsContextValue, type } = props
   const classes = useStyles()
 

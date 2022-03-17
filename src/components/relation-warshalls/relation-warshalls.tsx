@@ -19,7 +19,7 @@ import {
   RelationInputSelection 
 } from "components/relation-input/relation-input-selection"
 import { ClearButtonProvider } from "components/clear-button/clear-button-provider"
-import { SaveAndLoadRelation } from "components/database/save-and-load-relation"
+import { DataServiceRelation } from "components/database/data-service-relation"
 import { WarshallsSteps } from "./warshalls-steps"
 
 const emptyRelation = generateMatrix(NUM_OF_ELEMENTS)
@@ -93,7 +93,7 @@ export function RelationWarshalls() {
             <ClearButtonProvider matrixContextValue={contextValue} />
           </Box>
           <Box>
-            <SaveAndLoadRelation 
+            <DataServiceRelation 
               matrixContextValue={contextValue}
               type="relation" 
             />

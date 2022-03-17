@@ -14,7 +14,7 @@ import { paddingStyle } from "theme/styles"
 import { MatrixContext, IMatrixContext } from "components/matrix-context/matrix-context"
 import { ConnectedSets } from "components/connected-sets/connected-sets"
 import { ClearButtonProvider } from "components/clear-button/clear-button-provider"
-import { SaveAndLoadRelation } from "components/database/save-and-load-relation"
+import { DataServiceRelation } from "components/database/data-service-relation"
 import { SetSliders } from "components/set-sliders/set-sliders"
 import { FunctionPropertiesTable } from "./function-properties-table"
 
@@ -70,7 +70,7 @@ export function FunctionProperties() {
         <ClearButtonProvider matrixContextValue={contextValue} />
       </Box>
       <Box className={classes.box}>
-        <SaveAndLoadRelation 
+        <DataServiceRelation 
           matrixContextValue={contextValue}
           type="function" 
         />

@@ -21,7 +21,7 @@ import {
   RelationInputSelection 
 } from "components/relation-input/relation-input-selection"
 import { ClearButtonProvider } from "components/clear-button/clear-button-provider"
-import { SaveAndLoadRelation } from "components/database/save-and-load-relation"
+import { DataServiceRelation } from "components/database/data-service-relation"
 import { RelationPropertiesTable } from "./relation-properties-table"
 
 /**
@@ -86,7 +86,7 @@ export function RelationProperties() {
         <ClearButtonProvider matrixContextValue={contextValue} />
       </Box>
       <Box className={classes.box}>
-        <SaveAndLoadRelation 
+        <DataServiceRelation 
           matrixContextValue={contextValue}
           type="relation" 
         />
