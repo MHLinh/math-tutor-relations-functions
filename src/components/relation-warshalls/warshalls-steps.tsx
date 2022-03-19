@@ -43,14 +43,18 @@ export function WarshallsSteps(props: IWarshallsSteps) {
 
   // Steps contains initial matrix and matrices resulting from the algorithm
   const maxRound = steps.length - 1
+
+  const hasPrev = round > 0
+  const hasNext = round < maxRound
+
   const handlePrev = () => {
-    if(round > 0) {
+    if(hasPrev) {
       setRound(round - 1)
     }
   }
 
   const handleNext = () => {
-    if(round < maxRound) {
+    if(hasNext) {
       setRound(round + 1)
     }
   }
@@ -151,6 +155,7 @@ export function WarshallsSteps(props: IWarshallsSteps) {
               variant="contained" 
               onClick={handlePrev}
               className={classes.button}
+              disabled={!hasPrev}
             >
               Previous
             </Button>
@@ -160,6 +165,7 @@ export function WarshallsSteps(props: IWarshallsSteps) {
               variant="contained" 
               onClick={handleNext}
               className={classes.button}
+              disabled={!hasNext}
             >
               Next
             </Button>
