@@ -16,6 +16,7 @@
     "@types/react": "^16.14.22",
     "@types/react-dom": "^16.9.14",
     "dexie": "^3.2.0",
+    "dexie-observable": "^3.0.0-beta.11",
     "dexie-react-hooks": "^1.1.1",
     "firebase": "^9.6.8",
     "function-plot": "^1.22.8",

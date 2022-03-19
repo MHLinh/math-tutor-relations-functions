@@ -4530,6 +4530,11 @@ detective@^5.2.0:
     defined "^1.0.0"
     minimist "^1.1.1"
 
+dexie-observable@^3.0.0-beta.11:
+  version "3.0.0-beta.11"
+  resolved "https://registry.yarnpkg.com/dexie-observable/-/dexie-observable-3.0.0-beta.11.tgz#2ab39e81f0fd2a8a040e014279d07b4c13c9100f"
+  integrity sha512-mKwSYy54Kj73Njp3Rs+GoldLxyDJK1LF7niBkZxSenGAlBCXB5RxafH2Mg6Ay0B1pLlDYvJCWH31s88/Uz0WSg==
+
 dexie-react-hooks@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/dexie-react-hooks/-/dexie-react-hooks-1.1.1.tgz#ff405cc89e5d899ddbac5e40d593f83f9a74106a"
