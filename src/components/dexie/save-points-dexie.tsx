@@ -57,7 +57,8 @@ export function SavePointsDexie(props: ISavePointsDexie) {
         await db.points.add({
           name,
           type,
-          points
+          points,
+          timestamp: new Date()
         })
 
         setName("Unnamed")

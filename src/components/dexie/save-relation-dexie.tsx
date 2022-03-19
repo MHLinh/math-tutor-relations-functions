@@ -57,7 +57,8 @@ export function SaveRelationDexie(props: ISaveRelationDexie) {
         await db.relations.add({
           name,
           type,
-          matrix
+          matrix,
+          timestamp: new Date()
         })
 
         setName("Unnamed")

@@ -43,7 +43,8 @@ export function LoadRelationDexie(props: ILoadRelationDexie) {
   const [recentlyDeleted, setRecentlyDeleted] = useState<IRelation>({
     name: "",
     type,
-    matrix: []
+    matrix: [],
+    timestamp: new Date()
   })
   const { setter } = useContext(MatrixContext)
 
@@ -64,9 +65,9 @@ export function LoadRelationDexie(props: ILoadRelationDexie) {
         // Query Dexie's API
           const result = await db.relations
           .where({ type })
-          .toArray()
+          .sortBy("timestamp")
 
-        // Return result
+          // Return result
         return result
       } catch (error) {
         setStatus(Status.errorLoad)

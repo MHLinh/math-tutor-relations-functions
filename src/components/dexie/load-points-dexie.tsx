@@ -42,7 +42,8 @@ export function LoadPointsDexie(props: ILoadPointsDexie) {
   const [recentlyDeleted, setRecentlyDeleted] = useState<IPoints>({
     name: "",
     type,
-    points: []
+    points: [],
+    timestamp: new Date()
   })
   const { setter } = useContext(PointsContext)
 
@@ -61,7 +62,7 @@ export function LoadPointsDexie(props: ILoadPointsDexie) {
         // Query Dexie's API
           const result = await db.points
           .where({ type })
-          .toArray()
+          .sortBy("timestamp")
 
         // Return result
         return result
