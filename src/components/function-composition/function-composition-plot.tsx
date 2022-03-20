@@ -13,7 +13,7 @@ import { makeStyles } from "@mui/styles"
 import { parse, simplify } from "mathjs"
 import "katex/dist/katex.min.css"
 import Latex from "react-latex-next"
-import { center } from "theme/styles"
+import { center, buttonStyle } from "theme/styles"
 import FunctionPlotComponent from "components/function-plot/function-plot-component"
 import { FunctionPlotOptions } from "components/function-plot/function-plot-types"
 import { CustomAlert } from "components/custom-alert/custom-alert"
@@ -349,7 +349,11 @@ export function FunctionCompositionPlot() {
             </Grid>
           </Box>
           <Box className={classes.center}>
-            <Button variant="contained" onClick={handleClick}>
+            <Button
+              variant="contained"
+              onClick={handleClick}
+              className={classes.button}
+            >
               Compute
             </Button>
           </Box>
@@ -411,6 +415,9 @@ const useStyles = makeStyles((theme: any) => ({
   box: {
     paddingBottom: theme.spacing(1),
     paddingTop: theme.spacing(1),
+  },
+  button: {
+    ...buttonStyle
   },
   center: {
     ...center,

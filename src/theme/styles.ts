@@ -10,5 +10,5 @@ export const paddingStyle = {
 }
 
 export const buttonStyle = {
-  width: "16rem"
+  width: "15.5rem"
 }

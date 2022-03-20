@@ -28,7 +28,7 @@ export function FunctionProperties() {
   const [relation, setRelation] = useState<number[][]>(generateRectMatrix(xSize, ySize))
   const classes = useStyles()
   const { breakpoints } = useTheme()
-  const small = useMediaQuery(breakpoints.down("sm"))
+  const medium = useMediaQuery(breakpoints.down("md"))
 
   const wrapperSetXSize = useCallback((value: number) => {
     setXSize(value)
@@ -71,11 +71,12 @@ export function FunctionProperties() {
       <Box className={classes.box}>
         <Grid
           container
-          direction={small 
+          justifyContent="center"
+          direction={medium 
             ? "column"
             : "row"
           }
-          spacing={small 
+          spacing={medium 
             ? 0
             : 1
           }
@@ -84,7 +85,7 @@ export function FunctionProperties() {
             container
             item
             justifyContent="center"
-            xs={6}
+            md={6}
           >
             <Box className={classes.box}>
               <ClearButtonProvider matrixContextValue={contextValue} />
@@ -94,7 +95,7 @@ export function FunctionProperties() {
             container
             item
             justifyContent="center"
-            xs={6}
+            md={6}
           >
             <DataServiceRelation 
               matrixContextValue={contextValue}
