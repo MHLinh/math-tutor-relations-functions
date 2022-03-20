@@ -31,6 +31,7 @@ export function VerticalLineTest() {
   const [points, setPoints] = useState(generatePoints(min + 1, max - 1, 10))
   const { breakpoints } = useTheme()
   const small = useMediaQuery(breakpoints.down("sm"))
+  const medium = useMediaQuery(breakpoints.down("md"))
 
   const size = small 
                 ? 300
@@ -139,11 +140,12 @@ export function VerticalLineTest() {
       <Box className={classes.box}>
         <Grid
           container
-          direction={small 
+          justifyContent="center"
+          direction={medium 
             ? "column"
             : "row"
           }
-          spacing={small 
+          spacing={medium 
             ? 0
             : 1
           }
@@ -152,7 +154,7 @@ export function VerticalLineTest() {
             container
             item
             justifyContent="center"
-            xs={6}
+            md={6}
           >
             <Box className={classes.box}>
               <Button 
@@ -168,7 +170,7 @@ export function VerticalLineTest() {
             container
             item
             justifyContent="center"
-            xs={6}
+            md={6}
           >
             <DataServicePoints
               pointsContextValue={contextValue}

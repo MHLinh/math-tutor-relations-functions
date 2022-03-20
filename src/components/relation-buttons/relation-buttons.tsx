@@ -37,16 +37,17 @@ export function RelationButtons(props: IRelationButtons) {
 
   const classes = useStyles()
   const { breakpoints } = useTheme()
-  const small = useMediaQuery(breakpoints.down("sm"))
+  const medium = useMediaQuery(breakpoints.down("md"))
 
   return (
     <Grid
       container
-      direction={small 
+      justifyContent="center"
+      direction={medium 
         ? "column"
         : "row"
       }
-      spacing={small 
+      spacing={medium 
         ? 0
         : 1
       }
@@ -55,7 +56,7 @@ export function RelationButtons(props: IRelationButtons) {
         container
         item
         justifyContent="center"
-        xs={6}
+        md={6}
       >
         <Box className={classes.box}>
           <RelationOutputSelection 
@@ -77,7 +78,7 @@ export function RelationButtons(props: IRelationButtons) {
         container
         item
         justifyContent="center"
-        xs={6}
+        md={6}
       >
         <DataServiceRelation
           matrixContextValue={matrixContextValue} 
