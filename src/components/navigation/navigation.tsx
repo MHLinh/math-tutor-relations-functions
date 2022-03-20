@@ -90,6 +90,9 @@ const useStyles = makeStyles((theme: any) => ({
     [theme.breakpoints.up("sm")]: {
       width: "50vw"
     },
+    [theme.breakpoints.up("md")]: {
+      width: theme.typography.pxToRem(600),
+    },
   },
   gridItem: {
     padding: theme.spacing(1)

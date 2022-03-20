@@ -4,7 +4,7 @@ import { Box } from "@mui/material"
 import { ThemeProvider } from "@mui/styles"
 import {
   ScrollToTop,
-  NavigationButtons,
+  NavigationBar,
 } from "components"
 import { 
   HomePage,
@@ -20,6 +20,9 @@ import {
   RelationSymmetricPage,
   RelationAntisymmetricPage,
   RelationTransitivePage,
+  RelationEquivalencePage,
+  RelationPartialOrderPage,
+  RelationTotalOrderPage,
   RelationWarshallsPage,
   FunctionPropertiesPage,
   VerticalLineTestPage,
@@ -41,7 +44,8 @@ import {
   FunctionDomainDiscretePage,
   FunctionCompositionNavigationPage,
   FunctionCompositionCheckPage,
-  FunctionCompositionPlotPage
+  FunctionCompositionPlotPage,
+  ErrorPage,
  } from "pages"
 import { theme } from "theme"
 
@@ -58,7 +62,7 @@ function App() {
             paddingRight: 1,
           }}
         >
-          <NavigationButtons />
+          <NavigationBar />
           <Routes>
             <Route path="/" element={<HomePage />}/>
             <Route path="/login" element={<LoginPage />}/>
@@ -73,6 +77,9 @@ function App() {
             <Route path="/relation-properties-symmetric" element={<RelationSymmetricPage />} />
             <Route path="/relation-properties-antisymmetric" element={<RelationAntisymmetricPage />} />
             <Route path="/relation-properties-transitive" element={<RelationTransitivePage />} />
+            <Route path="/relation-properties-equivalence" element={<RelationEquivalencePage />} />
+            <Route path="/relation-properties-partial-order" element={<RelationPartialOrderPage />} />
+            <Route path="/relation-properties-total-order" element={<RelationTotalOrderPage />} />
             <Route path="/relation-warshalls" element={<RelationWarshallsPage />} />
             <Route path="/function-properties" element={<FunctionPropertiesPage />} />
             <Route path="/vertical-line-test" element={<VerticalLineTestPage />} />
@@ -99,14 +106,16 @@ function App() {
               path="/function-transformation-horizontal-compression-stretching" 
               element={<HorizontalCompressionStretchingPage />} 
             />
-            <Route  path="/function-transformation-reflection" element={<ReflectionPage />} />
-            <Route  path="/function-transformation-all" element={<FunctionTransformationPage />} />
-            <Route  path="/function-domain" element={<FunctionDomainNavigationPage />} />
-            <Route  path="/function-domain-continuous" element={<FunctionDomainContinuousPage />} />
-            <Route  path="/function-domain-discrete" element={<FunctionDomainDiscretePage />} />
-            <Route  path="/function-composition" element={<FunctionCompositionNavigationPage />} />
-            <Route  path="/function-composition-check" element={<FunctionCompositionCheckPage />} />
-            <Route  path="/function-composition-plot" element={<FunctionCompositionPlotPage />} />
+            <Route path="/function-transformation-reflection" element={<ReflectionPage />} />
+            <Route path="/function-transformation-all" element={<FunctionTransformationPage />} />
+            <Route path="/function-domain" element={<FunctionDomainNavigationPage />} />
+            <Route path="/function-domain-continuous" element={<FunctionDomainContinuousPage />} />
+            <Route path="/function-domain-discrete" element={<FunctionDomainDiscretePage />} />
+            <Route path="/function-composition" element={<FunctionCompositionNavigationPage />} />
+            <Route path="/function-composition-check" element={<FunctionCompositionCheckPage />} />
+            <Route path="/function-composition-plot" element={<FunctionCompositionPlotPage />} />
+            <Route path="/error" element={<ErrorPage />} />
+            <Route path="*" element={<ErrorPage />} />
           </Routes>
         </Box>
       </ThemeProvider>

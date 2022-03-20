@@ -15,15 +15,15 @@ import { relationOutputTypes } from "components/relation-output/relation-output-
 import { RelationInput } from "components/relation-input/relation-input"
 import {  relationInputTypes} from "components/relation-input/relation-input-selection"
 import { RelationButtons } from "components/relation-buttons/relation-buttons"
-import { RelationSymmetricCheck } from "./relation-symmetric-check"
+import { RelationEquivalenceCheck } from "./relation-equivalence-check"
 
 /**
- * A component displaying whether the relation is symmetric.
- * Displays missing pairs for the relation to be symmetric.
+ * A component displaying whether the relation is an equivalence relation.
+ * Displays missing properties for it to be an equivalence relation.
  * Allows user to choose input type for the relation.
  * Allows user to clear, save, and load the relation.
  */
-export function RelationSymmetric() {
+export function RelationEquivalence() {
   const [relation, setRelation] = useState<number[][]>(generateMatrix(NUM_OF_ELEMENTS))
   const [outputType, setOutputType] = useState(relationOutputTypes[1].id)
   const [inputType, setInputType] = useState(relationInputTypes[0].id)
@@ -50,12 +50,12 @@ export function RelationSymmetric() {
     <Container className={classes.container}>
       <Box className={classes.box}>
         <RelationOutput 
-          matrix={relation}
+          matrix={relation} 
           type={outputType}
         />
       </Box>
       <Box className={classes.box}>
-        <RelationSymmetricCheck matrix={relation} />
+        <RelationEquivalenceCheck matrix={relation} />
       </Box>
       <Box className={classes.box}>
         <RelationInput 

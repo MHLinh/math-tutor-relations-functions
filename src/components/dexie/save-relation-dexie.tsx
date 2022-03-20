@@ -8,6 +8,7 @@ import {
   Typography,
 } from "@mui/material"
 import { makeStyles } from "@mui/styles"
+import { buttonStyle } from "theme"
 import { MatrixContext } from "components/matrix-context/matrix-context"
 import { CustomAlert } from "components/custom-alert/custom-alert"
 import { db } from "./dexie"
@@ -57,7 +58,8 @@ export function SaveRelationDexie(props: ISaveRelationDexie) {
         await db.relations.add({
           name,
           type,
-          matrix
+          matrix,
+          timestamp: new Date()
         })
 
         setName("Unnamed")
@@ -82,6 +84,7 @@ export function SaveRelationDexie(props: ISaveRelationDexie) {
       <Button
         variant="contained"
         onClick={handleOpenSave}
+        className={classes.button}
       >
         Save relation
       </Button>
@@ -120,7 +123,7 @@ export function SaveRelationDexie(props: ISaveRelationDexie) {
               <Button
                 variant="contained"
                 onClick={handleSave}
-                className={classes.button}
+                className={classes.buttonModal}
               >
                 Save
               </Button>
@@ -159,6 +162,9 @@ const useStyles = makeStyles((theme: any) => ({
     },
   },
   button: {
+    ...buttonStyle
+  },
+  buttonModal: {
     width: theme.typography.pxToRem(100)
   },
   title: {

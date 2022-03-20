@@ -21,7 +21,7 @@ import { generateSliderMarks, roundToTwoDecimal } from "utils"
 import FunctionPlotComponent from "components/function-plot/function-plot-component"
 import { FunctionPlotOptions } from "components/function-plot/function-plot-types"
 import { IPointsContext } from "components/points-context/points-context"
-import { SaveAndLoadPoints } from "components/database/save-and-load-points"
+import { DataServicePoints } from "components/database/data-service-points"
 
 const step = 1
 const min = -6
@@ -272,8 +272,8 @@ export function LinearFunctionSlopePoints() {
               </Typography>
             </Box>
           </Box>
-          <Box className={classes.box}>
-            <SaveAndLoadPoints
+          <Box className={classes.center}>
+            <DataServicePoints
               pointsContextValue={contextValue}
               type="slope" 
             />

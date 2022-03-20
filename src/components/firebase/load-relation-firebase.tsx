@@ -25,6 +25,7 @@ import {
 import { useAuthState } from "react-firebase-hooks/auth"
 import { useCollectionData } from "react-firebase-hooks/firestore"
 import _ from "lodash"
+import { buttonStyle } from "theme"
 import { NUM_OF_ELEMENTS, generateMatrix } from "utils"
 import { MatrixContext } from "components/matrix-context/matrix-context"
 import { IRelationsListContext, RelationsListContext } from "components/relations-list/relations-list-context"
@@ -172,6 +173,7 @@ export function LoadRelationFirebase(props: ILoadRelationFirebase) {
       <Button
         variant="contained"
         onClick={handleOpenLoad}
+        className={classes.button}
       >
         Load relation
       </Button>
@@ -201,7 +203,7 @@ export function LoadRelationFirebase(props: ILoadRelationFirebase) {
               <Button
                 variant="contained"
                 onClick={handleLoad}
-                className={classes.button}
+                className={classes.buttonModal}
               >
                 Load
               </Button>
@@ -266,6 +268,9 @@ const useStyles = makeStyles((theme: any) => ({
     },
   },
   button: {
+    ...buttonStyle
+  },
+  buttonModal: {
     width: theme.typography.pxToRem(100)
   },
   title: {

@@ -7,7 +7,7 @@ import { MatrixContext, IMatrixContext } from "components/matrix-context/matrix-
 import { SaveRelation } from "./save-relation"
 import { LoadRelation } from "./load-relation"
 
-interface ISaveAndLoadRelation {
+interface IDataServiceRelation {
   matrixContextValue: IMatrixContext, // Matrix context for accessing the matrix and its setter
   type: string,                       // The type of the saved data
 }
@@ -15,7 +15,7 @@ interface ISaveAndLoadRelation {
 /**
  * A component displaying save and load relation components.
  */
-export function SaveAndLoadRelation(props: ISaveAndLoadRelation) {
+export function DataServiceRelation(props: IDataServiceRelation) {
   const { matrixContextValue, type } = props
   const classes = useStyles()
 

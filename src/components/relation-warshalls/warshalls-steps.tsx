@@ -43,14 +43,18 @@ export function WarshallsSteps(props: IWarshallsSteps) {
 
   // Steps contains initial matrix and matrices resulting from the algorithm
   const maxRound = steps.length - 1
+
+  const hasPrev = round > 0
+  const hasNext = round < maxRound
+
   const handlePrev = () => {
-    if(round > 0) {
+    if(hasPrev) {
       setRound(round - 1)
     }
   }
 
   const handleNext = () => {
-    if(round < maxRound) {
+    if(hasNext) {
       setRound(round + 1)
     }
   }
@@ -94,47 +98,47 @@ export function WarshallsSteps(props: IWarshallsSteps) {
               </Grid>
             </Grid>
         : <Grid 
-          container
-          direction="column"
-          justifyContent="center"
-          alignItems="center" 
-          spacing={1}
-        >
-          <Grid 
             container
-            item 
-            direction={small 
-              ? "column"
-              : "row"
-            }
+            direction="column"
+            justifyContent="center"
+            alignItems="center" 
+            spacing={1}
           >
-            <Grid item xs={6}>
-              <Box className={classes.box}>
-                <WarshallsRelationOutput
-                  text="Initial relation"
-                  matrix={steps[0]} 
-                  type={outputType}
+            <Grid 
+              container
+              item 
+              direction={small 
+                ? "column"
+                : "row"
+              }
+            >
+              <Grid item xs={6}>
+                <Box className={classes.box}>
+                  <WarshallsRelationOutput
+                    text="Initial relation"
+                    matrix={steps[0]} 
+                    type={outputType}
+                  />
+                </Box>
+              </Grid>
+              <Grid item xs={6}>
+                <Box className={classes.box}>
+                  <WarshallsRelationOutput
+                    text="Final relation"
+                    matrix={steps[maxRound - 1]} 
+                    type={outputType}
+                  />
+                </Box>
+              </Grid>
+            </Grid>
+            <Grid item>
+              <Box>
+                <RelationOutputSelection 
+                  selectedType={outputType}
+                  setSelectedType={wrapperSetOutputType}
                 />
               </Box>
             </Grid>
-            <Grid item xs={6}>
-              <Box className={classes.box}>
-                <WarshallsRelationOutput
-                  text="Final relation"
-                  matrix={steps[maxRound - 1]} 
-                  type={outputType}
-                />
-              </Box>
-            </Grid>
-          </Grid>
-          <Grid item>
-            <Box className={classes.box}>
-              <RelationOutputSelection 
-                selectedType={outputType}
-                setSelectedType={wrapperSetOutputType}
-              />
-            </Box>
-          </Grid>
           </Grid>
         }
       </Box>
@@ -151,6 +155,7 @@ export function WarshallsSteps(props: IWarshallsSteps) {
               variant="contained" 
               onClick={handlePrev}
               className={classes.button}
+              disabled={!hasPrev}
             >
               Previous
             </Button>
@@ -160,6 +165,7 @@ export function WarshallsSteps(props: IWarshallsSteps) {
               variant="contained" 
               onClick={handleNext}
               className={classes.button}
+              disabled={!hasNext}
             >
               Next
             </Button>
@@ -180,7 +186,7 @@ const useStyles = makeStyles((theme: any) => ({
     paddingTop: theme.spacing(2)
   },
   button: {
-    width: theme.typography.pxToRem(100)
+    width: theme.typography.pxToRem(124)
   },
   text: {
     fontSize: theme.typography.pxToRem(18),

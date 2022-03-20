@@ -1,10 +1,12 @@
 import Dexie, { Table } from "dexie"
+import "dexie-observable"
 
 export interface IRelation {
   id?: string         // The id of the relation
   name: string        // The name of the relation set by user
   type: string        // The type for saving in the database
   matrix: number[][]  // The relation stored in a matrix
+  timestamp: Date     // The time the relation was saved
 }
 
 export interface IPoints {
@@ -12,6 +14,7 @@ export interface IPoints {
   name: string        // The name of the list of points set by user
   type: string        // The type for saving in the database
   points: number[][]  // The points stored as a list
+  timestamp: Date     // The time the points were saved
 }
 
 /**
@@ -25,9 +28,9 @@ export class DatabaseDexie extends Dexie {
 
   constructor() {
     super("myDatabase")
-    this.version(1).stores({
-      relations: "++id, name, type, matrix",
-      points: "++id, name, type, matrix"
+    this.version(3).stores({
+      relations: "$$id, name, type, matrix, timestamp",
+      points: "$$id, name, type, matrix, timestamp"
     })
   }
 }

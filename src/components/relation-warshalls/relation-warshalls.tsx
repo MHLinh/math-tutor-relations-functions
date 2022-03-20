@@ -3,7 +3,11 @@ import {
   Box,
   Button,
   Container,
-  Typography
+  Grid,
+  Stack,
+  Typography,
+  useTheme,
+  useMediaQuery,
 } from "@mui/material"
 import { makeStyles } from "@mui/styles"
 import { 
@@ -11,7 +15,7 @@ import {
   generateMatrix,
   computeWarshalls 
 } from "utils"
-import { paddingStyle } from "theme/styles"
+import { paddingStyle, buttonStyle } from "theme"
 import { IMatrixContext } from "components/matrix-context/matrix-context"
 import { RelationInput } from "components/relation-input/relation-input"
 import { 
@@ -19,7 +23,7 @@ import {
   RelationInputSelection 
 } from "components/relation-input/relation-input-selection"
 import { ClearButtonProvider } from "components/clear-button/clear-button-provider"
-import { SaveAndLoadRelation } from "components/database/save-and-load-relation"
+import { DataServiceRelation } from "components/database/data-service-relation"
 import { WarshallsSteps } from "./warshalls-steps"
 
 const emptyRelation = generateMatrix(NUM_OF_ELEMENTS)
@@ -36,6 +40,8 @@ export function RelationWarshalls() {
   const [computing, setComputing] = useState(false)
   const [steps, setSteps] = useState<number[][][]>([])
   const classes = useStyles()
+  const { breakpoints } = useTheme()
+  const small = useMediaQuery(breakpoints.down("sm"))
 
   const wrapperSetRelation = useCallback((matrix: number[][]) => {
     setRelation(matrix)
@@ -83,49 +89,85 @@ export function RelationWarshalls() {
               type={inputType}
             />
           </Box>
-          <Box className={classes.box}>
-            <RelationInputSelection 
-              selectedType={inputType}
-              setSelectedType={wrapperSetInputType}
-            />
-          </Box>
-          <Box className={classes.box}>
-            <ClearButtonProvider matrixContextValue={contextValue} />
-          </Box>
-          <Box>
-            <SaveAndLoadRelation 
-              matrixContextValue={contextValue}
-              type="relation" 
-            />
-          </Box>
-          <Box className={classes.box}>
-            <Button variant="contained" onClick={handleCompute}>
-              Compute transitive closure
-            </Button>
-          </Box>
+          <Grid
+            container
+            direction={small 
+              ? "column"
+              : "row"
+            }
+            spacing={small 
+              ? 0
+              : 1
+            }
+          >
+            <Grid 
+              container
+              item
+              justifyContent="center"
+              xs={6}
+            >
+            <Box className={classes.box}>
+              <RelationInputSelection 
+                selectedType={inputType}
+                setSelectedType={wrapperSetInputType}
+              />
+            </Box>
+            <Box className={classes.box}>
+              <ClearButtonProvider matrixContextValue={contextValue} />
+            </Box>
+            <Box className={classes.box}>
+              <Button 
+                variant="contained" 
+                onClick={handleCompute}
+                className={classes.button}
+              >
+                Compute transitive closure
+              </Button>
+            </Box>
+            </Grid>
+            <Grid 
+              container
+              item
+              justifyContent="center"
+              xs={6}
+            >
+              <DataServiceRelation 
+                matrixContextValue={contextValue}
+                type="relation" 
+              />
+            </Grid>
+          </Grid>
         </Box>
       : <Box>
           <Box className={classes.box}>
             <WarshallsSteps steps={steps}/>
           </Box>
-          <Box className={classes.box}>
-            <Button 
-              variant="contained" 
-              onClick={handleBackToInput}
-              className={classes.button}
-            >
-              Back to input
-            </Button>
-          </Box>
-          <Box className={classes.box}>
-            <Button 
-              variant="contained" 
-              onClick={handleReset}
-              className={classes.button}
-            >
-              Reset
-            </Button>
-          </Box>
+          <Grid
+            container
+            direction="column"
+            justifyContent="center"
+            alignItems="center" 
+            spacing={2}
+          >
+            <Grid item> 
+              <Button 
+                variant="contained" 
+                onClick={handleBackToInput}
+                className={classes.button}
+              >
+                Back to input
+              </Button>
+            </Grid>
+            <Grid item>
+              <Button 
+                variant="contained" 
+                onClick={handleReset}
+                className={classes.button}
+              >
+                Reset
+              </Button>
+            </Grid>
+          </Grid>
         </Box>
       }
     </Container>
@@ -138,7 +180,7 @@ const useStyles = makeStyles((theme: any) => ({
     paddingTop: theme.spacing(1)
   },
   button: {
-    width: theme.typography.pxToRem(200)
+    ...buttonStyle
   },
   container: {
     ...paddingStyle,

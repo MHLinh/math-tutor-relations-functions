@@ -8,6 +8,7 @@ import {
 } from "@mui/material"
 import { makeStyles } from "@mui/styles"
 import { useLiveQuery } from "dexie-react-hooks"
+import { buttonStyle } from "theme"
 import { NUM_OF_ELEMENTS, generateMatrix } from "utils"
 import { MatrixContext } from "components/matrix-context/matrix-context"
 import { IRelationsListContext, RelationsListContext } from "components/relations-list/relations-list-context"
@@ -43,7 +44,8 @@ export function LoadRelationDexie(props: ILoadRelationDexie) {
   const [recentlyDeleted, setRecentlyDeleted] = useState<IRelation>({
     name: "",
     type,
-    matrix: []
+    matrix: [],
+    timestamp: new Date()
   })
   const { setter } = useContext(MatrixContext)
 
@@ -64,9 +66,9 @@ export function LoadRelationDexie(props: ILoadRelationDexie) {
         // Query Dexie's API
           const result = await db.relations
           .where({ type })
-          .toArray()
+          .sortBy("timestamp")
 
-        // Return result
+          // Return result
         return result
       } catch (error) {
         setStatus(Status.errorLoad)
@@ -150,6 +152,7 @@ export function LoadRelationDexie(props: ILoadRelationDexie) {
       <Button
         variant="contained"
         onClick={handleOpenLoad}
+        className={classes.button}
       >
         Load relation
       </Button>
@@ -179,7 +182,7 @@ export function LoadRelationDexie(props: ILoadRelationDexie) {
               <Button
                 variant="contained"
                 onClick={handleLoad}
-                className={classes.button}
+                className={classes.buttonModal}
               >
                 Load
               </Button>
@@ -244,6 +247,9 @@ const useStyles = makeStyles((theme: any) => ({
     },
   },
   button: {
+    ...buttonStyle
+  },
+  buttonModal: {
     width: theme.typography.pxToRem(100)
   },
   title: {
