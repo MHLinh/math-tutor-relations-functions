@@ -272,7 +272,7 @@ export function LinearFunctionSlopePoints() {
               </Typography>
             </Box>
           </Box>
-          <Box className={classes.box}>
+          <Box className={classes.center}>
             <DataServicePoints
               pointsContextValue={contextValue}
               type="slope" 

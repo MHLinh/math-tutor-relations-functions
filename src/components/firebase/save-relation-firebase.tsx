@@ -16,6 +16,7 @@ import {
 } from "firebase/firestore"
 import { useAuthState } from "react-firebase-hooks/auth"
 import _ from "lodash"
+import { buttonStyle } from "theme"
 import { MatrixContext } from "components/matrix-context/matrix-context"
 import { CustomAlert } from "components/custom-alert/custom-alert"
 import { auth, db } from "./firebase"
@@ -95,6 +96,7 @@ export function SaveRelationFirebase(props: ISaveRelationFirebase) {
       <Button
         variant="contained"
         onClick={handleOpenSave}
+        className={classes.button}
       >
         Save relation
       </Button>
@@ -133,7 +135,7 @@ export function SaveRelationFirebase(props: ISaveRelationFirebase) {
               <Button
                 variant="contained"
                 onClick={handleSave}
-                className={classes.button}
+                className={classes.buttonModal}
               >
                 Save
               </Button>
@@ -172,6 +174,9 @@ const useStyles = makeStyles((theme: any) => ({
     },
   },
   button: {
+    ...buttonStyle
+  },
+  buttonModal: {
     width: theme.typography.pxToRem(100)
   },
   title: {

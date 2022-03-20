@@ -2,6 +2,8 @@ import React, { useContext } from "react"
 import {
   Button,
 } from "@mui/material"
+import { makeStyles } from "@mui/styles"
+import { buttonStyle } from "theme"
 import { generateMatrix } from "utils"
 import { MatrixContext } from "components/matrix-context/matrix-context"
 
@@ -10,6 +12,7 @@ import { MatrixContext } from "components/matrix-context/matrix-context"
  */
 export function ClearButton() {
   const { matrix, setter } = useContext(MatrixContext)
+  const classes = useStyles()
   
   // Generate a new empty matrix and set it to be the current matrix
   const handleClick = () => {
@@ -17,8 +20,19 @@ export function ClearButton() {
   }
 
   return (
-    <Button variant="contained" onClick={handleClick}>
+    <Button 
+      variant="contained" 
+      onClick={handleClick}
+      className={classes.button}
+    >
       Clear relation
     </Button>
   )
 }
+
+const useStyles = makeStyles((theme: any) => ({
+  button: {
+    ...buttonStyle
+  }
+ }))
+ 

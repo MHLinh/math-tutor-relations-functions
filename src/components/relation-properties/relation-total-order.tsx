@@ -11,17 +11,10 @@ import {
 import { paddingStyle } from "theme/styles"
 import { IMatrixContext } from "components/matrix-context/matrix-context"
 import { RelationOutput } from "components/relation-output/relation-output"
-import { 
-  relationOutputTypes, 
-  RelationOutputSelection 
-} from "components/relation-output/relation-output-selection"
+import { relationOutputTypes } from "components/relation-output/relation-output-selection"
 import { RelationInput } from "components/relation-input/relation-input"
-import { 
-  relationInputTypes, 
-  RelationInputSelection 
-} from "components/relation-input/relation-input-selection"
-import { ClearButtonProvider } from "components/clear-button/clear-button-provider"
-import { DataServiceRelation } from "components/database/data-service-relation"
+import {  relationInputTypes} from "components/relation-input/relation-input-selection"
+import { RelationButtons } from "components/relation-buttons/relation-buttons"
 import { RelationTotalOrderCheck } from "./relation-total-order-check"
 
 /**
@@ -72,24 +65,13 @@ export function RelationTotalOrder() {
         />
       </Box>
       <Box className={classes.box}>
-        <RelationOutputSelection 
-          selectedType={outputType}
-          setSelectedType={wrapperSetOutputType}
-        />
-      </Box>
-      <Box className={classes.box}>
-        <RelationInputSelection 
-          selectedType={inputType}
-          setSelectedType={wrapperSetInputType}
-        />
-      </Box>
-      <Box className={classes.box}>
-        <ClearButtonProvider matrixContextValue={contextValue} />
-      </Box>
-      <Box className={classes.box}>
-        <DataServiceRelation 
+        <RelationButtons 
+          selectedOutputType= {outputType}
+          setSelectedOutputType={wrapperSetOutputType}
+          selectedInputType={inputType}
+          setSelectedInputType={wrapperSetInputType}
           matrixContextValue={contextValue}
-          type="relation" 
+          type="relation"
         />
       </Box>
     </Container>

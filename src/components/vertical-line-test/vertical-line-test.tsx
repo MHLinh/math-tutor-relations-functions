@@ -3,13 +3,14 @@ import {
   Box,
   Button,
   Container,
+  Grid,
   Slider,
   Typography,
   useTheme,
   useMediaQuery,
 } from "@mui/material"
 import { makeStyles } from "@mui/styles"
-import {  center, paddingStyle  } from "theme/styles"
+import {  center, paddingStyle, buttonStyle } from "theme/styles"
 import { generateSliderMarks, verticalLineTest, generatePoints } from "utils"
 import FunctionPlotComponent from "components/function-plot/function-plot-component"
 import { FunctionPlotOptions } from "components/function-plot/function-plot-types"
@@ -136,15 +137,45 @@ export function VerticalLineTest() {
         </Box>
       </Box>
       <Box className={classes.box}>
-        <Button variant="contained" onClick={handleGenerate}>
-          Generate points
-        </Button>
-      </Box>
-      <Box className={classes.box}>
-        <DataServicePoints
-          pointsContextValue={contextValue}
-          type="points" 
-        />
+        <Grid
+          container
+          direction={small 
+            ? "column"
+            : "row"
+          }
+          spacing={small 
+            ? 0
+            : 1
+          }
+        >
+          <Grid 
+            container
+            item
+            justifyContent="center"
+            xs={6}
+          >
+            <Box className={classes.box}>
+              <Button 
+                variant="contained" 
+                onClick={handleGenerate}
+                className={classes.button}
+              >
+                Generate points
+              </Button>
+            </Box>
+          </Grid>
+          <Grid 
+            container
+            item
+            justifyContent="center"
+            xs={6}
+          >
+            <DataServicePoints
+              pointsContextValue={contextValue}
+              type="points" 
+            />
+          </Grid>
+        </Grid>
       </Box>
     </Container>
   )
@@ -154,6 +185,9 @@ const useStyles = makeStyles((theme: any) => ({
   box: {
     paddingBottom: theme.spacing(1),
     paddingTop: theme.spacing(1),
+  },
+  button: {
+    ...buttonStyle
   },
   center: {
     ...center,

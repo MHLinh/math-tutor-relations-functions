@@ -8,6 +8,7 @@ import {
 } from "@mui/material"
 import { makeStyles } from "@mui/styles"
 import { useLiveQuery } from "dexie-react-hooks"
+import { buttonStyle } from "theme"
 import { PointsContext} from "components/points-context/points-context"
 import { IPointsListContext, PointsListContext } from "components/points-list/points-list-context"
 import { PointsList } from "components/points-list/points-list"
@@ -148,6 +149,7 @@ export function LoadPointsDexie(props: ILoadPointsDexie) {
       <Button
         variant="contained"
         onClick={handleOpenLoad}
+        className={classes.button}
       >
         Load points
       </Button>
@@ -177,7 +179,7 @@ export function LoadPointsDexie(props: ILoadPointsDexie) {
               <Button
                 variant="contained"
                 onClick={handleLoad}
-                className={classes.button}
+                className={classes.buttonModal}
               >
                 Load
               </Button>
@@ -242,6 +244,9 @@ const useStyles = makeStyles((theme: any) => ({
     },
   },
   button: {
+    ...buttonStyle
+  },
+  buttonModal: {
     width: theme.typography.pxToRem(100)
   },
   title: {

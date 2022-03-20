@@ -8,6 +8,7 @@ import {
   Typography,
 } from "@mui/material"
 import { makeStyles } from "@mui/styles"
+import { buttonStyle } from "theme"
 import { PointsContext } from "components/points-context/points-context"
 import { CustomAlert } from "components/custom-alert/custom-alert"
 import { db } from "./dexie"
@@ -83,6 +84,7 @@ export function SavePointsDexie(props: ISavePointsDexie) {
       <Button
         variant="contained"
         onClick={handleOpenSave}
+        className={classes.button}
       >
         Save points
       </Button>
@@ -121,7 +123,7 @@ export function SavePointsDexie(props: ISavePointsDexie) {
               <Button
                 variant="contained"
                 onClick={handleSave}
-                className={classes.button}
+                className={classes.buttonModal}
               >
                 Save
               </Button>
@@ -160,6 +162,9 @@ const useStyles = makeStyles((theme: any) => ({
     },
   },
   button: {
+    ...buttonStyle
+  },
+  buttonModal: {
     width: theme.typography.pxToRem(100)
   },
   title: {

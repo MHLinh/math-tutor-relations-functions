@@ -10,6 +10,7 @@ import {
   Modal,  
 } from "@mui/material"
 import { makeStyles } from "@mui/styles"
+import { buttonStyle } from "theme"
 
 export const relationInputTypes = [
   { id: "matrix", name: "Matrix" },
@@ -50,7 +51,11 @@ export function RelationInputSelection(props: IRelationInputSelection) {
 
   return (
     <Box>
-      <Button variant="contained" onClick={handleOpen}>
+      <Button 
+        variant="contained" 
+        onClick={handleOpen}
+        className={classes.button}
+      >
         Change relation input
       </Button>
       <Modal
@@ -96,6 +101,9 @@ const useStyles = makeStyles((theme: any) => ({
     backgroundColor: theme.palette.common.white,
     border: "2px solid #000",
     padding: theme.spacing(2)
+  },
+  button: {
+    ...buttonStyle
   },
   listItem: {
     "&.Mui-selected": {

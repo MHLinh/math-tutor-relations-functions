@@ -98,47 +98,47 @@ export function WarshallsSteps(props: IWarshallsSteps) {
               </Grid>
             </Grid>
         : <Grid 
-          container
-          direction="column"
-          justifyContent="center"
-          alignItems="center" 
-          spacing={1}
-        >
-          <Grid 
             container
-            item 
-            direction={small 
-              ? "column"
-              : "row"
-            }
+            direction="column"
+            justifyContent="center"
+            alignItems="center" 
+            spacing={1}
           >
-            <Grid item xs={6}>
-              <Box className={classes.box}>
-                <WarshallsRelationOutput
-                  text="Initial relation"
-                  matrix={steps[0]} 
-                  type={outputType}
+            <Grid 
+              container
+              item 
+              direction={small 
+                ? "column"
+                : "row"
+              }
+            >
+              <Grid item xs={6}>
+                <Box className={classes.box}>
+                  <WarshallsRelationOutput
+                    text="Initial relation"
+                    matrix={steps[0]} 
+                    type={outputType}
+                  />
+                </Box>
+              </Grid>
+              <Grid item xs={6}>
+                <Box className={classes.box}>
+                  <WarshallsRelationOutput
+                    text="Final relation"
+                    matrix={steps[maxRound - 1]} 
+                    type={outputType}
+                  />
+                </Box>
+              </Grid>
+            </Grid>
+            <Grid item>
+              <Box>
+                <RelationOutputSelection 
+                  selectedType={outputType}
+                  setSelectedType={wrapperSetOutputType}
                 />
               </Box>
             </Grid>
-            <Grid item xs={6}>
-              <Box className={classes.box}>
-                <WarshallsRelationOutput
-                  text="Final relation"
-                  matrix={steps[maxRound - 1]} 
-                  type={outputType}
-                />
-              </Box>
-            </Grid>
-          </Grid>
-          <Grid item>
-            <Box className={classes.box}>
-              <RelationOutputSelection 
-                selectedType={outputType}
-                setSelectedType={wrapperSetOutputType}
-              />
-            </Box>
-          </Grid>
           </Grid>
         }
       </Box>
@@ -186,7 +186,7 @@ const useStyles = makeStyles((theme: any) => ({
     paddingTop: theme.spacing(2)
   },
   button: {
-    width: theme.typography.pxToRem(100)
+    width: theme.typography.pxToRem(124)
   },
   text: {
     fontSize: theme.typography.pxToRem(18),

@@ -2,12 +2,12 @@ import React, { useState, useCallback, useEffect, useMemo } from "react"
 import {
   Box,
   Container,
-  Button
+  Grid,
+  useTheme,
+  useMediaQuery,
 } from "@mui/material"
 import { makeStyles } from "@mui/styles"
 import { 
-  NUM_OF_ELEMENTS,
-  directedGraphNodes,
   generateRectMatrix, 
 } from "utils"
 import { paddingStyle } from "theme/styles"
@@ -27,6 +27,8 @@ export function FunctionProperties() {
   const [ySize, setYSize] = useState(4)
   const [relation, setRelation] = useState<number[][]>(generateRectMatrix(xSize, ySize))
   const classes = useStyles()
+  const { breakpoints } = useTheme()
+  const small = useMediaQuery(breakpoints.down("sm"))
 
   const wrapperSetXSize = useCallback((value: number) => {
     setXSize(value)
@@ -67,13 +69,39 @@ export function FunctionProperties() {
         />
       </Box>
       <Box className={classes.box}>
-        <ClearButtonProvider matrixContextValue={contextValue} />
-      </Box>
-      <Box className={classes.box}>
-        <DataServiceRelation 
-          matrixContextValue={contextValue}
-          type="function" 
-        />
+        <Grid
+          container
+          direction={small 
+            ? "column"
+            : "row"
+          }
+          spacing={small 
+            ? 0
+            : 1
+          }
+        >
+          <Grid 
+            container
+            item
+            justifyContent="center"
+            xs={6}
+          >
+            <Box className={classes.box}>
+              <ClearButtonProvider matrixContextValue={contextValue} />
+            </Box>
+          </Grid>
+          <Grid 
+            container
+            item
+            justifyContent="center"
+            xs={6}
+          >
+            <DataServiceRelation 
+              matrixContextValue={contextValue}
+              type="function" 
+            />
+          </Grid>
+        </Grid>
       </Box>
     </Container>
   )
