@@ -15,7 +15,7 @@ import { generateSliderMarks, verticalLineTest, generatePoints } from "utils"
 import FunctionPlotComponent from "components/function-plot/function-plot-component"
 import { FunctionPlotOptions } from "components/function-plot/function-plot-types"
 import { IPointsContext } from "components/points-context/points-context"
-import { DataServicePoints } from "components/database/data-service-points"
+import { PointsDataService } from "components/database/points-data-service"
 
 const step = 1
 const min = -6
@@ -172,7 +172,7 @@ export function VerticalLineTest() {
             justifyContent="center"
             md={6}
           >
-            <DataServicePoints
+            <PointsDataService
               pointsContextValue={contextValue}
               type="points" 
             />
