@@ -6,7 +6,6 @@ import { OrderedPairsDragAndDrop } from "components/drag-and-drop/ordered-pairs-
 
 interface IRelationInput {
   matrixContextValue: IMatrixContext,   // Matrix context for accessing the matrix and its setter
-  matrix: number[][],                   // Relation stored as a matrix
   type: string                          // Type of input for displaying relation
 }
 
@@ -15,12 +14,12 @@ interface IRelationInput {
  * a matrix, ordered pairs of numbers, or connecting sets.
  */
 export function RelationInput(props: IRelationInput) {
-  const { matrixContextValue, matrix, type } = props
+  const { matrixContextValue, type } = props
 
   const input = (inputType: string) => {
     switch(inputType) {
       case "matrix":
-        return <MatrixTapGrid matrix={matrix} />
+        return <MatrixTapGrid />
       case "pairs":
         return <OrderedPairsDragAndDrop />
       case "sets":

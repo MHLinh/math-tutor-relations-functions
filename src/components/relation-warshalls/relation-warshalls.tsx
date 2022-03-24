@@ -85,7 +85,6 @@ export function RelationWarshalls() {
           <Box className={classes.box}>
             <RelationInput 
               matrixContextValue={contextValue}
-              matrix={relation}
               type={inputType}
             />
           </Box>

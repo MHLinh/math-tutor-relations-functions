@@ -1,23 +1,20 @@
-import React from "react"
+import React, { useContext } from "react"
 import {
   Box, 
   Grid,
   Typography
 } from "@mui/material"
 import { makeStyles } from "@mui/styles"
+import { MatrixContext } from "components/matrix-context/matrix-context"
 import { MatrixTapButton } from "./matrix-tap-button"
 
-interface IMatrixTapGrid {
-  matrix: number[][]
-}
 
 /**
  * A component displaying the matrix as a grid of buttons to tap
  * for inputting a relation.
- * @param props - a matrix for generating the grid
  */
-export function MatrixTapGrid(props: IMatrixTapGrid) {
-  const { matrix } = props
+export function MatrixTapGrid() {
+  const { matrix } = useContext(MatrixContext)
   const classes = useStyles()
 
   return (
