@@ -16,9 +16,9 @@ import { makeStyles } from "@mui/styles"
 import _ from "lodash"
 import "katex/dist/katex.min.css"
 import Latex from "react-latex-next"
-import {  center, paddingStyle  } from "theme/styles"
+import { center } from "theme/styles"
 import { generateSliderMarks, roundToTwoDecimal } from "utils"
-import FunctionPlotComponent from "components/function-plot/function-plot-component"
+import FunctionPlot from "components/function-plot/function-plot"
 import { FunctionPlotOptions } from "components/function-plot/function-plot-types"
 import { IPointsContext } from "components/points-context/points-context"
 import { PointsDataService } from "components/database/points-data-service"
@@ -93,7 +93,11 @@ export function LinearFunctionSlopePoints() {
   
   const xText = `$\\Delta X = ${x1} - ${x2} = ${xChange}$`
   const yText = `$\\Delta Y = ${y1} - ${y2} = ${yChange}$`
-  const slopeText = `Slope $= \\frac{\\Delta Y}{\\Delta X} = \\frac{${yChange}}{${xChange}} \\approx ${roundToTwoDecimal(gradient)}$`
+  const slopeText = `Slope $= \\frac{\\Delta Y}{\\Delta X} = \\frac{${yChange}}{${xChange}} \\approx ${
+    xChange === 0
+    ? "Undefined"
+    : roundToTwoDecimal(gradient)
+  }$`
   
 
   const handleChangeX1 = (event: SelectChangeEvent) => {
@@ -144,7 +148,7 @@ export function LinearFunctionSlopePoints() {
       >
         <Grid item md={6} lg={5}>
           <Box className={classes.center}>
-            <FunctionPlotComponent 
+            <FunctionPlot 
               options={options}
             />
           </Box>

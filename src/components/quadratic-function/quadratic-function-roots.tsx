@@ -13,9 +13,9 @@ import NumberFormat from "react-number-format"
 import _ from "lodash"
 import "katex/dist/katex.min.css"
 import Latex from "react-latex-next"
-import { center, paddingStyle  } from "theme/styles"
+import { center } from "theme/styles"
 import { roundToTwoDecimal } from "utils"
-import FunctionPlotComponent from "components/function-plot/function-plot-component"
+import FunctionPlot from "components/function-plot/function-plot"
 import { FunctionPlotOptions } from "components/function-plot/function-plot-types"
 
 /**
@@ -126,7 +126,7 @@ export function QuadraticFunctionRoots() {
       >
         <Grid item md={5}>
           <Box className={classes.center}>
-            <FunctionPlotComponent 
+            <FunctionPlot 
               options={options}
             />
           </Box>

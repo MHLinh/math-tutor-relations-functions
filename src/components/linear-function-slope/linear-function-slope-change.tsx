@@ -13,7 +13,7 @@ import "katex/dist/katex.min.css"
 import Latex from "react-latex-next"
 import { center } from "theme/styles"
 import { generateSliderMarks, roundToTwoDecimal } from "utils"
-import FunctionPlotComponent from "components/function-plot/function-plot-component"
+import FunctionPlot from "components/function-plot/function-plot"
 import { FunctionPlotOptions } from "components/function-plot/function-plot-types"
 
 const step = 1
@@ -94,7 +94,7 @@ export function LinearFunctionSlopeChange() {
       >
         <Grid item md={6} lg={5}>
           <Box className={classes.center}>
-            <FunctionPlotComponent 
+            <FunctionPlot 
               options={options}
             />
           </Box>

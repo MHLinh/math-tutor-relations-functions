@@ -15,7 +15,7 @@ import "katex/dist/katex.min.css"
 import Latex from "react-latex-next"
 import { center } from "theme/styles"
 import { roundToTwoDecimal } from "utils"
-import FunctionPlotComponent from "components/function-plot/function-plot-component"
+import FunctionPlot from "components/function-plot/function-plot"
 import { FunctionPlotOptions } from "components/function-plot/function-plot-types"
 
 /**
@@ -114,7 +114,7 @@ export function QuadraticFunctionVertex() {
       >
         <Grid item md={5}>
           <Box className={classes.center}>
-            <FunctionPlotComponent 
+            <FunctionPlot 
               options={options}
             />
           </Box>

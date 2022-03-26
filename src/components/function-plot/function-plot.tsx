@@ -6,11 +6,11 @@ import React, { useEffect, useRef } from "react"
 import functionPlot from "function-plot"
 import { FunctionPlotOptions } from "./function-plot-types"
 
-export interface IFunctionPlotComponent {
+export interface IFunctionPlot {
   options?: FunctionPlotOptions
 }
 
-function FunctionPlotComponent(props: IFunctionPlotComponent) {
+function FunctionPlot (props: IFunctionPlot) {
   const { options } = props
   const rootEl = useRef(null)
 
@@ -30,4 +30,4 @@ function FunctionPlotComponent(props: IFunctionPlotComponent) {
   return (<div ref={rootEl} />)
 }
 
-export default FunctionPlotComponent
+export default FunctionPlot

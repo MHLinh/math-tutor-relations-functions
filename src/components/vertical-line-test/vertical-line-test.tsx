@@ -10,9 +10,9 @@ import {
   useMediaQuery,
 } from "@mui/material"
 import { makeStyles } from "@mui/styles"
-import {  center, paddingStyle, buttonStyle } from "theme/styles"
+import { center, paddingStyle, buttonStyle } from "theme/styles"
 import { generateSliderMarks, verticalLineTest, generatePoints } from "utils"
-import FunctionPlotComponent from "components/function-plot/function-plot-component"
+import FunctionPlot from "components/function-plot/function-plot"
 import { FunctionPlotOptions } from "components/function-plot/function-plot-types"
 import { IPointsContext } from "components/points-context/points-context"
 import { PointsDataService } from "components/database/points-data-service"
@@ -116,7 +116,7 @@ export function VerticalLineTest() {
         </Typography>
       </Box>
       <Box className={classes.center}>
-        <FunctionPlotComponent 
+        <FunctionPlot 
           options={options}
         />
       </Box>

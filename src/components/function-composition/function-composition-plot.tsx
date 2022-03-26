@@ -14,7 +14,7 @@ import { parse, simplify } from "mathjs"
 import "katex/dist/katex.min.css"
 import Latex from "react-latex-next"
 import { center, buttonStyle } from "theme/styles"
-import FunctionPlotComponent from "components/function-plot/function-plot-component"
+import FunctionPlot from "components/function-plot/function-plot"
 import { FunctionPlotOptions } from "components/function-plot/function-plot-types"
 import { CustomAlert } from "components/custom-alert/custom-alert"
 
@@ -251,7 +251,7 @@ export function FunctionCompositionPlot() {
       >
         <Grid item md={5}>
           <Box className={classes.center}>
-            <FunctionPlotComponent 
+            <FunctionPlot 
               options={options}
             />
           </Box>

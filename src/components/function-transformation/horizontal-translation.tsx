@@ -13,7 +13,7 @@ import "katex/dist/katex.min.css"
 import Latex from "react-latex-next"
 import { center } from "theme/styles"
 import { generateSliderMarks, getFunctionEquation } from "utils"
-import FunctionPlotComponent from "components/function-plot/function-plot-component"
+import FunctionPlot from "components/function-plot/function-plot"
 import { FunctionPlotOptions } from "components/function-plot/function-plot-types"
 import { FunctionEquationSelection } from "components/function-equation/function-equation-selection"
 import { Equation } from "components/function-equation/function-equation-types"
@@ -95,7 +95,7 @@ export function HorizontalTranslation() {
       >
         <Grid item md={6}>
           <Box className={classes.center}>
-            <FunctionPlotComponent 
+            <FunctionPlot 
               options={options}
             />
           </Box>
