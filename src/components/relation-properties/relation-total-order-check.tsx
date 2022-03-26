@@ -3,7 +3,12 @@ import {
   Box,
   Typography
 } from "@mui/material"
-import { isReflexive, isAntisymmetric, isTransitive, isAllPairs } from "utils"
+import { 
+  isReflexive, 
+  isAntisymmetric, 
+  isTransitive, 
+  isAllPairsCombinations 
+} from "utils"
 
 interface IRelationTotalOrderCheck {
  matrix: number[][] // Relation stored as matrix
@@ -20,20 +25,20 @@ export function RelationTotalOrderCheck(props: IRelationTotalOrderCheck) {
   const antisymmetric = isAntisymmetric(matrix)
   const transitive = isTransitive(matrix)
   const partialOrder = reflexive && antisymmetric && transitive
-  const allPairs = isAllPairs(matrix)
-  const totalOrder = partialOrder && allPairs
+  const allPairsCombinations = isAllPairsCombinations(matrix)
+  const totalOrder = partialOrder && allPairsCombinations
 
   const notPartialOrder = "it is not a partial order"
-  const notAllPairs = "not for all a,b ∈ A, either (a,b) ∈ R or (b,a) ∈ R"
+  const notAllPairsCombinations = "not for all a,b ∈ A, either (a,b) ∈ R or (b,a) ∈ R"
   let explanation = ""
   
   if(!totalOrder) {
-    if(!partialOrder && !allPairs) {
-      explanation = `${notPartialOrder} and\n${notAllPairs}`
+    if(!partialOrder && !allPairsCombinations) {
+      explanation = `${notPartialOrder} and\n${notAllPairsCombinations}`
     } else if (!partialOrder) {
       explanation = notPartialOrder
     } else {
-      explanation = notAllPairs
+      explanation = notAllPairsCombinations
     }
   }
 

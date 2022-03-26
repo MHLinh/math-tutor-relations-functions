@@ -11,7 +11,7 @@ import {
   isSymmetric,
   isAntisymmetric,
   isTransitive,
-  isAllPairs
+  isAllPairsCombinations
 } from "utils"
 import { palette, center } from "theme"
 
@@ -33,7 +33,7 @@ export function RelationPropertiesTable(props: IRelationPropertiesTable) {
   const transitive = isTransitive(matrix)
   const equivalenceRelation = reflexive && symmetric && transitive
   const partialOrder = reflexive && antisymmetric && transitive
-  const totalOrder  = partialOrder && isAllPairs(matrix)
+  const totalOrder  = partialOrder && isAllPairsCombinations(matrix)
 
   const properties = [
     { property: "Reflexive", status: reflexive},

@@ -9,7 +9,7 @@ import {
   isSymmetric,
   isAntisymmetric,
   isTransitive,
-  isAllPairs
+  isAllPairsCombinations
 } from "utils/relation-properties"
 
 test("determine that the relation is reflexive", () => {
@@ -547,7 +547,7 @@ test("determine whether (a,b) or (b,a) are in the relation for each element - tr
     [0, 0, 1, 1],
     [0, 0, 0, 1],
   ]
-  expect(isAllPairs(matrix)).toBe(true)  
+  expect(isAllPairsCombinations(matrix)).toBe(true)  
 })
 
 test("determine whether (a,b) or (b,a) are in the relation for each element - true 2", () => {
@@ -557,7 +557,7 @@ test("determine whether (a,b) or (b,a) are in the relation for each element - tr
     [1, 1, 1, 1],
     [1, 1, 1, 1],
   ]
-  expect(isAllPairs(matrix)).toBe(true)  
+  expect(isAllPairsCombinations(matrix)).toBe(true)  
 })
 
 test("determine whether (a,b) or (b,a) are in the relation for each element - false 1", () => {
@@ -567,7 +567,7 @@ test("determine whether (a,b) or (b,a) are in the relation for each element - fa
     [0, 0, 0, 0],
     [0, 0, 0, 0],
   ]
-  expect(isAllPairs(matrix)).toBe(false)  
+  expect(isAllPairsCombinations(matrix)).toBe(false)  
 })
 
 test("determine whether (a,b) or (b,a) are in the relation for each element - false 2", () => {
@@ -577,5 +577,5 @@ test("determine whether (a,b) or (b,a) are in the relation for each element - fa
     [0, 0, 1, 1],
     [0, 0, 0, 1],
   ]
-  expect(isAllPairs(matrix)).toBe(false)  
+  expect(isAllPairsCombinations(matrix)).toBe(false)  
 })
