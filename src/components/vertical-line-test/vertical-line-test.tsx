@@ -22,13 +22,17 @@ const min = -6
 const max = 6
 const marks = generateSliderMarks(step, min, max)
 
+const minCord = min + 1
+const maxCord = max - 1
+const numPoints = 7
+
 /**
  * A component displaying a graph of points a moveable vertical line
  * for the vertical line test to check whether a relation is a function.
  */
 export function VerticalLineTest() {
   const [position, setPosition] = useState(min)
-  const [points, setPoints] = useState(generatePoints(min + 1, max - 1, 10))
+  const [points, setPoints] = useState(generatePoints(minCord, maxCord, numPoints))
   const { breakpoints } = useTheme()
   const small = useMediaQuery(breakpoints.down("sm"))
   const medium = useMediaQuery(breakpoints.down("md"))
@@ -92,7 +96,7 @@ export function VerticalLineTest() {
   }
 
   const handleGenerate = () => {
-    setPoints(generatePoints(min + 1, max - 1, 10))
+    setPoints(generatePoints(minCord, maxCord, numPoints))
   }
 
   const wrapperSetPoints = useCallback((newPoints: number[][]) => {
