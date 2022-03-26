@@ -1,5 +1,3 @@
-import _ from "lodash"
-
 /**
  * A function to check if there are multiple points on the graph in a vertical line.
  * @param points - the x position
@@ -8,7 +6,6 @@ import _ from "lodash"
  */
 export function verticalLineTest(position :number, points: number[][]): boolean {
   const filtered = points.filter(point => point[0] === position)
-  const uniqueFiltered = _.uniqWith(filtered, _.isEqual)
 
-  return uniqueFiltered.length > 1
+  return filtered.length > 1
 }

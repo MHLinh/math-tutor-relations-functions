@@ -1,3 +1,5 @@
+import _ from "lodash"
+
 /**
  * A function for generating a list of random points.
  * @param min - min coordinate to be generated
@@ -13,5 +15,7 @@ export function generatePoints(min: number, max: number, amount: number): number
     points.push([x, y])
   }
 
-  return points
+  const uniquePoints = _.uniqWith(points, _.isEqual)
+
+  return uniquePoints
 }
