@@ -18,6 +18,7 @@ import Visibility from "@mui/icons-material/Visibility"
 import VisibilityOff from "@mui/icons-material/VisibilityOff"
 import { center } from "theme/styles"
 import { CustomAlert } from "components/custom-alert/custom-alert"
+import { PrivacyPolicyNotice } from "components/privacy-policy/privacy-policy-notice"
 import { 
   auth, 
   useAuthenticationManager,
@@ -174,6 +175,7 @@ export function Register (){
           <Typography align="left" variant="caption">
             Please verify your email through the verification we will send you after registering.
           </Typography>
+          <PrivacyPolicyNotice />
         </Stack>
       </Box>
       <CustomAlert 
