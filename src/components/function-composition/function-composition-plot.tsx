@@ -177,7 +177,6 @@ export function FunctionCompositionPlot() {
     try {
       const compositionFG = inputFunctionF.replace("x", `(${inputFunctionG})`)
       const simplifiedFG = simplify(compositionFG)
-      console.log()
       setFunctionFG({
         str: simplifiedFG.toString(),
         tex: simplifiedFG.toTex()
