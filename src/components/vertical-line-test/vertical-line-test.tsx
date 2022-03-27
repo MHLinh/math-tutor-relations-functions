@@ -10,17 +10,21 @@ import {
   useMediaQuery,
 } from "@mui/material"
 import { makeStyles } from "@mui/styles"
-import {  center, paddingStyle, buttonStyle } from "theme/styles"
+import { center, paddingStyle, buttonStyle } from "theme/styles"
 import { generateSliderMarks, verticalLineTest, generatePoints } from "utils"
-import FunctionPlotComponent from "components/function-plot/function-plot-component"
+import FunctionPlot from "components/function-plot/function-plot"
 import { FunctionPlotOptions } from "components/function-plot/function-plot-types"
 import { IPointsContext } from "components/points-context/points-context"
-import { DataServicePoints } from "components/database/data-service-points"
+import { PointsDataService } from "components/database/points-data-service"
 
 const step = 1
 const min = -6
 const max = 6
 const marks = generateSliderMarks(step, min, max)
+
+const minCord = min + 1
+const maxCord = max - 1
+const numPoints = 7
 
 /**
  * A component displaying a graph of points a moveable vertical line
@@ -28,7 +32,7 @@ const marks = generateSliderMarks(step, min, max)
  */
 export function VerticalLineTest() {
   const [position, setPosition] = useState(min)
-  const [points, setPoints] = useState(generatePoints(min + 1, max - 1, 10))
+  const [points, setPoints] = useState(generatePoints(minCord, maxCord, numPoints))
   const { breakpoints } = useTheme()
   const small = useMediaQuery(breakpoints.down("sm"))
   const medium = useMediaQuery(breakpoints.down("md"))
@@ -92,7 +96,7 @@ export function VerticalLineTest() {
   }
 
   const handleGenerate = () => {
-    setPoints(generatePoints(min + 1, max - 1, 10))
+    setPoints(generatePoints(minCord, maxCord, numPoints))
   }
 
   const wrapperSetPoints = useCallback((newPoints: number[][]) => {
@@ -112,7 +116,7 @@ export function VerticalLineTest() {
         </Typography>
       </Box>
       <Box className={classes.center}>
-        <FunctionPlotComponent 
+        <FunctionPlot 
           options={options}
         />
       </Box>
@@ -172,7 +176,7 @@ export function VerticalLineTest() {
             justifyContent="center"
             md={6}
           >
-            <DataServicePoints
+            <PointsDataService
               pointsContextValue={contextValue}
               type="points" 
             />

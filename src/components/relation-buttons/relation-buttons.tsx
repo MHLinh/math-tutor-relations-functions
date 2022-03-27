@@ -14,7 +14,7 @@ import {
   RelationInputSelection 
 } from "components/relation-input/relation-input-selection"
 import { ClearButtonProvider } from "components/clear-button/clear-button-provider"
-import { DataServiceRelation } from "components/database/data-service-relation"
+import { RelationDataService } from "components/database/relation-data-service"
 
 interface IRelationButtons {
   selectedOutputType: string,                     // The selected output type
@@ -80,7 +80,7 @@ export function RelationButtons(props: IRelationButtons) {
         justifyContent="center"
         md={6}
       >
-        <DataServiceRelation
+        <RelationDataService
           matrixContextValue={matrixContextValue} 
           type={type}
         />

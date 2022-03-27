@@ -12,16 +12,14 @@ import { makeStyles } from "@mui/styles"
 import "katex/dist/katex.min.css"
 import Latex from "react-latex-next"
 import { center } from "theme/styles"
-import { generateSliderMarks, getFunctionEquation } from "utils"
-import FunctionPlotComponent from "components/function-plot/function-plot-component"
+import { getFunctionEquation } from "utils"
+import FunctionPlot from "components/function-plot/function-plot"
 import { FunctionPlotOptions } from "components/function-plot/function-plot-types"
 import { FunctionEquationSelection } from "components/function-equation/function-equation-selection"
 import { Equation } from "components/function-equation/function-equation-types"
 
-const step = 1
 const min = -6
 const max = 6
-const marks = generateSliderMarks(step, min, max)
 
 /**
  * A component displaying a graph of a function
@@ -50,7 +48,7 @@ export function Reflection() {
   const ySign = yReflect === 1
                   ? ""
                   : "-"
-  const equation = `$y = ${xSign}f(${ySign}x) + C$`
+  const equation = `$y = ${xSign}f(${ySign}x)$`
 
   const plotEquation = getFunctionEquation(
     functionType, 1, 1, 0, 0, xSign, ySign
@@ -102,7 +100,7 @@ export function Reflection() {
       >
         <Grid item md={6}>
           <Box className={classes.center}>
-            <FunctionPlotComponent 
+            <FunctionPlot 
               options={options}
             />
           </Box>

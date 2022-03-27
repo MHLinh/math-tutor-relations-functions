@@ -14,7 +14,7 @@ import { paddingStyle } from "theme/styles"
 import { MatrixContext, IMatrixContext } from "components/matrix-context/matrix-context"
 import { ConnectedSets } from "components/connected-sets/connected-sets"
 import { ClearButtonProvider } from "components/clear-button/clear-button-provider"
-import { DataServiceRelation } from "components/database/data-service-relation"
+import { RelationDataService } from "components/database/relation-data-service"
 import { SetSliders } from "components/set-sliders/set-sliders"
 import { FunctionPropertiesTable } from "./function-properties-table"
 
@@ -97,7 +97,7 @@ export function FunctionProperties() {
             justifyContent="center"
             md={6}
           >
-            <DataServiceRelation 
+            <RelationDataService 
               matrixContextValue={contextValue}
               type="function" 
             />

@@ -10,7 +10,6 @@ export function RelationPropertiesNavigation() {
   const text = "Study properties of a relation"
 
   const paths = [
-    { name: "All properties", path: "/relation-properties-all" },
     { name: "Reflexive relation", path: "/relation-properties-reflexive" },
     { name: "Ireflexive relation", path: "/relation-properties-irreflexive" },
     { name: "Symmetric relation", path: "/relation-properties-symmetric" },
@@ -19,6 +18,7 @@ export function RelationPropertiesNavigation() {
     { name: "Equivalence relation", path: "/relation-properties-equivalence" },
     { name: "Partial order", path: "/relation-properties-partial-order" },
     { name: "Total order", path: "/relation-properties-total-order" },
+    { name: "All properties", path: "/relation-properties-all" },
   ]
 
   return (

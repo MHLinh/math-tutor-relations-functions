@@ -12,7 +12,8 @@ export function computeWarshalls(matrix: number[][]): number[][][]{
   for(let k = 0; k < stepMatrix.length; k++) {
     for(let i = 0; i < stepMatrix.length; i++) {
       for(let j = 0; j < stepMatrix.length; j++) {
-        if(stepMatrix[i][j] === 0 && stepMatrix[i][k] === 1 && stepMatrix[k][j] === 1) {
+        if(i !== k && j !== k && stepMatrix[i][j] === 0
+          && stepMatrix[i][k] === 1 && stepMatrix[k][j] === 1) {
           stepMatrix[i][j] =  1
         }
       }

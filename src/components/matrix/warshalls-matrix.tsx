@@ -18,7 +18,7 @@ interface IWarshallsMatrix {
 }
 
 /**
- * A component displaying the matrix of 0'1 and 1's
+ * A component displaying the matrix of 0's and 1's
  * for Warshall's algorithm, with highlighted rows and cols,
  * and colored 0's to be changed to 1's.
  */
