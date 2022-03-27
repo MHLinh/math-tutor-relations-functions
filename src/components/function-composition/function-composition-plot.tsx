@@ -379,6 +379,10 @@ export function FunctionCompositionPlot() {
                 </Typography>
               </li>
             </ul>
+            <Typography variant="caption">
+              Note: The view of the graph can be moved and zoomed.
+              If a function composition is not plotted then it is invalid.
+            </Typography>
           </Box>
         </Grid>
       </Grid>

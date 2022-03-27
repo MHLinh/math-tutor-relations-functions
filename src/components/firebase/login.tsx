@@ -17,6 +17,7 @@ import GoogleIcon from "@mui/icons-material/Google"
 import Visibility from "@mui/icons-material/Visibility"
 import VisibilityOff from "@mui/icons-material/VisibilityOff"
 import { center } from "theme/styles"
+import { PrivacyPolicyNotice } from "components/privacy-policy/privacy-policy-notice"
 import { 
   auth,
   useAuthenticationManager,
@@ -146,6 +147,7 @@ export function Login(){
           <Typography align="center">
             Don&apos;t have an account? <Link to="/register">Register now.</Link>
           </Typography>
+          <PrivacyPolicyNotice />
         </Stack>
       </Box>
     </Container>
