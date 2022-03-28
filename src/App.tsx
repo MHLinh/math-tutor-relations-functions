@@ -5,6 +5,7 @@ import { ThemeProvider } from "@mui/styles"
 import {
   ScrollToTop,
   NavigationBar,
+  PrivacyPolicyPopUp
 } from "components"
 import { 
   HomePage,
@@ -63,6 +64,7 @@ function App() {
           }}
         >
           <NavigationBar />
+          <PrivacyPolicyPopUp />
           <Routes>
             <Route path="/" element={<HomePage />}/>
             <Route path="/login" element={<LoginPage />}/>
