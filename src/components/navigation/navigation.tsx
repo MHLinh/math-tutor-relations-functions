@@ -28,7 +28,7 @@ export function Navigation(props: INavigation) {
 
   return (
     <Container className={classes.container}>
-      <Box>
+      <Box data-testid="navigation-text">
         <Typography align="center" className={classes.text}>
           {text}
         </Typography>

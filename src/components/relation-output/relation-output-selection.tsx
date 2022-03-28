@@ -52,6 +52,7 @@ export function RelationOutputSelection(props: IRelationOutputSelection) {
   return (
     <Box>
       <Button 
+        data-testid="output-change-button"
         variant="contained" 
         onClick={handleOpen}
         className={classes.button}
@@ -62,12 +63,17 @@ export function RelationOutputSelection(props: IRelationOutputSelection) {
         open={open}
         onClose={handleClose}
         aria-labelledby="output-selection-title"
-        aria-describedby="out-selection-types"
+        aria-describedby="output-selection-types"
       >
         <Box className={classes.boxModal}>
           <Grid container direction="column">
             <Grid item>
-              <Typography id="output-selection-title" align="center" className={classes.title}>
+              <Typography
+                data-testid="output-selection-title"
+                id="output-selection-title" 
+                align="center" 
+                className={classes.title}
+              >
                 Select a relation representation type for output
               </Typography>
             </Grid>
@@ -75,6 +81,7 @@ export function RelationOutputSelection(props: IRelationOutputSelection) {
               <List aria-label="out-selection-types">
                 {relationOutputTypes.map(({ id, name }) => (
                   <ListItemButton
+                    data-testid={id}
                     key={id}
                     selected={selectedType === id}
                     onClick={(event) => handleListItemClick(event, id)}

@@ -58,7 +58,7 @@ export function OrderedPairsDragAndDrop() {
   }
 
   return (
-    <Box>
+    <Box data-testid="ordered-pairs-input">
       <Typography align="center" className={classes.text}>
         Drag and drop pairs of numbers to modify the relation
       </Typography>

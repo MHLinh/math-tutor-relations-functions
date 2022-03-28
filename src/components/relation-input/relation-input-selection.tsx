@@ -51,7 +51,8 @@ export function RelationInputSelection(props: IRelationInputSelection) {
 
   return (
     <Box>
-      <Button 
+      <Button
+        data-testid="input-change-button"
         variant="contained" 
         onClick={handleOpen}
         className={classes.button}
@@ -61,13 +62,18 @@ export function RelationInputSelection(props: IRelationInputSelection) {
       <Modal
         open={open}
         onClose={handleClose}
-        aria-labelledby="output-selection-title"
-        aria-describedby="modal-modal-description"
+        aria-labelledby="input-selection-title"
+        aria-describedby="input-selection-types"
       >
         <Box className={classes.boxModal}>
           <Grid container direction="column">
             <Grid item>
-              <Typography id="output-selection-title" align="center" className={classes.title}>
+              <Typography
+                data-testid="input-selection-title"
+                id="input-selection-title" 
+                align="center" 
+                className={classes.title}
+              >
                 Select a relation representation type for input
               </Typography>
             </Grid>
@@ -75,6 +81,7 @@ export function RelationInputSelection(props: IRelationInputSelection) {
               <List aria-label="out-selection-types">
                 {relationInputTypes.map(({ id, name }) => (
                   <ListItemButton
+                    data-testid={id}
                     key={id}
                     selected={selectedType === id}
                     onClick={(event) => handleListItemClick(event, id)}

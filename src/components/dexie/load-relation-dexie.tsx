@@ -150,6 +150,7 @@ export function LoadRelationDexie(props: ILoadRelationDexie) {
   return (
     <Box>
       <Button
+        data-testid="load-relation-button"
         variant="contained"
         onClick={handleOpenLoad}
         className={classes.button}
@@ -159,7 +160,7 @@ export function LoadRelationDexie(props: ILoadRelationDexie) {
       <Modal
         open={openLoad}
         onClose={handleCloseLoad}
-        aria-labelledby="save-relation-title"
+        aria-labelledby="load-relation-title"
       >
         <Box className={classes.boxModal}>
           <Grid 
@@ -169,7 +170,12 @@ export function LoadRelationDexie(props: ILoadRelationDexie) {
             spacing={2}
           >
             <Grid item>
-              <Typography id="save-relation-title" align="center" className={classes.title}>
+              <Typography 
+                data-testid="load-relation-title" 
+                id="load-relation-title"
+                align="center" 
+                className={classes.title}
+              >
                 Select a relation to load
               </Typography>
             </Grid>
@@ -180,6 +186,7 @@ export function LoadRelationDexie(props: ILoadRelationDexie) {
             </Grid>
             <Grid item>
               <Button
+                data-testid="load-button"
                 variant="contained"
                 onClick={handleLoad}
                 className={classes.buttonModal}

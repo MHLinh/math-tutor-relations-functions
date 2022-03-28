@@ -18,7 +18,7 @@ export function MatrixTapGrid() {
   const classes = useStyles()
 
   return (
-    <Box>
+    <Box data-testid="matrix-input">
       <Typography align="center" className={classes.text}>
         Tap the buttons to modify the relation
       </Typography>

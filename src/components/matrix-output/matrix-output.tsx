@@ -20,7 +20,7 @@ export function MatrixOutput(props: IMatrixOutput) {
   const classes = useStyles()
 
   return (
-    <Box>
+    <Box data-testid="matrix-output">
       <Typography align="center" className={classes.text}>
         {text}
       </Typography>

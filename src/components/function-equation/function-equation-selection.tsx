@@ -52,7 +52,11 @@ export function FunctionEquationSelection (props: IFunctionEquationSelection) {
 
   return (
     <Box>
-      <Button variant="contained" onClick={handleOpen}>
+      <Button
+        data-testid="function-change-button" 
+        variant="contained" 
+        onClick={handleOpen}
+      >
         Change type of function
       </Button>
       <Modal
@@ -64,7 +68,12 @@ export function FunctionEquationSelection (props: IFunctionEquationSelection) {
         <Box className={classes.boxModal}>
           <Grid container direction="column">
             <Grid item>
-              <Typography id="function-selection-title" align="center" className={classes.title}>
+              <Typography 
+                id="function-selection-title" 
+                data-testid="function-selection-title" 
+                align="center" 
+                className={classes.title}
+              >
                 Select a type of function
               </Typography>
             </Grid>
@@ -72,6 +81,7 @@ export function FunctionEquationSelection (props: IFunctionEquationSelection) {
               <List aria-label="function-selection-types">
                 {functionTypes.map(({ id, name }) => (
                   <ListItemButton
+                  data-testid={id}
                     key={id}
                     selected={selectedType === id}
                     onClick={(event) => handleListItemClick(event, id)}

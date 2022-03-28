@@ -147,6 +147,7 @@ export function LoadPointsDexie(props: ILoadPointsDexie) {
   return (
     <Box>
       <Button
+        data-testid="load-points-button"
         variant="contained"
         onClick={handleOpenLoad}
         className={classes.button}
@@ -156,7 +157,7 @@ export function LoadPointsDexie(props: ILoadPointsDexie) {
       <Modal
         open={openLoad}
         onClose={handleCloseLoad}
-        aria-labelledby="save-relation-title"
+        aria-labelledby="load-points-title"
       >
         <Box className={classes.boxModal}>
           <Grid 
@@ -166,8 +167,13 @@ export function LoadPointsDexie(props: ILoadPointsDexie) {
             spacing={2}
           >
             <Grid item>
-              <Typography id="save-relation-title" align="center" className={classes.title}>
-                Select a relation to load
+              <Typography 
+                data-testid="load-points-title" 
+                id="load-points-title"
+                align="center" 
+                className={classes.title}
+              >
+                Select points to load
               </Typography>
             </Grid>
             <Grid item>
@@ -177,6 +183,7 @@ export function LoadPointsDexie(props: ILoadPointsDexie) {
             </Grid>
             <Grid item>
               <Button
+                data-testid="load-button"
                 variant="contained"
                 onClick={handleLoad}
                 className={classes.buttonModal}
