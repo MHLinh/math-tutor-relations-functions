@@ -77,7 +77,7 @@ export function DirectedGraph(props: IDirectedGraph) {
   }
 
   return(
-    <Box>
+    <Box data-testid="directed-graph-output">
       <Typography align="center" className={classes.text}>
         {text}
       </Typography>

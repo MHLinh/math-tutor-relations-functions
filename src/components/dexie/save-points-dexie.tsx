@@ -82,6 +82,7 @@ export function SavePointsDexie(props: ISavePointsDexie) {
   return (
     <Box>
       <Button
+        data-testid="save-points-button"
         variant="contained"
         onClick={handleOpenSave}
         className={classes.button}
@@ -101,7 +102,12 @@ export function SavePointsDexie(props: ISavePointsDexie) {
             spacing={2}
           >
             <Grid item>
-              <Typography id="save-points-title" align="center" className={classes.title}>
+              <Typography 
+                data-testid="save-points-title"
+                id="save-points-title" 
+                align="center" 
+                className={classes.title}
+              >
                 Save the current points
               </Typography>
             </Grid>
@@ -121,6 +127,7 @@ export function SavePointsDexie(props: ISavePointsDexie) {
             </Grid>
             <Grid item>
               <Button
+                data-testid="save-button"
                 variant="contained"
                 onClick={handleSave}
                 className={classes.buttonModal}

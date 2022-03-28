@@ -27,7 +27,7 @@ export function OrderedPairs(props: IOrderedPairs) {
   const stringPairs2 = tuplePairs.slice(-middle).join(", ")
   
   return (
-    <Box>
+    <Box data-testid="ordered-pairs-output">
       <Typography align="center" className={classes.text}>
         {text}
       </Typography>

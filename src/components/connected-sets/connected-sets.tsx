@@ -126,7 +126,7 @@ export function ConnectedSets() {
   }
 
   return (
-    <Box>
+    <Box data-testid="directed-graph-output">
       <Typography align="center" className={classes.text}>
         Select numbers on the left and right to modify the relation
       </Typography>

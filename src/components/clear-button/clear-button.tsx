@@ -20,7 +20,8 @@ export function ClearButton() {
   }
 
   return (
-    <Button 
+    <Button
+      data-testid="clear-relation-button" 
       variant="contained" 
       onClick={handleClick}
       className={classes.button}

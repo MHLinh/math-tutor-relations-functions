@@ -94,6 +94,7 @@ export function SaveRelationFirebase(props: ISaveRelationFirebase) {
   return (
     <Box>
       <Button
+        data-testid="save-relation-button"
         variant="contained"
         onClick={handleOpenSave}
         className={classes.button}
@@ -113,7 +114,12 @@ export function SaveRelationFirebase(props: ISaveRelationFirebase) {
             spacing={2}
           >
             <Grid item>
-              <Typography id="save-relation-title" align="center" className={classes.title}>
+              <Typography 
+                data-testid="save-relation-title"
+                id="save-relation-title"
+                align="center" 
+                className={classes.title}
+              >
                 Save the current relation
               </Typography>
             </Grid>
@@ -133,6 +139,7 @@ export function SaveRelationFirebase(props: ISaveRelationFirebase) {
             </Grid>
             <Grid item>
               <Button
+                data-testid="save-button"
                 variant="contained"
                 onClick={handleSave}
                 className={classes.buttonModal}
