@@ -119,6 +119,7 @@ export function useAuthenticationManager() {
    * @param email - The email of the user
    */
   const logInWithEmailAndPassword = async (email: string, password: string) => {
+    setProcessing(true)
     try {
       await signInWithEmailAndPassword(auth, email, password)
     } catch (error) {
@@ -128,6 +129,7 @@ export function useAuthenticationManager() {
         setMessage(error.message)
       }
     }
+    setProcessing(false)
   }
 
   /**
@@ -135,6 +137,7 @@ export function useAuthenticationManager() {
    * @param email - The email of the user
    */
   const sendPasswordReset = async (email: string) => {
+    setProcessing(true)
     try {
       await sendPasswordResetEmail(auth, email)
       setStatus(Status.successReset)
@@ -145,12 +148,14 @@ export function useAuthenticationManager() {
         setMessage(error.message)
       }
     }
+    setProcessing(false)
   }
 
   /**
    * A function for handling logging in with Google.
    */
   const logInWithGoogle  = async () => {
+    setProcessing(true)
     try {
       const { user } = await signInWithPopup(auth, googleProvider)
       const req = query(collection(db, "users"), where("uid", "==", user.uid))
@@ -170,13 +175,16 @@ export function useAuthenticationManager() {
         setMessage(error.message)
       }
     }
+    setProcessing(false)
   }
 
   /**
    * A function for handling user log out.
    */
   const logout = () => {
+    setProcessing(true)
     signOut(auth)
+    setProcessing(false)
   }
 
   return { 

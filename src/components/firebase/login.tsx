@@ -8,6 +8,7 @@ import {
   IconButton,
   InputAdornment,
   OutlinedInput,
+  LinearProgress,
   Stack,
   TextField,
   Typography
@@ -32,6 +33,7 @@ export function Login(){
   const navigate = useNavigate()
   const { 
     status, 
+    processing,
     message, 
     resetManager, 
     logInWithEmailAndPassword, 
@@ -41,14 +43,14 @@ export function Login(){
   const classes = useStyles()
 
   useEffect(() => {
-    if (loading) {
+    if (loading || processing) {
       return
     }
 
     if (user) {
       navigate("/")
     }
-  }, [user, loading])
+  }, [user, loading, processing])
 
   const handleChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value)
@@ -75,82 +77,92 @@ export function Login(){
   }
 
   return (
-    <Container className={classes.center}>
-      <AuthenticationAlert 
-        status={status} 
-        message={message} 
-        resetManager={resetManager} 
-      />
-      <Box className={classes.box}>
-        <Stack
-          direction="column"
-          justifyContent="center"
-          alignItems="center"
-          spacing={1}
-        >
-          <Typography align="center" className={classes.text}>
-            Log in
-          </Typography>
-          <TextField
-            id="email-input"
-            value={email}
-            onChange={handleChangeEmail}
-            placeholder="E-mail Address"
-            fullWidth
-          />
-          <OutlinedInput
-            id="password-input"
-            type={showPassword 
-              ? "text" 
-              : "password"
-            }
-            value={password}
-            onChange={handleChangePassword}
-            placeholder="Password"
-            fullWidth
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle-password-visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  edge="end"
-                >
-                  {showPassword 
-                    ? <VisibilityOff /> 
-                    : <Visibility />
-                  }
-                </IconButton>
-              </InputAdornment>
-            }
-          />
-          <Button
-            id="login-button"
-            className={classes.button}
-            variant="outlined"
-            onClick={handleClickLogin}
+    <Box>
+      {processing
+        ? <Box className={classes.progressBox}>
+          <LinearProgress />
+        </Box>
+        : null
+      }
+      <Container className={classes.center}>
+        <AuthenticationAlert 
+          status={status} 
+          message={message} 
+          resetManager={resetManager} 
+        />
+        <Box className={classes.box}>
+          <Stack
+            direction="column"
+            justifyContent="center"
+            alignItems="center"
+            spacing={1}
           >
-            Login
-          </Button>
-          <Button
-            id="login-google-button"
-            className={classes.button}
-            variant="contained"
-            startIcon={<GoogleIcon />}
-            onClick={handleClickGoogleLogin}
-          >
-            Login with Google
-          </Button>
-          <Typography align="center">
-            <Link to="/reset-password">Forgot Password</Link>
-          </Typography>
-          <Typography align="center">
-            Don&apos;t have an account? <Link to="/register">Register now.</Link>
-          </Typography>
-          <PrivacyPolicyNotice />
-        </Stack>
-      </Box>
-    </Container>
+            <Typography align="center" className={classes.text}>
+              Log in
+            </Typography>
+            <TextField
+              id="email-input"
+              value={email}
+              onChange={handleChangeEmail}
+              placeholder="E-mail Address"
+              fullWidth
+            />
+            <OutlinedInput
+              id="password-input"
+              type={showPassword 
+                ? "text" 
+                : "password"
+              }
+              value={password}
+              onChange={handleChangePassword}
+              placeholder="Password"
+              fullWidth
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle-password-visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                  >
+                    {showPassword 
+                      ? <VisibilityOff /> 
+                      : <Visibility />
+                    }
+                  </IconButton>
+                </InputAdornment>
+              }
+            />
+            <Button
+              id="login-button"
+              variant="outlined"
+              disabled={processing}
+              onClick={handleClickLogin}
+              className={classes.button}
+            >
+              Login
+            </Button>
+            <Button
+              id="login-google-button"
+              variant="contained"
+              disabled={processing}
+              startIcon={<GoogleIcon />}
+              onClick={handleClickGoogleLogin}
+              className={classes.button}
+            >
+              Login with Google
+            </Button>
+            <Typography align="center">
+              <Link to="/reset-password">Forgot Password</Link>
+            </Typography>
+            <Typography align="center">
+              Don&apos;t have an account? <Link to="/register">Register now.</Link>
+            </Typography>
+            <PrivacyPolicyNotice />
+          </Stack>
+        </Box>
+      </Container>
+    </Box>
   )
 }
 
@@ -176,4 +188,7 @@ const useStyles = makeStyles((theme: any) => ({
       fontSize: theme.typography.pxToRem(22),
     },
   },
+  progressBox: {
+    width: "100%"
+  }
 }))
