@@ -1,15 +1,19 @@
+/**
+ * This code uses following libraries: 
+ * react, react-router-dom, @mui/material, @mui/styles,
+ * @mui/icons-material, and, react-firebase-hooks.
+ */
 import React, { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
+import Box from "@mui/material/Box"
+import Button from "@mui/material/Button"
+import Container from "@mui/material/Container"
+import LinearProgress from "@mui/material/LinearProgress"
+import Stack from "@mui/material/Stack"
+import TextField from "@mui/material/TextField"
+import Typography from "@mui/material/Typography"
+import makeStyles from "@mui/styles/makeStyles"
 import { useAuthState } from "react-firebase-hooks/auth"
-import {
-  Box,
-  Button,
-  Container,
-  Stack,
-  TextField,
-  Typography
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
 import { center } from "theme/styles"
 import { 
   auth, 
@@ -22,7 +26,8 @@ export function ResetPassword(){
   const [user, loading] = useAuthState(auth)
   const navigate = useNavigate()
   const { 
-    status, 
+    status,
+    processing,
     message, 
     resetManager, 
     sendPasswordReset 
@@ -31,14 +36,14 @@ export function ResetPassword(){
   const classes = useStyles()
 
   useEffect(() => {
-    if (loading) {
+    if (loading || processing) {
       return
     }
 
     if (user) {
       navigate("/")
     }
-  }, [user, loading])
+  }, [user, loading, processing])
 
   const handleChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value)
@@ -49,43 +54,51 @@ export function ResetPassword(){
   }
 
   return (
-    <Container className={classes.center}>
-      <AuthenticationAlert 
-        status={status} 
-        message={message} 
-        resetManager={resetManager} 
-      />
-      <Box className={classes.box}>
-        <Stack
-          direction="column"
-          justifyContent="center"
-          alignItems="center"
-          spacing={1}
-        >
-          <Typography align="center" className={classes.text}>
-            Reset password
-          </Typography>
-          <TextField
-            id="email-input"
-            value={email}
-            onChange={handleChangeEmail}
-            placeholder="E-mail Address"
-            fullWidth
-          />
-          <Button
-            id="reset-button"
-            className={classes.button}
-            variant="outlined"
-            onClick={handleClickReset}
+    <Box>
+      {processing
+        ? <Box className={classes.progressBox}>
+            <LinearProgress />
+          </Box>
+        : null
+      }
+      <Container className={classes.center}>
+        <AuthenticationAlert 
+          status={status} 
+          message={message} 
+          resetManager={resetManager} 
+        />
+        <Box className={classes.box}>
+          <Stack
+            direction="column"
+            justifyContent="center"
+            alignItems="center"
+            spacing={1}
           >
-            Reset password
-          </Button>
-          <Typography align="center">
-            Don&apos;t have an account? <Link to="/register">Register now.</Link>
-          </Typography>
-        </Stack>
-      </Box>
-    </Container>
+            <Typography align="center" className={classes.text}>
+              Reset password
+            </Typography>
+            <TextField
+              id="email-input"
+              value={email}
+              onChange={handleChangeEmail}
+              placeholder="E-mail Address"
+              fullWidth
+            />
+            <Button
+              id="reset-button"
+              className={classes.button}
+              variant="outlined"
+              onClick={handleClickReset}
+            >
+              Reset password
+            </Button>
+            <Typography align="center">
+              Don&apos;t have an account? <Link to="/register">Register now.</Link>
+            </Typography>
+          </Stack>
+        </Box>
+      </Container>
+    </Box>
   )
 }
 
@@ -111,4 +124,7 @@ const useStyles = makeStyles((theme: any) => ({
       fontSize: theme.typography.pxToRem(22),
     },
   },
+  progressBox: {
+    width: "100%"
+  }
 }))
