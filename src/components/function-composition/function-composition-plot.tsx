@@ -118,11 +118,11 @@ export function FunctionCompositionPlot() {
   }
 
   const handleChangeF = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputFunctionF(event.target.value)
+    setInputFunctionF(event.target.value.toLowerCase())
   }
 
   const handleChangeG = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputFunctionG(event.target.value)
+    setInputFunctionG(event.target.value.toLowerCase())
   }
 
   const handleClick = () => {
@@ -312,6 +312,7 @@ export function FunctionCompositionPlot() {
                       value={inputFunctionF}
                       variant="outlined"
                       autoComplete="off"
+                      autoCapitalize="none"
                       onChange={handleChangeF}
                       className={classes.input}
                     />
@@ -339,6 +340,7 @@ export function FunctionCompositionPlot() {
                       value={inputFunctionG}
                       variant="outlined"
                       autoComplete="off"
+                      autoCapitalize="none"
                       onChange={handleChangeG}
                       className={classes.input}
                     />

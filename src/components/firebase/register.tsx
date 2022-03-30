@@ -8,6 +8,7 @@ import {
   IconButton,
   InputAdornment,
   OutlinedInput,
+  LinearProgress,
   Stack,
   TextField,
   Typography
@@ -93,98 +94,108 @@ export function Register (){
   }
 
   return (
-    <Container className={classes.center}>
-      <AuthenticationAlert 
-        status={status} 
-        message={message} 
-        resetManager={resetManager} 
-      />
-      <Box className={classes.box}>
-        <Stack
-          direction="column"
-          justifyContent="center"
-          alignItems="center"
-          spacing={1}
-        >
-          <Typography align="center" className={classes.text}>
-            Register
-          </Typography>
-          <TextField
-            id="name-input"
-            value={name}
-            onChange={handleChangeName}
-            placeholder="Name"
-            fullWidth
-          />
-          <TextField
-            id="email-input"
-            value={email}
-            onChange={handleChangeEmail}
-            placeholder="E-mail Address"
-            fullWidth
-          />
-          <OutlinedInput
-            id="password-input"
-            type={showPassword 
-              ? "text" 
-              : "password"
-            }
-            value={password}
-            onChange={handleChangePassword}
-            placeholder="Password"
-            fullWidth
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle-password-visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  edge="end"
-                >
-                  {showPassword 
-                    ? <VisibilityOff /> 
-                    : <Visibility />
-                  }
-                </IconButton>
-              </InputAdornment>
-            }
-          />
-          <Button
-            id="register-button"
-            className={classes.button}
-            variant="outlined"
-            onClick={handleClickRegister}
+    <Box>
+      {processing
+        ? <Box className={classes.progressBox}>
+            <LinearProgress />
+          </Box>
+        : null
+      }
+      <Container className={classes.center}>
+        <AuthenticationAlert 
+          status={status} 
+          message={message} 
+          resetManager={resetManager} 
+        />
+        <Box className={classes.box}>
+          <Stack
+            direction="column"
+            justifyContent="center"
+            alignItems="center"
+            spacing={1}
           >
-            Register
-          </Button>
-          <Button
-            id="register-google-button"
-            className={classes.button}
-            variant="contained"
-            startIcon={<GoogleIcon />}
-            onClick={handleClickGoogleLogin}
-          >
-            Register with Google
-          </Button>
-          <Typography align="center">
-            <Link to="/reset-password">Forgot Password</Link>
-          </Typography>
-          <Typography align="center">
-            Already have an account? <Link to="/login">Login now.</Link>
-          </Typography>
-          <Typography align="left" variant="caption">
-            Please verify your email through the verification we will send you after registering.
-          </Typography>
-          <PrivacyPolicyNotice />
-        </Stack>
-      </Box>
-      <CustomAlert 
-        open={alertName}
-        handleClose={handleClose}
-        severity="error"
-        text="Please enter your name."
-      />
-    </Container>
+            <Typography align="center" className={classes.text}>
+              Register
+            </Typography>
+            <TextField
+              id="name-input"
+              value={name}
+              onChange={handleChangeName}
+              placeholder="Name"
+              fullWidth
+            />
+            <TextField
+              id="email-input"
+              value={email}
+              onChange={handleChangeEmail}
+              placeholder="E-mail Address"
+              fullWidth
+            />
+            <OutlinedInput
+              id="password-input"
+              type={showPassword 
+                ? "text" 
+                : "password"
+              }
+              value={password}
+              onChange={handleChangePassword}
+              placeholder="Password"
+              fullWidth
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle-password-visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                    edge="end"
+                  >
+                    {showPassword 
+                      ? <VisibilityOff /> 
+                      : <Visibility />
+                    }
+                  </IconButton>
+                </InputAdornment>
+              }
+            />
+            <Button
+              id="register-button"
+              variant="outlined"
+              disabled={processing}
+              onClick={handleClickRegister}
+              className={classes.button}
+            >
+              Register
+            </Button>
+            <Button
+              id="register-google-button"
+              variant="contained"
+              disabled={processing}
+              startIcon={<GoogleIcon />}
+              onClick={handleClickGoogleLogin}
+              className={classes.button}
+            >
+              Register with Google
+            </Button>
+            <Typography align="center">
+              <Link to="/reset-password">Forgot Password</Link>
+            </Typography>
+            <Typography align="center">
+              Already have an account? <Link to="/login">Login now.</Link>
+            </Typography>
+            <Typography align="left" variant="caption">
+              Please verify your email through the verification we will send you after registering.
+            </Typography>
+            <PrivacyPolicyNotice />
+          </Stack>
+        </Box>
+        <CustomAlert 
+          open={alertName}
+          handleClose={handleClose}
+          severity="error"
+          text="Please enter your name."
+        />
+      </Container>
+    </Box>
   )
 }
 
@@ -210,4 +221,7 @@ const useStyles = makeStyles((theme: any) => ({
       fontSize: theme.typography.pxToRem(22),
     },
   },
+  progressBox: {
+    width: "100%"
+  }
 }))

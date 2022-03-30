@@ -3,6 +3,8 @@ import {
   Box,
   Button,
   Container,
+  CircularProgress,
+  LinearProgress,
   Stack,
   Typography
 } from "@mui/material"
@@ -18,12 +20,14 @@ export function Dashboard() {
   const [user, loading] = useAuthState(auth)
   const [name, setName] = useState("")
   const [error, setError] = useState(false)
+  const [fetching, setFetching] = useState(true)
   const navigate = useNavigate()
-  const { logout } = useAuthenticationManager()
+  const { processing, logout } = useAuthenticationManager()
 
   const classes = useStyles()
 
   const fetchUserName = async () => {
+    setFetching(true)
     try {
       const req = query(collection(db, "users"), where("uid", "==", user?.uid))
       const doc = await getDocs(req)
@@ -33,6 +37,7 @@ export function Dashboard() {
       console.error(err)
       setError(true)
     }
+    setFetching(false)
   }
 
   useEffect(() => {
@@ -40,13 +45,14 @@ export function Dashboard() {
       return
     }
 
-    if (!user) {
+    if(!user) {
       navigate("/login")
-      return
     }
 
-    fetchUserName()
-  }, [user, loading])
+    if(user && !processing) {
+      fetchUserName()
+    }
+  }, [user, loading, processing])
 
   const handleClickLogOut = () => {
     logout()
@@ -61,37 +67,54 @@ export function Dashboard() {
   }
 
   return (
-    <Container className={classes.center}>
-      <CustomAlert 
-        open={error}
-        handleClose={handleClose}
-        severity="error"
-        text="An error occured while fetching user data"
-      />
-      <Box className={classes.box}>
-        <Stack
-          direction="column"
-          justifyContent="center"
-          alignItems="center"
-          spacing={4}
-        >
-          <Typography align="center" className={classes.text}>
-            Welcome {name}
-          </Typography>
-          <Typography align="left">
-            Your email is: {user?.email}
-          </Typography>
-          <Button
-            id="log-out-button"
-            className={classes.button}
-            variant="contained"
-            onClick={handleClickLogOut}
-          >
-            Log out
-          </Button>
-        </Stack>
-      </Box>
-    </Container>
+    <Box>
+      {processing
+        ? <Box className={classes.progressBox}>
+            <LinearProgress />
+          </Box>
+        : null
+      }
+      <Container className={classes.center}>
+        <CustomAlert 
+          open={error}
+          handleClose={handleClose}
+          severity="error"
+          text="An error occured while fetching user data"
+        />
+        {fetching
+          ? <Box>
+              <CircularProgress />
+            </Box>
+          : <Box className={classes.box}>
+            <Stack
+              direction="column"
+              justifyContent="center"
+              alignItems="center"
+              spacing={4}
+            >
+              <Typography align="center" className={classes.text}>
+                Welcome {name}
+              </Typography>
+              <Typography align="left">
+                Your email is: {user?.email}
+              </Typography>
+              <Button
+                id="log-out-button"
+                variant="contained"
+                disabled={processing}
+                onClick={handleClickLogOut}
+                className={classes.button}
+              >
+                Log out
+              </Button>
+            </Stack>
+          </Box>
+        }
+        
+      </Container>
+      
+      
+    </Box>
   )
 }
 
@@ -118,4 +141,7 @@ const useStyles = makeStyles((theme: any) => ({
       fontSize: theme.typography.pxToRem(22),
     },
   },
+  progressBox: {
+    width: "100%"
+  }
 }))
