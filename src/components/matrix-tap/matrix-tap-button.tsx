@@ -1,9 +1,11 @@
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, @mui/styles and lodash.
+ */
 import React, { useContext } from "react"
-import _ from "lodash"
-import { 
-  Button,
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+import Button from "@mui/material/Button"
+import makeStyles from "@mui/styles/makeStyles"
+import cloneDeep from "lodash/cloneDeep"
 import { MatrixContext } from "components/matrix-context/matrix-context"
 
 interface IMatrixTapButton {
@@ -20,7 +22,7 @@ export function MatrixTapButton (props: IMatrixTapButton) {
   const classes = useStyles()
 
   const handleClick = () => {
-    const tempMatrix = _.cloneDeep(matrix)
+    const tempMatrix = cloneDeep(matrix)
     if(matrix[rowIndex][colIndex] === 0) {
       tempMatrix[rowIndex][colIndex] = 1
     } else {

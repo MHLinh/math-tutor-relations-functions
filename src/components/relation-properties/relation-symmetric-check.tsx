@@ -1,9 +1,11 @@
+/**
+ * This code uses following libraries: 
+ * react and @mui/material.
+ */
 import React from "react"
-import {
-  Box,
-  Typography
-} from "@mui/material"
-import { checkReflexive } from "utils"
+import Box from "@mui/material/Box"
+import Typography from "@mui/material/Typography"
+import { checkSymmetric } from "utils"
 
 interface IRelationSymmetricCheck {
  matrix: number[][] // Relation stored as matrix
@@ -15,7 +17,7 @@ interface IRelationSymmetricCheck {
  */
 export function RelationSymmetricCheck(props: IRelationSymmetricCheck) {
   const { matrix } = props
-  const missingPairs = checkReflexive(matrix)
+  const missingPairs = checkSymmetric(matrix)
   const symmetric = missingPairs.length === 0
   const stringPairs = missingPairs.join(", ")
   const verb = missingPairs.length > 1

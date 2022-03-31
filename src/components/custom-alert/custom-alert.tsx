@@ -1,9 +1,10 @@
+/**
+ * This code uses following libraries: 
+ * react and @mui/material.
+ */
 import React from "react"
-import {
-  Alert,
-  AlertColor,
-  Snackbar
-} from "@mui/material"
+import Alert, { AlertColor } from "@mui/material/Alert"
+import Snackbar from "@mui/material/Snackbar"
 
 interface ICustomAlert {
   open: boolean,        // Whether to show the alert
@@ -16,7 +17,7 @@ interface ICustomAlert {
 }
 
 /**
- * A component displaying an alert message.
+ * A component displaying a custom alert message.
  */
 export function CustomAlert(props: ICustomAlert) {
   const { open, handleClose, severity, text } = props

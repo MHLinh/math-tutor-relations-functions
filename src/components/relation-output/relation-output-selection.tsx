@@ -1,15 +1,18 @@
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, and @mui/styles
+ */
 import React, { useState } from "react"
-import {
-  Box,
-  Button,
-  Grid,
-  Typography,
-  List,
-  ListItemButton,
-  ListItemText,
-  Modal,  
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+import Box from "@mui/material/Box"
+import Button from "@mui/material/Button"
+import Grid from "@mui/material/Grid"
+import List from "@mui/material/List"
+import ListItemButton from "@mui/material/ListItemButton"
+import ListItemText from "@mui/material/ListItemText"
+import Modal from "@mui/material/Modal"
+import Typography from "@mui/material/Typography"
+import makeStyles from "@mui/styles/makeStyles"
+import { buttonStyle } from "theme"
 
 export const relationOutputTypes = [
   { id: "matrix", name: "Matrix" },
@@ -50,19 +53,30 @@ export function RelationOutputSelection(props: IRelationOutputSelection) {
 
   return (
     <Box>
-      <Button variant="contained" onClick={handleOpen}>
+      <Button 
+        data-testid="output-change-button"
+        variant="contained" 
+        onClick={handleOpen}
+        className={classes.button}
+      >
         Change relation output
       </Button>
+      {/* Selection window. */}
       <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="output-selection-title"
-        aria-describedby="out-selection-types"
+        aria-describedby="output-selection-types"
       >
         <Box className={classes.boxModal}>
           <Grid container direction="column">
             <Grid item>
-              <Typography id="output-selection-title" align="center" className={classes.title}>
+              <Typography
+                data-testid="output-selection-title"
+                id="output-selection-title" 
+                align="center" 
+                className={classes.title}
+              >
                 Select a relation representation type for output
               </Typography>
             </Grid>
@@ -70,6 +84,7 @@ export function RelationOutputSelection(props: IRelationOutputSelection) {
               <List aria-label="out-selection-types">
                 {relationOutputTypes.map(({ id, name }) => (
                   <ListItemButton
+                    data-testid={id}
                     key={id}
                     selected={selectedType === id}
                     onClick={(event) => handleListItemClick(event, id)}
@@ -97,6 +112,9 @@ const useStyles = makeStyles((theme: any) => ({
     backgroundColor: theme.palette.common.white,
     border: "2px solid #000",
     padding: theme.spacing(2)
+  },
+  button: {
+    ...buttonStyle
   },
   listItem: {
     "&.Mui-selected": {

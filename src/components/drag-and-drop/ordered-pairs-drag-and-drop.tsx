@@ -1,22 +1,27 @@
-/** The code was modified based on the following library use example 
-  * https://github.com/abeaudoin2013/react-beautiful-dnd-multi-list-typescript-example/blob/master/src/App.tsx
-  */
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, @mui/styles, react-beautiful-dnd, and lodash.
+ * 
+ * The code was written based on the following react-beautiful-dnd library example:
+ * https://github.com/abeaudoin2013/react-beautiful-dnd-multi-list-typescript-example/blob/master/src/App.tsx.
+ * Accessed: 20.02.2022
+ * Author: Andy Beaudoin
+ */
 import React, { useContext } from "react"
-import {
-  Box,
-  Typography
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+import Box from "@mui/material/Box"
+import Typography from "@mui/material/Typography"
+import makeStyles from "@mui/styles/makeStyles"
 import {
   DragDropContext,
   Draggable,
   Droppable,
   DroppableProvided,
-
   DropResult,
-  DroppableStateSnapshot, DraggableProvided, DraggableStateSnapshot
+  DroppableStateSnapshot, 
+  DraggableProvided, 
+  DraggableStateSnapshot
 } from "react-beautiful-dnd"
-import _ from "lodash"
+import cloneDeep from "lodash/cloneDeep"
 import { getDragAndDropState } from "utils"
 import { palette } from "theme"
 import { MatrixContext } from "components/matrix-context/matrix-context"
@@ -42,7 +47,7 @@ export function OrderedPairsDragAndDrop() {
 
     // Dropped into different lists
     if (source.droppableId !== destination.droppableId) {
-      const tempMatrix = _.cloneDeep(matrix)
+      const tempMatrix = cloneDeep(matrix)
 
       // Dragging from items to selected means adding pair to the relation.
       // Otherwise we are removing a pair from the relation.
@@ -58,11 +63,12 @@ export function OrderedPairsDragAndDrop() {
   }
 
   return (
-    <Box>
+    <Box data-testid="ordered-pairs-input">
       <Typography align="center" className={classes.text}>
         Drag and drop pairs of numbers to modify the relation
       </Typography>
       <DragDropContext onDragEnd={onDragEnd}>
+        {/* Container for pairs in the relation. */}
         <Box className={classes.box}>
           <Typography>
             Pairs of numbers in the relation:
@@ -99,6 +105,7 @@ export function OrderedPairsDragAndDrop() {
             )}
           </Droppable>
         </Box>
+        {/* Container for pairs not in the relation. */}
         <Box className={classes.box}>
           <Typography>
             Pairs of numbers not in the relation:

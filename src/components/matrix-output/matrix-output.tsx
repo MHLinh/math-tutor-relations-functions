@@ -1,13 +1,16 @@
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, and @mui/styles.
+ */
 import React from "react"
-import {
-  Box,
-  Typography,
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+import Box from "@mui/material/Box"
+import Typography from "@mui/material/Typography"
+import makeStyles from "@mui/styles/makeStyles"
 import { center } from "theme"
 import { Matrix } from "components/matrix/matrix"
 
 interface IMatrixOutput {
+  text: string,      // Header text
   matrix: number[][] // Relation stored as a matrix
 }
 
@@ -15,13 +18,13 @@ interface IMatrixOutput {
  * A component displaying the relation as a matrix.
  */
 export function MatrixOutput(props: IMatrixOutput) {
-  const { matrix } = props
+  const { text, matrix } = props
   const classes = useStyles()
 
   return (
-    <Box>
+    <Box data-testid="matrix-output">
       <Typography align="center" className={classes.text}>
-        Relation as a matrix:
+        {text}
       </Typography>
       <Box className={classes.center}>
         <Matrix matrix={matrix} />

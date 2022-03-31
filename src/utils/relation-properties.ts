@@ -5,7 +5,7 @@
  */
 export function isReflexive(matrix: number[][]): boolean {
   for(let i = 0; i < matrix.length; i++) {
-    if(matrix[i][i] !== 1) {
+    if(matrix[i][i] === 0) {
       return false
     }
   }
@@ -21,7 +21,7 @@ export function isReflexive(matrix: number[][]): boolean {
 export function checkReflexive(matrix: number[][]): string[] {
   const pairs: string[] = []
   for(let i = 0; i < matrix.length; i++) {
-    if(matrix[i][i] !== 1) {
+    if(matrix[i][i] === 0) {
       pairs.push(`(${i+1},${i+1})`)
     }
   }
@@ -35,7 +35,7 @@ export function checkReflexive(matrix: number[][]): string[] {
  */
 export function isIrreflexive(matrix: number[][]): boolean {
   for(let i = 0; i < matrix.length; i++) {
-    if(matrix[i][i] !== 0) {
+    if(matrix[i][i] === 1) {
       return false
     }
   }
@@ -51,7 +51,7 @@ export function isIrreflexive(matrix: number[][]): boolean {
 export function checkIrreflexive(matrix: number[][]): string[] {
   const pairs: string[] = []
   for(let i = 0; i < matrix.length; i++) {
-    if(matrix[i][i] !== 0) {
+    if(matrix[i][i] === 1) {
       pairs.push(`(${i+1},${i+1})`)
     }
   }
@@ -83,7 +83,7 @@ export function isSymmetric(matrix: number[][]): boolean {
 export function checkSymmetric(matrix: number[][]): string[] {
   const pairs: string[] = []
   for(let i = 0; i < matrix.length; i++) {
-    for(let j = 0; j < matrix.length; j++) {
+    for(let j = i; j < matrix.length; j++) {
       if(matrix[i][j] !== matrix[j][i]) {
         if(matrix[i][j] === 1) {
           pairs.push(`(${j+1},${i+1})`)
@@ -104,7 +104,7 @@ export function checkSymmetric(matrix: number[][]): string[] {
 export function isAntisymmetric(matrix: number[][]): boolean {
   for(let i = 0; i < matrix.length; i++) {
     for(let j = 0; j < matrix.length; j++) {
-      if(i !== j && matrix[i][j] === matrix[j][i] && matrix[i][j] === 1) {
+      if(i !== j && matrix[i][j] === 1 && matrix[j][i] === 1) {
         return false
       }
     }
@@ -121,8 +121,8 @@ export function isAntisymmetric(matrix: number[][]): boolean {
 export function checkAntisymmetric(matrix: number[][]): string[] {
   const pairs: string[] = []
   for(let i = 0; i < matrix.length; i++) {
-    for(let j = 0; j < matrix.length; j++) {
-      if(i !== j && matrix[i][j] === matrix[j][i] && matrix[i][j] === 1) {
+    for(let j = i; j < matrix.length; j++) {
+      if(i !== j && matrix[i][j] === 1 && matrix[j][i] === 1) {
         pairs.push(`(${i+1},${j+1})`)
         pairs.push(`(${j+1},${i+1})`)
       }
@@ -174,18 +174,16 @@ export function checkTransitive(matrix: number[][]): string[] {
 }
 
 /**
- * A function to determine whether a relation has all pairs of elements.
+ * A function to determine whether a relation has all pairs of combinations of elements.
  * Either has (a,b) or (b,a).
  * @param matrix - a matrix of 0's and 1's representing a relation
  * @returns whether the relation has all pairs of elements
  */
-export function isAllPairs(matrix: number[][]): boolean {
+export function isAllPairsCombinations(matrix: number[][]): boolean {
   for(let i = 0; i < matrix.length; i++) {
     for(let j = i; j < matrix.length; j++) {
-      if(matrix[i][j] !== 1) {
-        if(matrix[j][i] !== 1) {
-          return false
-        }
+      if(matrix[i][j] === 0 && matrix[j][i] === 0) {
+        return false
       }
     }
   }

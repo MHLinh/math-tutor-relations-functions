@@ -1,15 +1,17 @@
-import React from "react"
-import {
-  Box,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableRow,
-  Typography,
-  useTheme
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, and @mui/styles.
+ */
+ import React from "react"
+ import Box from "@mui/material/Box"
+ import Table from "@mui/material/Table"
+ import TableBody from "@mui/material/TableBody"
+ import TableCell from "@mui/material/TableCell"
+ import TableContainer from "@mui/material/TableContainer"
+ import TableRow from "@mui/material/TableRow"
+ import Typography from "@mui/material/Typography"
+ import useTheme from "@mui/material/styles/useTheme"
+ import makeStyles from "@mui/styles/makeStyles"
 import { palette } from "theme"
 
 interface IWarshallsMatrix {
@@ -18,7 +20,7 @@ interface IWarshallsMatrix {
 }
 
 /**
- * A component displaying the matrix of 0'1 and 1's
+ * A component displaying the matrix of 0's and 1's
  * for Warshall's algorithm, with highlighted rows and cols,
  * and colored 0's to be changed to 1's.
  */

@@ -1,12 +1,17 @@
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, and @mui/styles.
+ */
 import React from "react"
-import {
-  Box,
-  Typography
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+import Box from "@mui/material/Box"
+import Typography from "@mui/material/Typography"
+import useMediaQuery from "@mui/material/useMediaQuery"
+import useTheme from "@mui/material/styles/useTheme"
+import makeStyles from "@mui/styles/makeStyles"
 import { computeOrderedPairs } from "utils"
 
 interface IOrderedPairs {
+  text: string,      // Header text
   matrix: number[][] // Relation stored as a matrix
 }
 
@@ -14,9 +19,11 @@ interface IOrderedPairs {
  * A component displaying the relation as list of ordered pairs.
  */
 export function OrderedPairs(props: IOrderedPairs) {
-  const { matrix } = props
+  const { text, matrix } = props
   const classes = useStyles()
-  
+  const { breakpoints } = useTheme()
+  const small = useMediaQuery(breakpoints.down("sm"))
+
   const pairs = computeOrderedPairs(matrix)
   const tuplePairs = pairs.map(([a, b]) => `(${a},${b})`)
   const stringPairs = tuplePairs.join(", ")
@@ -26,14 +33,14 @@ export function OrderedPairs(props: IOrderedPairs) {
   const stringPairs2 = tuplePairs.slice(-middle).join(", ")
   
   return (
-    <Box>
+    <Box data-testid="ordered-pairs-output">
       <Typography align="center" className={classes.text}>
-        Relation as a set of ordered pairs:
+        {text}
       </Typography>
       {tuplePairs.length > 0
          ? <Typography align="center">
-            {divide
-              ? <span>{stringPairs1} <br/> {stringPairs2}</span>
+            {divide && !small
+              ? <span>{stringPairs1}, <br/> {stringPairs2}</span>
               : stringPairs
             }
           </Typography>

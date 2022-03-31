@@ -1,7 +1,11 @@
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, and @mui/styles.
+ */
 import React, { useContext } from "react"
-import {
-  Button,
-} from "@mui/material"
+import Button from "@mui/material/Button"
+import makeStyles from "@mui/styles/makeStyles"
+import { buttonStyle } from "theme"
 import { generateMatrix } from "utils"
 import { MatrixContext } from "components/matrix-context/matrix-context"
 
@@ -10,6 +14,7 @@ import { MatrixContext } from "components/matrix-context/matrix-context"
  */
 export function ClearButton() {
   const { matrix, setter } = useContext(MatrixContext)
+  const classes = useStyles()
   
   // Generate a new empty matrix and set it to be the current matrix
   const handleClick = () => {
@@ -17,8 +22,20 @@ export function ClearButton() {
   }
 
   return (
-    <Button variant="contained" onClick={handleClick}>
+    <Button
+      data-testid="clear-relation-button" 
+      variant="contained" 
+      onClick={handleClick}
+      className={classes.button}
+    >
       Clear relation
     </Button>
   )
 }
+
+const useStyles = makeStyles((theme: any) => ({
+  button: {
+    ...buttonStyle
+  }
+ }))
+ 

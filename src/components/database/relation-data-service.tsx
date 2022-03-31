@@ -1,21 +1,23 @@
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, and @mui/styles.
+ */
 import React from "react"
-import {
-  Box
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+import Box from "@mui/material/Box"
+import makeStyles from "@mui/styles/makeStyles"
 import { MatrixContext, IMatrixContext } from "components/matrix-context/matrix-context"
 import { SaveRelation } from "./save-relation"
 import { LoadRelation } from "./load-relation"
 
-interface ISaveAndLoadRelation {
+interface IRelationDataService {
   matrixContextValue: IMatrixContext, // Matrix context for accessing the matrix and its setter
-  type: string,                       // The type of the relation (for displaying in correct pages)
+  type: string,                       // The type of the saved data
 }
 
 /**
  * A component displaying save and load relation components.
  */
-export function SaveAndLoadRelation(props: ISaveAndLoadRelation) {
+export function RelationDataService(props: IRelationDataService) {
   const { matrixContextValue, type } = props
   const classes = useStyles()
 

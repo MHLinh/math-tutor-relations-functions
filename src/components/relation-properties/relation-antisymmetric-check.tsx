@@ -1,8 +1,10 @@
+/**
+ * This code uses following libraries: 
+ * react and @mui/material.
+ */
 import React from "react"
-import {
-  Box,
-  Typography
-} from "@mui/material"
+import Box from "@mui/material/Box"
+import Typography from "@mui/material/Typography"
 import { checkAntisymmetric } from "utils"
 
 interface IRelationAntisymmetricCheck {
@@ -19,8 +21,8 @@ export function RelationAntisymmetricCheck(props: IRelationAntisymmetricCheck) {
   const antisymmetric = pairs.length === 0
   const stringPairs = pairs.join(", ")
   const verb = pairs.length > 1
-    ? "are"
-    : "is"
+    ? "are "
+    : "is "
 
   return (
     <Box>
@@ -35,7 +37,8 @@ export function RelationAntisymmetricCheck(props: IRelationAntisymmetricCheck) {
           The above relation is ANTISYMMETRIC.
         </Typography>
         : <Typography>
-          The above relation is NOT ANTISYMMETRIC because {stringPairs} {verb} in the relation.
+          The above relation is NOT ANTISYMMETRIC because {stringPairs} {verb} 
+          in the relation at the same time.
         </Typography>
       }
     </Box>

@@ -1,15 +1,18 @@
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, and @mui/styles
+ */
 import React, { useState } from "react"
-import {
-  Box,
-  Button,
-  Grid,
-  Typography,
-  List,
-  ListItemButton,
-  ListItemText,
-  Modal,  
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+import Box from "@mui/material/Box"
+import Button from "@mui/material/Button"
+import Grid from "@mui/material/Grid"
+import List from "@mui/material/List"
+import ListItemButton from "@mui/material/ListItemButton"
+import ListItemText from "@mui/material/ListItemText"
+import Modal from "@mui/material/Modal"
+import Typography from "@mui/material/Typography"
+import makeStyles from "@mui/styles/makeStyles"
+import { buttonStyle } from "theme"
 
 export const relationInputTypes = [
   { id: "matrix", name: "Matrix" },
@@ -50,19 +53,30 @@ export function RelationInputSelection(props: IRelationInputSelection) {
 
   return (
     <Box>
-      <Button variant="contained" onClick={handleOpen}>
+      <Button
+        data-testid="input-change-button"
+        variant="contained" 
+        onClick={handleOpen}
+        className={classes.button}
+      >
         Change relation input
       </Button>
+      {/* Selection window. */}
       <Modal
         open={open}
         onClose={handleClose}
-        aria-labelledby="output-selection-title"
-        aria-describedby="modal-modal-description"
+        aria-labelledby="input-selection-title"
+        aria-describedby="input-selection-types"
       >
         <Box className={classes.boxModal}>
           <Grid container direction="column">
             <Grid item>
-              <Typography id="output-selection-title" align="center" className={classes.title}>
+              <Typography
+                data-testid="input-selection-title"
+                id="input-selection-title" 
+                align="center" 
+                className={classes.title}
+              >
                 Select a relation representation type for input
               </Typography>
             </Grid>
@@ -70,6 +84,7 @@ export function RelationInputSelection(props: IRelationInputSelection) {
               <List aria-label="out-selection-types">
                 {relationInputTypes.map(({ id, name }) => (
                   <ListItemButton
+                    data-testid={id}
                     key={id}
                     selected={selectedType === id}
                     onClick={(event) => handleListItemClick(event, id)}
@@ -96,6 +111,9 @@ const useStyles = makeStyles((theme: any) => ({
     backgroundColor: theme.palette.common.white,
     border: "2px solid #000",
     padding: theme.spacing(2)
+  },
+  button: {
+    ...buttonStyle
   },
   listItem: {
     "&.Mui-selected": {

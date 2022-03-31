@@ -1,29 +1,22 @@
-import React, { useState, useCallback, useEffect, useMemo } from "react"
-import {
-  Box,
-  Container,
-  Button
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, and @mui/styles.
+ */
+import React, { useState, useCallback, useMemo } from "react"
+import Box from "@mui/material/Box"
+import Container from "@mui/material/Container"
+import makeStyles from "@mui/styles/makeStyles"
 import { 
   NUM_OF_ELEMENTS,
-  directedGraphNodes,
   generateMatrix, 
 } from "utils"
 import { paddingStyle } from "theme/styles"
 import { IMatrixContext } from "components/matrix-context/matrix-context"
 import { RelationOutput } from "components/relation-output/relation-output"
-import { 
-  relationOutputTypes, 
-  RelationOutputSelection 
-} from "components/relation-output/relation-output-selection"
+import { relationOutputTypes } from "components/relation-output/relation-output-selection"
 import { RelationInput } from "components/relation-input/relation-input"
-import { 
-  relationInputTypes, 
-  RelationInputSelection 
-} from "components/relation-input/relation-input-selection"
-import { ClearButtonProvider } from "components/clear-button/clear-button-provider"
-import { SaveAndLoadRelation } from "components/database/save-and-load-relation"
+import {  relationInputTypes} from "components/relation-input/relation-input-selection"
+import { RelationButtons } from "components/relation-buttons/relation-buttons"
 import { RelationPropertiesTable } from "./relation-properties-table"
 
 /**
@@ -37,15 +30,15 @@ export function RelationProperties() {
   const [inputType, setInputType] = useState(relationInputTypes[0].id)
   const classes = useStyles()
 
-  const wrapperSetRelation= useCallback((matrix: number[][]) => {
+  const wrapperSetRelation = useCallback((matrix: number[][]) => {
     setRelation(matrix)
   }, [setRelation])
   
-  const wrapperSetOutputType= useCallback((type: string) => {
+  const wrapperSetOutputType = useCallback((type: string) => {
     setOutputType(type)
   }, [setOutputType])
 
-  const wrapperSetInputType= useCallback((type: string) => {
+  const wrapperSetInputType = useCallback((type: string) => {
     setInputType(type)
   }, [setInputType])
 
@@ -58,8 +51,7 @@ export function RelationProperties() {
     <Container className={classes.container}>
       <Box className={classes.box}>
         <RelationOutput 
-          matrix={relation} 
-          nodes={directedGraphNodes} 
+          matrix={relation}
           type={outputType}
         />
       </Box>
@@ -69,30 +61,17 @@ export function RelationProperties() {
       <Box className={classes.box}>
         <RelationInput 
           matrixContextValue={contextValue}
-          matrix={relation}
-          numOfElements={NUM_OF_ELEMENTS}
           type={inputType}
         />
       </Box>
       <Box className={classes.box}>
-        <RelationOutputSelection 
-          selectedType={outputType}
-          setSelectedType={wrapperSetOutputType}
-        />
-      </Box>
-      <Box className={classes.box}>
-        <RelationInputSelection 
-          selectedType={inputType}
-          setSelectedType={wrapperSetInputType}
-        />
-      </Box>
-      <Box className={classes.box}>
-        <ClearButtonProvider matrixContextValue={contextValue} />
-      </Box>
-      <Box className={classes.box}>
-        <SaveAndLoadRelation 
+        <RelationButtons 
+          selectedOutputType= {outputType}
+          setSelectedOutputType={wrapperSetOutputType}
+          selectedInputType={inputType}
+          setSelectedInputType={wrapperSetInputType}
           matrixContextValue={contextValue}
-          type="relation-properties-all" 
+          type="relation"
         />
       </Box>
     </Container>

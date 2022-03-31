@@ -1,17 +1,22 @@
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, and @mui/styles.
+ */
 import React, { useState, useCallback, useMemo } from "react"
-import {
-  Box,
-  Button,
-  Container,
-  Typography
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+import Box from "@mui/material/Box"
+import Button from "@mui/material/Button"
+import Container from "@mui/material/Container"
+import Grid from "@mui/material/Grid"
+import Typography from "@mui/material/Typography"
+import useTheme from "@mui/material/styles/useTheme"
+import useMediaQuery from "@mui/material/useMediaQuery"
+import makeStyles from "@mui/styles/makeStyles"
 import { 
   NUM_OF_ELEMENTS,
   generateMatrix,
   computeWarshalls 
 } from "utils"
-import { paddingStyle } from "theme/styles"
+import { paddingStyle, buttonStyle } from "theme"
 import { IMatrixContext } from "components/matrix-context/matrix-context"
 import { RelationInput } from "components/relation-input/relation-input"
 import { 
@@ -19,7 +24,7 @@ import {
   RelationInputSelection 
 } from "components/relation-input/relation-input-selection"
 import { ClearButtonProvider } from "components/clear-button/clear-button-provider"
-import { SaveAndLoadRelation } from "components/database/save-and-load-relation"
+import { RelationDataService } from "components/database/relation-data-service"
 import { WarshallsSteps } from "./warshalls-steps"
 
 const emptyRelation = generateMatrix(NUM_OF_ELEMENTS)
@@ -36,12 +41,14 @@ export function RelationWarshalls() {
   const [computing, setComputing] = useState(false)
   const [steps, setSteps] = useState<number[][][]>([])
   const classes = useStyles()
+  const { breakpoints } = useTheme()
+  const medium = useMediaQuery(breakpoints.down("md"))
 
-  const wrapperSetRelation= useCallback((matrix: number[][]) => {
+  const wrapperSetRelation = useCallback((matrix: number[][]) => {
     setRelation(matrix)
   }, [setRelation])
   
-  const wrapperSetInputType= useCallback((type: string) => {
+  const wrapperSetInputType = useCallback((type: string) => {
     setInputType(type)
   }, [setInputType])
 
@@ -79,54 +86,89 @@ export function RelationWarshalls() {
           <Box className={classes.box}>
             <RelationInput 
               matrixContextValue={contextValue}
-              matrix={relation}
-              numOfElements={NUM_OF_ELEMENTS}
               type={inputType}
             />
           </Box>
-          <Box className={classes.box}>
-            <RelationInputSelection 
-              selectedType={inputType}
-              setSelectedType={wrapperSetInputType}
-            />
-          </Box>
-          <Box className={classes.box}>
-            <ClearButtonProvider matrixContextValue={contextValue} />
-          </Box>
-          <Box>
-            <SaveAndLoadRelation 
-              matrixContextValue={contextValue}
-              type="relation-properties-warshalls" 
-            />
-          </Box>
-          <Box className={classes.box}>
-            <Button variant="contained" onClick={handleCompute}>
-              Compute transitive closure
-            </Button>
-          </Box>
+          <Grid
+            container
+            justifyContent="center"
+            direction={medium 
+              ? "column"
+              : "row"
+            }
+            spacing={medium 
+              ? 0
+              : 1
+            }
+          >
+            <Grid 
+              container
+              item
+              justifyContent="center"
+              md={6}
+            >
+            <Box className={classes.box}>
+              <RelationInputSelection 
+                selectedType={inputType}
+                setSelectedType={wrapperSetInputType}
+              />
+            </Box>
+            <Box className={classes.box}>
+              <ClearButtonProvider matrixContextValue={contextValue} />
+            </Box>
+            <Box className={classes.box}>
+              <Button 
+                variant="contained" 
+                onClick={handleCompute}
+                className={classes.button}
+              >
+                Compute transitive closure
+              </Button>
+            </Box>
+            </Grid>
+            <Grid 
+              container
+              item
+              justifyContent="center"
+              md={6}
+            >
+              <RelationDataService 
+                matrixContextValue={contextValue}
+                type="relation" 
+              />
+            </Grid>
+          </Grid>
         </Box>
       : <Box>
           <Box className={classes.box}>
             <WarshallsSteps steps={steps}/>
           </Box>
-          <Box className={classes.box}>
-            <Button 
-              variant="contained" 
-              onClick={handleBackToInput}
-              className={classes.button}
-            >
-              Back to input
-            </Button>
-          </Box>
-          <Box className={classes.box}>
-            <Button 
-              variant="contained" 
-              onClick={handleReset}
-              className={classes.button}
-            >
-              Reset
-            </Button>
-          </Box>
+          <Grid
+            container
+            direction="column"
+            justifyContent="center"
+            alignItems="center" 
+            spacing={2}
+          >
+            <Grid item> 
+              <Button 
+                variant="contained" 
+                onClick={handleBackToInput}
+                className={classes.button}
+              >
+                Back to input
+              </Button>
+            </Grid>
+            <Grid item>
+              <Button 
+                variant="contained" 
+                onClick={handleReset}
+                className={classes.button}
+              >
+                Reset
+              </Button>
+            </Grid>
+          </Grid>
         </Box>
       }
     </Container>
@@ -139,7 +181,7 @@ const useStyles = makeStyles((theme: any) => ({
     paddingTop: theme.spacing(1)
   },
   button: {
-    width: theme.typography.pxToRem(200)
+    ...buttonStyle
   },
   container: {
     ...paddingStyle,

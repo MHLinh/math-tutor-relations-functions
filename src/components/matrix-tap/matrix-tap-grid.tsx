@@ -1,27 +1,26 @@
-import React from "react"
-import {
-  Box, 
-  Grid,
-  Typography
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, @mui/styles and lodash.
+ */
+import React, { useContext } from "react"
+import Box from "@mui/material/Box"
+import Grid from "@mui/material/Grid"
+import Typography from "@mui/material/Typography"
+import makeStyles from "@mui/styles/makeStyles"
+import { MatrixContext } from "components/matrix-context/matrix-context"
 import { MatrixTapButton } from "./matrix-tap-button"
 
-interface IMatrixTapGrid {
-  matrix: number[][]
-}
 
 /**
  * A component displaying the matrix as a grid of buttons to tap
  * for inputting a relation.
- * @param props - a matrix for generating the grid
  */
-export function MatrixTapGrid(props: IMatrixTapGrid) {
-  const { matrix } = props
+export function MatrixTapGrid() {
+  const { matrix } = useContext(MatrixContext)
   const classes = useStyles()
 
   return (
-    <Box>
+    <Box data-testid="matrix-input">
       <Typography align="center" className={classes.text}>
         Tap the buttons to modify the relation
       </Typography>

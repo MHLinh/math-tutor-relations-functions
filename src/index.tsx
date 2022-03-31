@@ -1,3 +1,6 @@
+/**
+ * Auto generated code from React project initialisation for PWA. 
+ */
 import React from "react"
 import ReactDOM from "react-dom"
 import "index.css"

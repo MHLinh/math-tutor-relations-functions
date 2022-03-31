@@ -1,3 +1,7 @@
+/**
+ * This code uses following libraries: 
+ * react, konva, and react-konva.
+ */
 import React from "react"
 import Konva from "konva"
 import { Group, Circle, Text } from "react-konva"
