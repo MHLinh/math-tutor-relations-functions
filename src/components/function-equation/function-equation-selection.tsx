@@ -1,15 +1,17 @@
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, and @mui/styles
+ */
 import React, { useState } from "react"
-import {
-  Box,
-  Button,
-  Grid,
-  Typography,
-  List,
-  ListItemButton,
-  ListItemText,
-  Modal,  
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+import Box from "@mui/material/Box"
+import Button from "@mui/material/Button"
+import Grid from "@mui/material/Grid"
+import List from "@mui/material/List"
+import ListItemButton from "@mui/material/ListItemButton"
+import ListItemText from "@mui/material/ListItemText"
+import Modal from "@mui/material/Modal"
+import Typography from "@mui/material/Typography"
+import makeStyles from "@mui/styles/makeStyles"
 import { Equation } from "./function-equation-types"
 
 const functionTypes = [
@@ -59,6 +61,7 @@ export function FunctionEquationSelection (props: IFunctionEquationSelection) {
       >
         Change type of function
       </Button>
+      {/* Function type slection window */}
       <Modal
         open={open}
         onClose={handleClose}
@@ -77,6 +80,7 @@ export function FunctionEquationSelection (props: IFunctionEquationSelection) {
                 Select a type of function
               </Typography>
             </Grid>
+            {/* Function type selection list. */}
             <Grid item>
               <List aria-label="function-selection-types">
                 {functionTypes.map(({ id, name }) => (
@@ -98,7 +102,6 @@ export function FunctionEquationSelection (props: IFunctionEquationSelection) {
     </Box>
   )
 }
-
 
 const useStyles = makeStyles((theme: any) => ({
   boxModal: {

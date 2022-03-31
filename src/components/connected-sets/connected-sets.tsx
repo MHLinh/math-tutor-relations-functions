@@ -1,13 +1,15 @@
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, @mui/styles, lodash, konva, and react-konva.
+ */
 import React, { useState, useEffect, useContext } from "react"
-import {
-  Box,
-  Stack,
-  Typography,
-  useTheme,
-  useMediaQuery,
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
-import _ from "lodash"
+import Box from "@mui/material/Box"
+import Stack from "@mui/material/Stack"
+import Typography from "@mui/material/Typography"
+import useMediaQuery from "@mui/material/useMediaQuery"
+import useTheme from "@mui/material/styles/useTheme"
+import makeStyles from "@mui/styles/makeStyles"
+import cloneDeep from "lodash/cloneDeep"
 import Konva from "konva"
 import { Stage, Layer } from "react-konva"
 import { center } from "theme"
@@ -52,9 +54,10 @@ export function ConnectedSets() {
     generateConnectedSetsNodes(xElements, yElements, width, size, distance)
   const edges = generateConnectedSetsEdges(matrix, startNodes, endNodes)
 
+  // Update the relation is nodes were selected.
   useEffect(() => {
     if(selectedNodes.start >= 0 && selectedNodes.end >= 0) {
-      const tempMatrix = _.cloneDeep(matrix)
+      const tempMatrix = cloneDeep(matrix)
       const rowIndex = startNodes[selectedNodes.start].id
       const colIndex = endNodes[selectedNodes.end].id
 

@@ -1,8 +1,10 @@
+/**
+ * This code uses following libraries: 
+ * react and @mui/material.
+ */
 import React, { useState } from "react"
-import {
-  Alert,
-  Snackbar
-} from "@mui/material"
+import Alert from "@mui/material/Alert"
+import Snackbar from "@mui/material/Snackbar"
 import { PrivacyPolicyNotice } from "./privacy-policy-notice"
 
 /**

@@ -1,3 +1,7 @@
+/**
+ * This code uses following libraries: 
+ * dexie and dexie-observable.
+ */
 import Dexie, { Table } from "dexie"
 import "dexie-observable"
 

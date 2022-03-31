@@ -1,3 +1,7 @@
+/**
+ * This code uses following libraries: 
+ * react.
+ */
 import React from "react"
 import { Navigation } from "./navigation"
 

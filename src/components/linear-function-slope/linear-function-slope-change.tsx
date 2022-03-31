@@ -1,14 +1,17 @@
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, @mui/styles,
+ * katex, and react-latex-next.
+ */
 import React, { useState } from "react"
-import {
-  Box,
-  Container,
-  Grid,
-  Slider,
-  Typography,
-  useTheme,
-  useMediaQuery,
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+import Box from "@mui/material/Box"
+import Container from "@mui/material/Container"
+import Grid from "@mui/material/Grid"
+import Slider from "@mui/material/Slider"
+import Typography from "@mui/material/Typography"
+import useTheme from "@mui/material/styles/useTheme"
+import useMediaQuery from "@mui/material/useMediaQuery"
+import makeStyles from "@mui/styles/makeStyles"
 import "katex/dist/katex.min.css"
 import Latex from "react-latex-next"
 import { center } from "theme/styles"
@@ -16,6 +19,7 @@ import { generateSliderMarks, roundToTwoDecimal } from "utils"
 import FunctionPlot from "components/function-plot/function-plot"
 import { FunctionPlotOptions } from "components/function-plot/function-plot-types"
 
+// Slider and plot settings.
 const step = 1
 const min = -6
 const max = 6
@@ -92,6 +96,7 @@ export function LinearFunctionSlopeChange() {
         justifyContent="center"
         spacing={1}
       >
+        {/* Function graph and slope. */}
         <Grid item md={6} lg={5}>
           <Box className={classes.center}>
             <FunctionPlot 
@@ -104,6 +109,7 @@ export function LinearFunctionSlopeChange() {
             </Typography>
           </Box>
         </Grid>
+        {/* Slope change input. */}
         <Grid item md={6} lg={5}>
           <Box className={classes.center}>
             <Box className={classes.slider}>

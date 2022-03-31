@@ -1,5 +1,9 @@
+/**
+ * This code uses following libraries: 
+ * react, @mui/styles, @testing-library/react, and @testing-library/jest-dom.
+ */
 import React from "react"
-import { ThemeProvider } from "@mui/styles"
+import ThemeProvider from "@mui/styles/ThemeProvider"
 import { render, screen, fireEvent, waitFor } from "@testing-library/react"
 import "@testing-library/jest-dom"
 import { theme } from "theme/theme"

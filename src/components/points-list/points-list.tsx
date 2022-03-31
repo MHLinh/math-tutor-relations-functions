@@ -1,15 +1,18 @@
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, @mui/styles,
+ * @mui/icons-material, and react-window.
+ */
 import React, { useContext } from "react"
-import {
-  Box,
-  ListItem,
-  ListItemButton,
-  ListItemText,
-  IconButton,
-  Typography,
-  useTheme,
-  useMediaQuery,
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+import Box from "@mui/material/Box"
+import ListItem from "@mui/material/ListItem"
+import ListItemButton from "@mui/material/ListItemButton"
+import ListItemText from "@mui/material/ListItemText"
+import IconButton from "@mui/material/IconButton"
+import Typography from "@mui/material/Typography"
+import useTheme from "@mui/material/styles/useTheme"
+import useMediaQuery from "@mui/material/useMediaQuery"
+import makeStyles from "@mui/styles/makeStyles"
 import DeleteIcon from "@mui/icons-material/Delete"
 import { FixedSizeList, ListChildComponentProps } from "react-window"
 import { IPoints } from "components/dexie/dexie"

@@ -1,5 +1,10 @@
+/**
+ * This code uses following libraries: 
+ * react and @mui/material.
+ */
 import React from "react"
-import { Typography, Link } from "@mui/material"
+import Typography from "@mui/material/Typography"
+import Link from "@mui/material/Link"
 
 /**
  * A component displaying the privacy policy notice.

@@ -1,8 +1,10 @@
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, and @mui/styles.
+ */
 import React from "react"
-import {
-  Box
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+import Box from "@mui/material/Box"
+import makeStyles from "@mui/styles/makeStyles"
 import { MatrixContext, IMatrixContext } from "components/matrix-context/matrix-context"
 import { SaveRelation } from "./save-relation"
 import { LoadRelation } from "./load-relation"

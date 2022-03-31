@@ -1,6 +1,11 @@
+/**
+ * This code uses following libraries: 
+ * react, react-router-dom, @mui/material, 
+ * @mui/icons-material, and react-firebase-hooks.
+ */
 import React from "react"
 import { useNavigate } from "react-router-dom"
-import { Button } from "@mui/material"
+import Button from "@mui/material/Button"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { auth } from "components/firebase/firebase"
 

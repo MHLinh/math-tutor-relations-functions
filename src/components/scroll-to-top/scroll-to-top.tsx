@@ -1,3 +1,7 @@
+/**
+ * This code uses following libraries: 
+ * react and react-router-dom.
+ */
 import React, { useEffect } from "react"
 import { useLocation  } from "react-router-dom"
 

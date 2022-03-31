@@ -1,19 +1,20 @@
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, @mui/styles,
+ * katex, and react-latex-next.
+ */
 import React, { useState, useCallback } from "react"
-import {
-  Box,
-  Container,
-  Grid,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Typography,
-  Select,
-  SelectChangeEvent,
-  useTheme,
-  useMediaQuery,
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
-import _ from "lodash"
+import Box from "@mui/material/Box"
+import Container from "@mui/material/Container"
+import Grid from "@mui/material/Grid"
+import FormControl from "@mui/material/FormControl"
+import InputLabel from "@mui/material/InputLabel"
+import MenuItem from "@mui/material/MenuItem"
+import Typography from "@mui/material/Typography"
+import Select, { SelectChangeEvent } from "@mui/material/Select"
+import useMediaQuery from "@mui/material/useMediaQuery"
+import useTheme from "@mui/material/styles/useTheme"
+import makeStyles from "@mui/styles/makeStyles"
 import "katex/dist/katex.min.css"
 import { center } from "theme/styles"
 import { 
@@ -98,7 +99,6 @@ export function FunctionDomainDiscrete() {
     } else {
       setAlert(true)
     }
-    
   }
 
   const handleChangeEnd = (event: SelectChangeEvent) => {
@@ -162,6 +162,7 @@ export function FunctionDomainDiscrete() {
                   container
                   spacing={1}
                 >
+                  {/* Domain start input. */}
                   <Grid item>
                     <FormControl>
                       <InputLabel id="domain-start-select-label">Start</InputLabel>
@@ -180,6 +181,7 @@ export function FunctionDomainDiscrete() {
                       </Select>
                     </FormControl>
                   </Grid>
+                  {/* Domain end input. */}
                   <Grid item>
                     <FormControl>
                       <InputLabel id="domain-end-select-label">End</InputLabel>

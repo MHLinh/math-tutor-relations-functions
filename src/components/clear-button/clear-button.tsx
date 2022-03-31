@@ -1,8 +1,10 @@
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, and @mui/styles.
+ */
 import React, { useContext } from "react"
-import {
-  Button,
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+import Button from "@mui/material/Button"
+import makeStyles from "@mui/styles/makeStyles"
 import { buttonStyle } from "theme"
 import { generateMatrix } from "utils"
 import { MatrixContext } from "components/matrix-context/matrix-context"

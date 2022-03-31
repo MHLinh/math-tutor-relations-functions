@@ -1,9 +1,11 @@
-import React from "react"
-import { 
-  Container,
-  Box
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, and @mui/styles.
+ */
+ import React from "react"
+ import Box from "@mui/material/Box"
+ import Container from "@mui/material/Container"
+ import makeStyles from "@mui/styles/makeStyles"
 import { 
   RelationNavigation,
   FunctionNavigation
@@ -17,7 +19,7 @@ export function HomePage() {
   const classes = useStyles()
 
   return (
-    <Container>
+    <Container className={classes.container}>
       <Box className={classes.box}>
         <RelationNavigation />
       </Box>
@@ -31,5 +33,8 @@ export function HomePage() {
 const useStyles = makeStyles((theme: any) => ({
   box: {
     paddingBottom: theme.spacing(3),
+  },
+  container: {
+    paddingBottom: theme.spacing(2),
   },
 }))

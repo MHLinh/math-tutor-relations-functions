@@ -1,16 +1,18 @@
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, @mui/styles,
+ * react-number-format, katex, and react-latex-next.
+ */
 import React, { useState } from "react"
-import {
-  Box,
-  Container,
-  Grid,
-  TextField,
-  Typography,
-  useTheme,
-  useMediaQuery,
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+import Box from "@mui/material/Box"
+import Container from "@mui/material/Container"
+import Grid from "@mui/material/Grid"
+import TextField from "@mui/material/TextField"
+import Typography from "@mui/material/Typography"
+import useTheme from "@mui/material/styles/useTheme"
+import useMediaQuery from "@mui/material/useMediaQuery"
+import makeStyles from "@mui/styles/makeStyles"
 import NumberFormat from "react-number-format"
-import _ from "lodash"
 import "katex/dist/katex.min.css"
 import Latex from "react-latex-next"
 import { center } from "theme/styles"
@@ -124,6 +126,7 @@ export function QuadraticFunctionRoots() {
         justifyContent="center"
         spacing={1}
       >
+        {/* Function graph and roots. */}
         <Grid item md={5}>
           <Box className={classes.center}>
             <FunctionPlot 
@@ -139,6 +142,7 @@ export function QuadraticFunctionRoots() {
             </Typography>
           </Box>
         </Grid>
+        {/* Parameters input. */}
         <Grid item md={5}>
           <Box className={classes.center}>
             <Grid 
@@ -146,8 +150,7 @@ export function QuadraticFunctionRoots() {
               justifyContent="center"
               direction="column"
               spacing={2}
-            >
-              {/* Parameters input */}
+            >        
               <Grid
                 container
                 item
@@ -160,6 +163,7 @@ export function QuadraticFunctionRoots() {
                     <Latex>{equation}</Latex>
                   </Typography>
                 </Grid>
+                {/* Parameter a. */}
                 <Grid 
                   container
                   item
@@ -185,6 +189,7 @@ export function QuadraticFunctionRoots() {
                     />
                   </Grid>
                 </Grid>
+                {/* Parameter b. */}
                 <Grid 
                   container 
                   item
@@ -210,6 +215,7 @@ export function QuadraticFunctionRoots() {
                     />
                   </Grid>
                 </Grid>
+                {/* Parameter c. */}
                 <Grid 
                   container 
                   item
@@ -236,6 +242,7 @@ export function QuadraticFunctionRoots() {
                   </Grid>
                 </Grid>
               </Grid>
+              {/* Equations */}
               <Grid
                 container
                 item

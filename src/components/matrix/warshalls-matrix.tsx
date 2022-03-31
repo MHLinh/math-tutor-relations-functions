@@ -1,15 +1,17 @@
-import React from "react"
-import {
-  Box,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableRow,
-  Typography,
-  useTheme
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, and @mui/styles.
+ */
+ import React from "react"
+ import Box from "@mui/material/Box"
+ import Table from "@mui/material/Table"
+ import TableBody from "@mui/material/TableBody"
+ import TableCell from "@mui/material/TableCell"
+ import TableContainer from "@mui/material/TableContainer"
+ import TableRow from "@mui/material/TableRow"
+ import Typography from "@mui/material/Typography"
+ import useTheme from "@mui/material/styles/useTheme"
+ import makeStyles from "@mui/styles/makeStyles"
 import { palette } from "theme"
 
 interface IWarshallsMatrix {

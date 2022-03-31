@@ -1,3 +1,7 @@
+/**
+ * This code uses following libraries: 
+ * react and react-konva.
+ */
 import React from "react"
 import { Group, Text } from "react-konva"
 import { Label } from "utils"

@@ -1,13 +1,15 @@
+/**
+ * This code uses following libraries: 
+ * react, react-router-dom, @mui/material, and @mui/styles.
+ */
 import React from "react"
 import { NavLink } from "react-router-dom"
-import {
-  Box,
-  Button,
-  Container,
-  Grid,
-  Typography
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+import Box from "@mui/material/Box"
+import Button from "@mui/material/Button"
+import Container from "@mui/material/Container"
+import Grid from "@mui/material/Grid"
+import Typography from "@mui/material/Typography"
+import makeStyles from "@mui/styles/makeStyles"
 
 interface Path {
   name: string,

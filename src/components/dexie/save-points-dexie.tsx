@@ -1,13 +1,15 @@
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, and @mui/styles.
+ */
 import React, { useState, useContext } from "react"
-import {
-  Box,
-  Button,
-  Grid,
-  Modal, 
-  TextField,
-  Typography,
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+import Box from "@mui/material/Box"
+import Button from "@mui/material/Button"
+import Grid from "@mui/material/Grid"
+import Modal from "@mui/material/Modal"
+import TextField from "@mui/material/TextField"
+import Typography from "@mui/material/Typography"
+import makeStyles from "@mui/styles/makeStyles"
 import { buttonStyle } from "theme"
 import { PointsContext } from "components/points-context/points-context"
 import { CustomAlert } from "components/custom-alert/custom-alert"
@@ -25,7 +27,7 @@ interface ISavePointsDexie {
 }
 
 /**
- * A component handling the saving of a points to IndexedDB
+ * A component handling the saving of a points to IndexedDB.
  */
 export function SavePointsDexie(props: ISavePointsDexie) {
   const { type } = props
@@ -34,6 +36,7 @@ export function SavePointsDexie(props: ISavePointsDexie) {
   const [status, setStatus] = useState(Status.idle)
   const { points } = useContext(PointsContext)
 
+  // Status of data saving.
   const openSuccess = status === Status.successSave
   const openError = status === Status.errorSave
 
@@ -54,7 +57,7 @@ export function SavePointsDexie(props: ISavePointsDexie) {
   const handleSave = async () => {
     if(name !== "") {
       try {
-        // Save the points
+        // Save the points.
         await db.points.add({
           name,
           type,
@@ -89,6 +92,7 @@ export function SavePointsDexie(props: ISavePointsDexie) {
       >
         Save points
       </Button>
+      {/* Save data window. */}
       <Modal
         open={openSave}
         onClose={handleCloseSave}
@@ -138,6 +142,7 @@ export function SavePointsDexie(props: ISavePointsDexie) {
           </Grid>
         </Box>
       </Modal>
+      {/* Alert messages. */}
       <CustomAlert 
         open={openSuccess}
         handleClose={handleClose}

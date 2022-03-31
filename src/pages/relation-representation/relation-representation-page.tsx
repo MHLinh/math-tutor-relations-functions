@@ -1,18 +1,27 @@
-import React from "react"
-import {
-  Box,
-  Container,
-  Button
-} from "@mui/material"
-import { RelationRepresentation, RelationProperties, RelationReflexive } from "components"
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, and @mui/styles
+ */
+ import React from "react"
+ import Container from "@mui/material/Container"
+ import makeStyles from "@mui/styles/makeStyles"
+import { RelationRepresentation } from "components"
 
 /**
  * Displays the page for studying the representations of a relation.
  */
 export function RelationRepresentationPage() {
+  const classes = useStyles()
+
   return (
-    <Container>
+    <Container className={classes.container}>
       <RelationRepresentation />
     </Container>
   )
 }
+
+const useStyles = makeStyles((theme: any) => ({
+  container: {
+    paddingBottom: theme.spacing(2),
+  },
+}))

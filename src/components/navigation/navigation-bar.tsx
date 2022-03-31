@@ -1,7 +1,9 @@
+/**
+ * This code uses following libraries: 
+ * react and @mui/material.
+ */
 import React from "react"
-import {
-  Stack
-} from "@mui/material"
+import Stack from "@mui/material/Stack"
 import { BackButton } from "./back-button"
 import { HomeButton } from "./home-button"
 import { DashboardButton } from "./dashboard-button"

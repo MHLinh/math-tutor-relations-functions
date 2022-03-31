@@ -1,3 +1,7 @@
+/**
+ * This code uses following libraries: 
+ * react.
+ */
 import React from "react"
 import { MatrixContext, IMatrixContext } from "components/matrix-context/matrix-context"
 import { ConnectedSets } from "components/connected-sets/connected-sets"

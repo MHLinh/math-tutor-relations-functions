@@ -1,7 +1,9 @@
+/**
+ * This code uses following libraries: 
+ * react and @mui/material.
+ */
 import React from "react"
-import {
-  Typography,
-} from "@mui/material"
+import Typography from "@mui/material/Typography"
 import { ModalInfo } from "components/modal-info/modal-info"
 
 /**

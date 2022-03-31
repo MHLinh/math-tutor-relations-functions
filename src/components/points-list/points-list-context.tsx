@@ -1,5 +1,8 @@
+/**
+ * This code uses following libraries: 
+ * react.
+ */
 import React, { createContext } from "react"
-
 
 export interface IPointsListContext {
   selected: number,                     // Index of selected list of points

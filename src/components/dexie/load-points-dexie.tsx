@@ -1,16 +1,26 @@
-import React, { useState, useContext, useCallback, useMemo } from "react"
-import {
-  Box,
-  Button,
-  Grid,
-  Modal, 
-  Typography,
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, @mui/styles and dexie-react-hooks.
+ */
+import React, { 
+  useState, 
+  useContext, 
+  useCallback, 
+  useMemo 
+} from "react"
+import Box from "@mui/material/Box"
+import Button from "@mui/material/Button"
+import Grid from "@mui/material/Grid"
+import Modal from "@mui/material/Modal"
+import Typography from "@mui/material/Typography"
+import makeStyles from "@mui/styles/makeStyles"
 import { useLiveQuery } from "dexie-react-hooks"
 import { buttonStyle } from "theme"
 import { PointsContext} from "components/points-context/points-context"
-import { IPointsListContext, PointsListContext } from "components/points-list/points-list-context"
+import { 
+  IPointsListContext, 
+  PointsListContext 
+} from "components/points-list/points-list-context"
 import { PointsList } from "components/points-list/points-list"
 import { CustomAlert } from "components/custom-alert/custom-alert"
 import { CustomAlertDelete } from "components/custom-alert/custom-alert-delete"
@@ -48,6 +58,7 @@ export function LoadPointsDexie(props: ILoadPointsDexie) {
   })
   const { setter } = useContext(PointsContext)
 
+  // Status of data loading.
   const openSuccessLoad = status === Status.successLoad
   const openErrorLoad = status === Status.errorLoad
   const openMissingLoad = status === Status.missingLoad
@@ -57,15 +68,15 @@ export function LoadPointsDexie(props: ILoadPointsDexie) {
   
   const classes = useStyles()
 
+  // Query for points.
   const points: IPoints[] | undefined = useLiveQuery(
     async () => {
       try {
-        // Query Dexie's API
+        // Query Dexie's API.
           const result = await db.points
           .where({ type })
           .sortBy("timestamp")
 
-        // Return result
         return result
       } catch (error) {
         setStatus(Status.errorLoad)
@@ -154,6 +165,7 @@ export function LoadPointsDexie(props: ILoadPointsDexie) {
       >
         Load points
       </Button>
+      {/* Load data window. */}
       <Modal
         open={openLoad}
         onClose={handleCloseLoad}
@@ -194,6 +206,7 @@ export function LoadPointsDexie(props: ILoadPointsDexie) {
           </Grid>
         </Box>
       </Modal>
+      {/* Alert messages. */}
       <CustomAlert 
         open={openSuccessLoad}
         handleClose={handleClose}
@@ -260,3 +273,4 @@ const useStyles = makeStyles((theme: any) => ({
     fontSize: theme.typography.pxToRem(18),
   }
  }))
+ 

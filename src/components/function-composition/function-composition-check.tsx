@@ -1,16 +1,17 @@
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, @mui/styles,
+ * katex, and react-latex-next.
+ */
 import React, { useState } from "react"
-import {
-  Box,
-  Container,
-  Grid,
-  FormControl,
-  MenuItem,
-  Typography,
-  Select,
-  SelectChangeEvent,
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
-import _ from "lodash"
+import Box from "@mui/material/Box"
+import Container from "@mui/material/Container"
+import Grid from "@mui/material/Grid"
+import FormControl from "@mui/material/FormControl"
+import MenuItem from "@mui/material/MenuItem"
+import Typography from "@mui/material/Typography"
+import Select, { SelectChangeEvent } from "@mui/material/Select"
+import makeStyles from "@mui/styles/makeStyles"
 import "katex/dist/katex.min.css"
 import Latex from "react-latex-next"
 import {  center, paddingStyle  } from "theme/styles"
@@ -92,12 +93,13 @@ export function FunctionCompositionCheck() {
         </Typography>
       </Box>
       <Box className={classes.box}>
-        {/* Domain and codomain inputs */}
+        {/* Domain and codomain inputs. */}
         <Grid
           container
           spacing={2}
           justifyContent="center"
         >
+          {/* Function f. */}
           <Grid 
             container
             item
@@ -147,6 +149,7 @@ export function FunctionCompositionCheck() {
               </FormControl>
             </Grid>
           </Grid>
+          {/* Function g. */}
           <Grid 
             container
             item
