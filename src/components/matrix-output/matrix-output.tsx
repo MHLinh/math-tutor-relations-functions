@@ -1,9 +1,11 @@
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, and @mui/styles.
+ */
 import React from "react"
-import {
-  Box,
-  Typography,
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+import Box from "@mui/material/Box"
+import Typography from "@mui/material/Typography"
+import makeStyles from "@mui/styles/makeStyles"
 import { center } from "theme"
 import { Matrix } from "components/matrix/matrix"
 

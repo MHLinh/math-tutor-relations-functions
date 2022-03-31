@@ -1,15 +1,18 @@
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, @mui/styles,
+ * mathjs, katex, and react-latex-next.
+ */
 import React, { useState } from "react"
-import {
-  Box,
-  Button,
-  Container,
-  Grid,
-  TextField,
-  Typography,
-  useTheme,
-  useMediaQuery,
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+import Box from "@mui/material/Box"
+import Button from "@mui/material/Button"
+import Container from "@mui/material/Container"
+import Grid from "@mui/material/Grid"
+import TextField from "@mui/material/TextField"
+import Typography from "@mui/material/Typography"
+import useMediaQuery from "@mui/material/useMediaQuery"
+import useTheme from "@mui/material/styles/useTheme"
+import makeStyles from "@mui/styles/makeStyles"
 import { parse, simplify } from "mathjs"
 import "katex/dist/katex.min.css"
 import Latex from "react-latex-next"
@@ -126,7 +129,6 @@ export function FunctionCompositionPlot() {
   }
 
   const handleClick = () => {
-
     // Check if function f has valid syntax.
     if(inputFunctionF !== "") {
       try {
@@ -281,7 +283,7 @@ export function FunctionCompositionPlot() {
               direction="column"
               spacing={2}
             >
-              {/* Functions input */}
+              {/* Functions input. */}
               <Grid
                 container
                 item
@@ -290,6 +292,7 @@ export function FunctionCompositionPlot() {
                 spacing={2}
                 xs={6}
               >
+                {/* Function f. */}
                 <Grid 
                   container
                   item
@@ -318,6 +321,7 @@ export function FunctionCompositionPlot() {
                     />
                   </Grid>
                 </Grid>
+                {/* Function g. */}
                 <Grid 
                   container 
                   item
@@ -358,6 +362,7 @@ export function FunctionCompositionPlot() {
               Compute
             </Button>
           </Box>
+          {/* Extra instructions. */}
           <Box>
             <ul id="plot-info">
               <li>
@@ -388,6 +393,7 @@ export function FunctionCompositionPlot() {
           </Box>
         </Grid>
       </Grid>
+      {/* Alert messages. */}
       <CustomAlert 
         open={alertF}
         handleClose={handleCloseAlertF}

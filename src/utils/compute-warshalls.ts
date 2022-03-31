@@ -1,4 +1,8 @@
-import _ from "lodash"
+/**
+ * This code uses following libraries: 
+ * lodash.
+ */
+import cloneDeep from "lodash/cloneDeep"
 
 /**
  * A function to compute the transitive closure of a relation using Warshall's algorithm
@@ -7,8 +11,8 @@ import _ from "lodash"
  */
 export function computeWarshalls(matrix: number[][]): number[][][]{
   const steps: number[][][] = []
-  const stepMatrix = _.cloneDeep(matrix)
-  steps.push(_.cloneDeep(stepMatrix))
+  const stepMatrix = cloneDeep(matrix)
+  steps.push(cloneDeep(stepMatrix))
   for(let k = 0; k < stepMatrix.length; k++) {
     for(let i = 0; i < stepMatrix.length; i++) {
       for(let j = 0; j < stepMatrix.length; j++) {
@@ -18,7 +22,7 @@ export function computeWarshalls(matrix: number[][]): number[][][]{
         }
       }
     }
-    steps.push(_.cloneDeep(stepMatrix))
+    steps.push(cloneDeep(stepMatrix))
   }
   return steps
 }

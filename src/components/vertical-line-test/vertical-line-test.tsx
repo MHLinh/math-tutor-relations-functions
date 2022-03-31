@@ -1,15 +1,17 @@
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, and @mui/styles.
+ */
 import React, { useState, useCallback, useMemo } from "react"
-import {
-  Box,
-  Button,
-  Container,
-  Grid,
-  Slider,
-  Typography,
-  useTheme,
-  useMediaQuery,
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+import Box from "@mui/material/Box"
+import Button from "@mui/material/Button"
+import Container from "@mui/material/Container"
+import Grid from "@mui/material/Grid"
+import Slider from "@mui/material/Slider"
+import Typography from "@mui/material/Typography"
+import useTheme from "@mui/material/styles/useTheme"
+import useMediaQuery from "@mui/material/useMediaQuery"
+import makeStyles from "@mui/styles/makeStyles"
 import { center, paddingStyle, buttonStyle } from "theme/styles"
 import { generateSliderMarks, verticalLineTest, generatePoints } from "utils"
 import FunctionPlot from "components/function-plot/function-plot"
@@ -17,6 +19,7 @@ import { FunctionPlotOptions } from "components/function-plot/function-plot-type
 import { IPointsContext } from "components/points-context/points-context"
 import { PointsDataService } from "components/database/points-data-service"
 
+// Slider and plot settings.
 const step = 1
 const min = -6
 const max = 6

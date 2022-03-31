@@ -1,8 +1,10 @@
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, and @mui/styles.
+ */
 import React from "react"
-import {
-  Container,
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+import Container from "@mui/material/Container"
+import makeStyles from "@mui/styles/makeStyles"
 import { FunctionCompositionPlot } from "components"
 
 /**

@@ -1,10 +1,12 @@
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, @mui/styles, react-graph-vis, and uuid.
+ */
 import React from "react"
-import {
-  Box,
-  Container,
-  Typography
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+import Box from "@mui/material/Box"
+import Container from "@mui/material/Container"
+import Typography from "@mui/material/Typography"
+import makeStyles from "@mui/styles/makeStyles"
 import Graph from "react-graph-vis"
 import { v4 as uuidv4 } from "uuid"
 import { directedGraphNodes, computeDirectedGraphEdges } from "utils"

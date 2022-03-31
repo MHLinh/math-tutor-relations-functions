@@ -1,8 +1,10 @@
+/**
+ * This code uses following libraries: 
+ * react, react-router-dom, @mui/material, and @mui/icons-material.
+ */
 import React from "react"
 import { useNavigate, useLocation } from "react-router-dom"
-import {
-  IconButton
-} from "@mui/material"
+import IconButton from "@mui/material/IconButton"
 import ArrowBackIcon from "@mui/icons-material/ArrowBack"
 
 /**

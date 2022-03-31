@@ -1,21 +1,24 @@
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, @mui/styles,
+ * firebase, react-firebase-hooks, and lodash.
+ */
 import React, { useState, useContext } from "react"
-import {
-  Box,
-  Button,
-  Grid,
-  Modal, 
-  TextField,
-  Typography,
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+import Box from "@mui/material/Box"
+import Button from "@mui/material/Button"
+import Grid from "@mui/material/Grid"
+import Modal from "@mui/material/Modal"
+import TextField from "@mui/material/TextField"
+import Typography from "@mui/material/Typography"
+import makeStyles from "@mui/styles/makeStyles"
 import {
   setDoc,
   doc,
   collection,
-  Timestamp,
+  Timestamp
 } from "firebase/firestore"
 import { useAuthState } from "react-firebase-hooks/auth"
-import _ from "lodash"
+import toPlainObject from "lodash/toPlainObject"
 import { buttonStyle } from "theme"
 import { PointsContext } from "components/points-context/points-context"
 import { CustomAlert } from "components/custom-alert/custom-alert"
@@ -33,7 +36,7 @@ interface ISavePointsFirebase {
 }
 
 /**
- * A component handling the saving of a points to Firebase 
+ * A component handling the saving of a points to Firebase. 
  */
 export function SavePointsFirebase (props: ISavePointsFirebase ) {
   const { type } = props
@@ -69,7 +72,7 @@ export function SavePointsFirebase (props: ISavePointsFirebase ) {
           id: ref.id,
           type,
           name,
-          points: _.toPlainObject(points),
+          points: toPlainObject(points),
           timestamp: Timestamp.now()
         })
         
@@ -101,6 +104,7 @@ export function SavePointsFirebase (props: ISavePointsFirebase ) {
       >
         Save points
       </Button>
+      {/* Save data window. */}
       <Modal
         open={openSave}
         onClose={handleCloseSave}
@@ -150,6 +154,7 @@ export function SavePointsFirebase (props: ISavePointsFirebase ) {
           </Grid>
         </Box>
       </Modal>
+      {/* Alert messages. */}
       <CustomAlert 
         open={openSuccess}
         handleClose={handleClose}

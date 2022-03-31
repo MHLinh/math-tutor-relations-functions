@@ -1,3 +1,7 @@
+/**
+ * This code uses following libraries: 
+ * react and react-firebase-hooks.
+ */
 import React from "react"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { LoadPointsDexie } from "components/dexie/load-points-dexie"
@@ -9,7 +13,7 @@ interface ILoadPoints {
 }
 
 /**
- * A component handling the loading of a points from Firebase 
+ * A component handling the loading of points from Firebase 
  * if the user is logged in, otherwise load from IndexedDB,
  * with the possibility to delete saved points.
  */

@@ -1,16 +1,27 @@
-import React from "react"
-import {
-  Container,
-} from "@mui/material"
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, and @mui/styles.
+ */
+ import React from "react"
+ import Container from "@mui/material/Container"
+ import makeStyles from "@mui/styles/makeStyles"
 import { RelationEquivalence } from "components"
 
 /**
  * Displays the page for studying the equivalence relation property.
  */
 export function RelationEquivalencePage() {
+  const classes = useStyles()
+
   return (
-    <Container>
+    <Container className={classes.container}>
       <RelationEquivalence />
     </Container>
   )
 }
+
+const useStyles = makeStyles((theme: any) => ({
+  container: {
+    paddingBottom: theme.spacing(2),
+  },
+}))

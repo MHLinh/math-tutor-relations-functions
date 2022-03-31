@@ -1,21 +1,24 @@
-import React, { useState, useContext, useRef } from "react"
-import {
-  Box,
-  Button,
-  Grid,
-  Modal, 
-  TextField,
-  Typography,
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, @mui/styles,
+ * firebase, react-firebase-hooks, and lodash.
+ */
+import React, { useState, useContext } from "react"
+import Box from "@mui/material/Box"
+import Button from "@mui/material/Button"
+import Grid from "@mui/material/Grid"
+import Modal from "@mui/material/Modal"
+import TextField from "@mui/material/TextField"
+import Typography from "@mui/material/Typography"
+import makeStyles from "@mui/styles/makeStyles"
 import {
   setDoc,
   doc,
   collection,
-  Timestamp,
+  Timestamp
 } from "firebase/firestore"
 import { useAuthState } from "react-firebase-hooks/auth"
-import _ from "lodash"
+import toPlainObject from "lodash/toPlainObject"
 import { buttonStyle } from "theme"
 import { MatrixContext } from "components/matrix-context/matrix-context"
 import { CustomAlert } from "components/custom-alert/custom-alert"
@@ -33,7 +36,7 @@ interface ISaveRelationFirebase {
 }
 
 /**
- * A component handling the saving of a relation to Firebase
+ * A component handling the saving of a relation to Firebase.
  */
 export function SaveRelationFirebase(props: ISaveRelationFirebase) {
   const { type } = props
@@ -69,7 +72,7 @@ export function SaveRelationFirebase(props: ISaveRelationFirebase) {
           id: ref.id,
           type,
           name,
-          matrix: _.toPlainObject(matrix),
+          matrix: toPlainObject(matrix),
           timestamp: Timestamp.now()
         })
 
@@ -101,6 +104,7 @@ export function SaveRelationFirebase(props: ISaveRelationFirebase) {
       >
         Save relation
       </Button>
+      {/* Save data window. */}
       <Modal
         open={openSave}
         onClose={handleCloseSave}
@@ -150,6 +154,7 @@ export function SaveRelationFirebase(props: ISaveRelationFirebase) {
           </Grid>
         </Box>
       </Modal>
+      {/* Alert messages. */}
       <CustomAlert 
         open={openSuccess}
         handleClose={handleClose}

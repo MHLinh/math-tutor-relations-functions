@@ -1,3 +1,5 @@
+// The interfaces for drag and drop component.
+
 export interface IItem {
   id: string,       // Id of the drag and drop item
   content: string,  // Content (text) of the drag and drop item

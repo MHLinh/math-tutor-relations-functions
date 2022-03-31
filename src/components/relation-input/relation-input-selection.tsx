@@ -1,15 +1,17 @@
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, and @mui/styles
+ */
 import React, { useState } from "react"
-import {
-  Box,
-  Button,
-  Grid,
-  Typography,
-  List,
-  ListItemButton,
-  ListItemText,
-  Modal,  
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+import Box from "@mui/material/Box"
+import Button from "@mui/material/Button"
+import Grid from "@mui/material/Grid"
+import List from "@mui/material/List"
+import ListItemButton from "@mui/material/ListItemButton"
+import ListItemText from "@mui/material/ListItemText"
+import Modal from "@mui/material/Modal"
+import Typography from "@mui/material/Typography"
+import makeStyles from "@mui/styles/makeStyles"
 import { buttonStyle } from "theme"
 
 export const relationInputTypes = [
@@ -59,6 +61,7 @@ export function RelationInputSelection(props: IRelationInputSelection) {
       >
         Change relation input
       </Button>
+      {/* Selection window. */}
       <Modal
         open={open}
         onClose={handleClose}

@@ -1,3 +1,4 @@
+// The different number sets the user can choose from.
 export enum NumberSet {
   Natural = "NATURAL",
   IntegersPositive = "INTEGERS_POSITIVE",
@@ -11,6 +12,7 @@ export enum NumberSet {
   Real = "REAL"
 }
 
+// Hard-coded subsets of number sets.
 export const SubsetOf = {
   [NumberSet.Natural]: [
     NumberSet.Natural, 

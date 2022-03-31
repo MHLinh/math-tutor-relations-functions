@@ -1,8 +1,10 @@
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, and @mui/styles.
+ */
 import React from "react"
-import {
-  Box
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+import Box from "@mui/material/Box"
+import makeStyles from "@mui/styles/makeStyles"
 import { PointsContext, IPointsContext } from "components/points-context/points-context"
 import { SavePoints } from "./save-points"
 import { LoadPoints } from "./load-points"

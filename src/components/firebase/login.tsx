@@ -1,22 +1,25 @@
+/**
+ * This code uses following libraries: 
+ * react, react-router-dom, @mui/material, @mui/styles,
+ * @mui/icons-material, and, react-firebase-hooks.
+ */
 import React, { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { useAuthState } from "react-firebase-hooks/auth"
-import {
-  Box,
-  Button,
-  Container,
-  IconButton,
-  InputAdornment,
-  OutlinedInput,
-  LinearProgress,
-  Stack,
-  TextField,
-  Typography
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+import Box from "@mui/material/Box"
+import Button from "@mui/material/Button"
+import Container from "@mui/material/Container"
+import IconButton from "@mui/material/IconButton"
+import InputAdornment from "@mui/material/InputAdornment"
+import OutlinedInput from "@mui/material/OutlinedInput"
+import LinearProgress from "@mui/material/LinearProgress"
+import Stack from "@mui/material/Stack"
+import TextField from "@mui/material/TextField"
+import Typography from "@mui/material/Typography"
+import makeStyles from "@mui/styles/makeStyles"
 import GoogleIcon from "@mui/icons-material/Google"
 import Visibility from "@mui/icons-material/Visibility"
 import VisibilityOff from "@mui/icons-material/VisibilityOff"
+import { useAuthState } from "react-firebase-hooks/auth"
 import { center } from "theme/styles"
 import { PrivacyPolicyNotice } from "components/privacy-policy/privacy-policy-notice"
 import { 
@@ -97,6 +100,7 @@ export function Login(){
             alignItems="center"
             spacing={1}
           >
+            {/* Login form. */}
             <Typography align="center" className={classes.text}>
               Log in
             </Typography>
@@ -133,6 +137,7 @@ export function Login(){
                 </InputAdornment>
               }
             />
+            {/* Login buttons. */}
             <Button
               id="login-button"
               variant="outlined"

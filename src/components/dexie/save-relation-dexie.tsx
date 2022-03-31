@@ -1,13 +1,15 @@
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, and @mui/styles.
+ */
 import React, { useState, useContext } from "react"
-import {
-  Box,
-  Button,
-  Grid,
-  Modal, 
-  TextField,
-  Typography,
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+import Box from "@mui/material/Box"
+import Button from "@mui/material/Button"
+import Grid from "@mui/material/Grid"
+import Modal from "@mui/material/Modal"
+import TextField from "@mui/material/TextField"
+import Typography from "@mui/material/Typography"
+import makeStyles from "@mui/styles/makeStyles"
 import { buttonStyle } from "theme"
 import { MatrixContext } from "components/matrix-context/matrix-context"
 import { CustomAlert } from "components/custom-alert/custom-alert"
@@ -25,7 +27,7 @@ interface ISaveRelationDexie {
 }
 
 /**
- * A component handling the saving of a relation to IndexedDB
+ * A component handling the saving of a relation to IndexedDB.
  */
 export function SaveRelationDexie(props: ISaveRelationDexie) {
   const { type } = props
@@ -34,6 +36,7 @@ export function SaveRelationDexie(props: ISaveRelationDexie) {
   const [status, setStatus] = useState(Status.idle)
   const { matrix } = useContext(MatrixContext)
 
+  // Status of data saving.
   const openSuccess = status === Status.successSave
   const openError = status === Status.errorSave
 
@@ -89,6 +92,7 @@ export function SaveRelationDexie(props: ISaveRelationDexie) {
       >
         Save relation
       </Button>
+      {/* Save data window */}
       <Modal
         open={openSave}
         onClose={handleCloseSave}
@@ -138,6 +142,7 @@ export function SaveRelationDexie(props: ISaveRelationDexie) {
           </Grid>
         </Box>
       </Modal>
+      {/* Alert messages. */}
       <CustomAlert 
         open={openSuccess}
         handleClose={handleClose}
@@ -178,3 +183,4 @@ const useStyles = makeStyles((theme: any) => ({
     fontSize: theme.typography.pxToRem(18),
   }
  }))
+ 

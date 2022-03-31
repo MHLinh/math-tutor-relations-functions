@@ -1,11 +1,15 @@
-// Types copied from the library at
-// https://github.com/mauriciopoppe/function-plot/blob/master/src/types.ts accessed 24.02.2022
-// by Mauricio Poppe
+/**
+ * This code for the interfaces was copied from the function-plot function-plot at:
+ * https://github.com/mauriciopoppe/function-plot/blob/master/src/types.ts 
+ * Accessed: accessed 24.02.2022 
+ * Author: Mauricio Poppe
+*/
 
 export interface Interval {
   lo: number;
   hi: number;
 }
+
 export interface FunctionPlotOptionsAxis {
   /**
    * Initial ends of the axis
@@ -24,6 +28,7 @@ export interface FunctionPlotOptionsAxis {
    */
   invert?: boolean;
 }
+
 export interface FunctionPlotTip {
   /**
    * True to display a vertical line on mouseover
@@ -42,9 +47,11 @@ export interface FunctionPlotTip {
    */
   owner?: any;
 }
+
 export interface FunctionPlotDatumScope {
   [key: string]: any;
 }
+
 /**
 * The string or function to evaluate
 *
@@ -79,6 +86,7 @@ export interface FunctionPlotDatumSecant {
   scope?: FunctionPlotDatumScope;
   $$mouseListener?: any;
 }
+
 export interface FunctionPlotDatumDerivative {
   /**
    * True to compute the tangent line by evaluating `derivative.fn` with the current mouse position
@@ -101,6 +109,7 @@ export interface FunctionPlotDatumDerivative {
   scope?: FunctionPlotDatumScope;
   $$mouseListener?: any;
 }
+
 export interface FunctionPlotDatum {
   /**
    * The function to render
@@ -207,6 +216,7 @@ export interface FunctionPlotDatum {
    */
   skipBoundsCheck?: boolean;
 }
+
 export interface FunctionPlotAnnotation {
   /**
    * If set a vertical line will be rendered at this location
@@ -221,6 +231,7 @@ export interface FunctionPlotAnnotation {
    */
   text?: string;
 }
+
 export interface FunctionPlotOptions {
   /**
    * @private

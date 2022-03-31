@@ -1,21 +1,29 @@
+/**
+ * This code uses following libraries: 
+ * react, react-router-dom, @mui/material, @mui/styles, 
+ * react-firebase-hooks and firebase.
+ */
 import React, { useEffect, useState } from "react"
-import {
-  Box,
-  Button,
-  Container,
-  CircularProgress,
-  LinearProgress,
-  Stack,
-  Typography
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
-import { useAuthState } from "react-firebase-hooks/auth"
 import { useNavigate } from "react-router-dom"
+import Box from "@mui/material/Box"
+import Button from "@mui/material/Button"
+import Container from "@mui/material/Container"
+import CircularProgress from "@mui/material/CircularProgress"
+import LinearProgress from "@mui/material/LinearProgress"
+import Stack from "@mui/material/Stack"
+import Typography from "@mui/material/Typography"
+import makeStyles from "@mui/styles/makeStyles"
+import { useAuthState } from "react-firebase-hooks/auth"
 import { query, collection, getDocs, where } from "firebase/firestore"
 import { center } from "theme/styles"
 import { CustomAlert } from "components/custom-alert/custom-alert"
 import { auth, db, useAuthenticationManager } from "./firebase"
 
+/**
+ * A component displaying the user dashboard.
+ * Displays the user's name and email.
+ * Allows the user to log out.
+ */
 export function Dashboard() {
   const [user, loading] = useAuthState(auth)
   const [name, setName] = useState("")

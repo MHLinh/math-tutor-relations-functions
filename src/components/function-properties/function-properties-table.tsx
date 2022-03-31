@@ -1,10 +1,12 @@
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, and @mui/styles.
+ */
 import React from "react"
-import {
-  Box,
-  Grid,
-  Typography
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+import Box from "@mui/material/Box"
+import Grid from "@mui/material/Grid"
+import Typography from "@mui/material/Typography"
+import makeStyles from "@mui/styles/makeStyles"
 import {
   isDomainMapped,
   isOneMapping,
@@ -19,12 +21,13 @@ interface IFunctionPropertiesTable {
 }
 
 /**
- * A component displaying the function properties of a relation.
+ * A component displaying the function properties of a relation in a table.
  */
 export function FunctionPropertiesTable(props: IFunctionPropertiesTable) {
   const { matrix } = props
   const classes = useStyles()
 
+  // Property checks.
   const oneMapping = isOneMapping(matrix)
 
   const isFunction = isDomainMapped(matrix) && oneMapping

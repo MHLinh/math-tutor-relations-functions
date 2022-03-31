@@ -1,17 +1,27 @@
-import React, { useState, useContext, useCallback, useMemo } from "react"
-import {
-  Box,
-  Button,
-  Grid,
-  Modal, 
-  Typography,
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, @mui/styles and dexie-react-hooks.
+ */
+import React, { 
+  useState, 
+  useContext, 
+  useCallback, 
+  useMemo 
+} from "react"
+import Box from "@mui/material/Box"
+import Button from "@mui/material/Button"
+import Grid from "@mui/material/Grid"
+import Modal from "@mui/material/Modal"
+import Typography from "@mui/material/Typography"
+import makeStyles from "@mui/styles/makeStyles"
 import { useLiveQuery } from "dexie-react-hooks"
 import { buttonStyle } from "theme"
 import { NUM_OF_ELEMENTS, generateMatrix } from "utils"
 import { MatrixContext } from "components/matrix-context/matrix-context"
-import { IRelationsListContext, RelationsListContext } from "components/relations-list/relations-list-context"
+import { 
+  IRelationsListContext, 
+  RelationsListContext 
+} from "components/relations-list/relations-list-context"
 import { RelationsList } from "components/relations-list/relations-list"
 import { CustomAlert } from "components/custom-alert/custom-alert"
 import { CustomAlertDelete } from "components/custom-alert/custom-alert-delete"
@@ -51,6 +61,7 @@ export function LoadRelationDexie(props: ILoadRelationDexie) {
 
   const emptyMatrix = generateMatrix(NUM_OF_ELEMENTS)
 
+  // Status of data loading.
   const openSuccessLoad = status === Status.successLoad
   const openErrorLoad = status === Status.errorLoad
   const openMissingLoad = status === Status.missingLoad
@@ -60,15 +71,15 @@ export function LoadRelationDexie(props: ILoadRelationDexie) {
   
   const classes = useStyles()
 
+  // Query for relations.
   const relations: IRelation[] | undefined = useLiveQuery(
     async () => {
       try {
-        // Query Dexie's API
+        // Query Dexie's API.
           const result = await db.relations
           .where({ type })
           .sortBy("timestamp")
 
-          // Return result
         return result
       } catch (error) {
         setStatus(Status.errorLoad)
@@ -157,6 +168,7 @@ export function LoadRelationDexie(props: ILoadRelationDexie) {
       >
         Load relation
       </Button>
+      {/* Load data window. */}
       <Modal
         open={openLoad}
         onClose={handleCloseLoad}
@@ -197,6 +209,7 @@ export function LoadRelationDexie(props: ILoadRelationDexie) {
           </Grid>
         </Box>
       </Modal>
+      {/* Alert messages. */}
       <CustomAlert 
         open={openSuccessLoad}
         handleClose={handleClose}

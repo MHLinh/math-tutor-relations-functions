@@ -1,6 +1,9 @@
+/**
+ * This code uses following libraries: 
+ * @mui/material.
+ */
 import { 
   createTheme, 
-  Theme, 
   ThemeOptions, 
   Palette 
 } from "@mui/material"

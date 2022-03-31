@@ -1,3 +1,7 @@
+/**
+ * This code uses following libraries: 
+ * react, konva, react-konva.
+ */
 import React from "react"
 import Konva from "konva"
 import { Arrow } from "react-konva"

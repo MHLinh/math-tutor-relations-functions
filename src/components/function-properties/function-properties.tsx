@@ -1,12 +1,19 @@
-import React, { useState, useCallback, useEffect, useMemo } from "react"
-import {
-  Box,
-  Container,
-  Grid,
-  useTheme,
-  useMediaQuery,
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, and @mui/styles.
+ */
+import React, { 
+  useState, 
+  useCallback, 
+  useEffect, 
+  useMemo 
+} from "react"
+import Box from "@mui/material/Box"
+import Container from "@mui/material/Container"
+import Grid from "@mui/material/Grid"
+import useTheme from "@mui/material/styles/useTheme"
+import useMediaQuery from "@mui/material/useMediaQuery"
+import makeStyles from "@mui/styles/makeStyles"
 import { 
   generateRectMatrix, 
 } from "utils"

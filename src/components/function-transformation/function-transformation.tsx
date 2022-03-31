@@ -1,15 +1,18 @@
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, @mui/styles,
+ * katex, and react-latex-next.
+ */
 import React, { useState, useCallback } from "react"
-import {
-  Box,
-  Button,
-  Container,
-  Grid,
-  Slider,
-  Typography,
-  useTheme,
-  useMediaQuery,
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+import Box from "@mui/material/Box"
+import Button from "@mui/material/Button"
+import Container from "@mui/material/Container"
+import Grid from "@mui/material/Grid"
+import Slider from "@mui/material/Slider"
+import Typography from "@mui/material/Typography"
+import useTheme from "@mui/material/styles/useTheme"
+import useMediaQuery from "@mui/material/useMediaQuery"
+import makeStyles from "@mui/styles/makeStyles"
 import "katex/dist/katex.min.css"
 import Latex from "react-latex-next"
 import { center } from "theme/styles"
@@ -19,10 +22,10 @@ import { FunctionPlotOptions } from "components/function-plot/function-plot-type
 import { FunctionEquationSelection } from "components/function-equation/function-equation-selection"
 import { Equation } from "components/function-equation/function-equation-types"
 
+// Slider and plot settings.
 const step1 = 0.2
 const min1 = 0
 const max1 = 2
-
 const marks1 = generateSliderMarks(step1, min1, max1)
 
 const step2 = 1
@@ -74,6 +77,7 @@ export function FunctionTransformation() {
   const plotEquation = getFunctionEquation(
     functionType, params.a, params.b, params.c, params.d, xSign, ySign
   )
+
   const options: FunctionPlotOptions = {
     target: "#plot",
     width: size,
@@ -95,7 +99,6 @@ export function FunctionTransformation() {
       }
     ]
   }
-  
   
   const handleChangeA = (
     event: Event | React.SyntheticEvent<Element, Event>, 
@@ -146,6 +149,7 @@ export function FunctionTransformation() {
         justifyContent="center"
         spacing={1}
       >
+        {/* Function graph, equation, and parameter values. */}
         <Grid item md={6}>
           <Box className={classes.center}>
             <FunctionPlot 
@@ -170,6 +174,7 @@ export function FunctionTransformation() {
             </Typography>
           </Box>
         </Grid>
+        {/* Function transformation controls. */}
         <Grid item md={6}>
           <Box className={classes.centerBox}>
             <Box className={classes.slider}>

@@ -1,4 +1,9 @@
-import _ from "lodash"
+/**
+ * This code uses following libraries: 
+ * lodash.
+ */
+import uniqWith from "lodash/uniqWith"
+import isEqual from "lodash/isEqual"
 
 /**
  * A function for generating a list of random points.
@@ -15,7 +20,7 @@ export function generatePoints(min: number, max: number, amount: number): number
     points.push([x, y])
   }
 
-  const uniquePoints = _.uniqWith(points, _.isEqual)
+  const uniquePoints = uniqWith(points, isEqual)
 
   return uniquePoints
 }

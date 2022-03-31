@@ -1,7 +1,12 @@
+
+/**
+ * This code uses following libraries: 
+ * react, react-router-dom, @mui/material, and @mui/styles.
+ */
 import React from "react"
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
-import { Box } from "@mui/material"
-import { ThemeProvider } from "@mui/styles"
+import Box from "@mui/material/Box"
+import ThemeProvider from "@mui/styles/ThemeProvider"
 import {
   ScrollToTop,
   NavigationBar,
@@ -50,6 +55,9 @@ import {
  } from "pages"
 import { theme } from "theme"
 
+/**
+ * The main application component with all the routes.
+ */
 function App() {
 
   return (

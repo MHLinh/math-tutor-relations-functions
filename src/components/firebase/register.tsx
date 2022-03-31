@@ -1,22 +1,25 @@
+/**
+ * This code uses following libraries: 
+ * react, react-router-dom, @mui/material, @mui/styles,
+ * @mui/icons-material, and, react-firebase-hooks.
+ */
 import React, { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { useAuthState } from "react-firebase-hooks/auth"
-import {
-  Box,
-  Button,
-  Container,
-  IconButton,
-  InputAdornment,
-  OutlinedInput,
-  LinearProgress,
-  Stack,
-  TextField,
-  Typography
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+import Box from "@mui/material/Box"
+import Button from "@mui/material/Button"
+import Container from "@mui/material/Container"
+import IconButton from "@mui/material/IconButton"
+import InputAdornment from "@mui/material/InputAdornment"
+import OutlinedInput from "@mui/material/OutlinedInput"
+import LinearProgress from "@mui/material/LinearProgress"
+import Stack from "@mui/material/Stack"
+import TextField from "@mui/material/TextField"
+import Typography from "@mui/material/Typography"
+import makeStyles from "@mui/styles/makeStyles"
 import GoogleIcon from "@mui/icons-material/Google"
 import Visibility from "@mui/icons-material/Visibility"
 import VisibilityOff from "@mui/icons-material/VisibilityOff"
+import { useAuthState } from "react-firebase-hooks/auth"
 import { center } from "theme/styles"
 import { CustomAlert } from "components/custom-alert/custom-alert"
 import { PrivacyPolicyNotice } from "components/privacy-policy/privacy-policy-notice"
@@ -46,11 +49,11 @@ export function Register (){
   const classes = useStyles()
 
   useEffect(() => {
-    if (loading) {
+    if (loading || processing) {
       return
     }
 
-    if (user && !processing) {
+    if (user) {
       navigate("/dashboard")
     }
   }, [user, loading, processing])
@@ -114,6 +117,7 @@ export function Register (){
             alignItems="center"
             spacing={1}
           >
+            {/* Register form. */}
             <Typography align="center" className={classes.text}>
               Register
             </Typography>
@@ -157,6 +161,7 @@ export function Register (){
                 </InputAdornment>
               }
             />
+            {/* Register buttons. */}
             <Button
               id="register-button"
               variant="outlined"

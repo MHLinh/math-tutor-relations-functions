@@ -1,9 +1,11 @@
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, and @mui/styles.
+ */
 import React, { useState, useCallback, useMemo } from "react"
-import {
-  Box,
-  Container
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+import Box from "@mui/material/Box"
+import Container from "@mui/material/Container"
+import makeStyles from "@mui/styles/makeStyles"
 import { 
   NUM_OF_ELEMENTS,
   generateMatrix, 

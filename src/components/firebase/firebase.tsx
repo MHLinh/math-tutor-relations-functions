@@ -1,5 +1,9 @@
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, @mui/styles, and firebase.
+ */
 import React, { useState } from "react"
-import { Box } from "@mui/material"
+import Box from "@mui/material/Box"
 import { initializeApp } from "firebase/app"
 import {
   createUserWithEmailAndPassword,
@@ -207,7 +211,7 @@ interface IAuthenticationAlert {
 }
 
 /**
- * A component displaying the alerts when user authenticates.
+ * A component displaying the alerts when user tries authenticate.
  */
 export function AuthenticationAlert(props: IAuthenticationAlert) {
   const { status, message, resetManager} = props

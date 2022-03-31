@@ -1,3 +1,7 @@
+/**
+ * This code uses following libraries: 
+ * react and react-firebase-hooks.
+ */
 import React from "react"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { SaveRelationDexie } from "components/dexie/save-relation-dexie"

@@ -1,3 +1,7 @@
+/**
+ * This code uses following libraries: 
+ * react.
+ */
 import React from "react"
 import { MatrixOutput } from "components/matrix-output/matrix-output"
 import { OrderedPairs } from "components/ordered-pairs/ordered-pairs"

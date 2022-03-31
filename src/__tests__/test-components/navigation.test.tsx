@@ -1,5 +1,9 @@
+/**
+ * This code uses following libraries: 
+ * react, @mui/styles, @testing-library/react, and @testing-library/jest-dom.
+ */
 import React from "react"
-import { ThemeProvider } from "@mui/styles"
+import ThemeProvider from "@mui/styles/ThemeProvider"
 import { BrowserRouter as Router } from "react-router-dom"
 import { render, screen } from "@testing-library/react"
 import "@testing-library/jest-dom"

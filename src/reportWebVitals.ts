@@ -1,3 +1,8 @@
+/**
+ * Auto generated code from React project initialisation for PWA. 
+ * Uses libraries: web-vitals.
+ */
+
 import { ReportHandler } from "web-vitals"
 
 const reportWebVitals = (onPerfEntry?: ReportHandler) => {

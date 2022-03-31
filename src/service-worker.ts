@@ -1,3 +1,7 @@
+/**
+ * Auto generated code from React project initialisation for PWA. 
+ */
+
 /// <reference lib="webworker" />
 /* eslint-disable no-restricted-globals */
 

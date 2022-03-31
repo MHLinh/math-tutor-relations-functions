@@ -1,19 +1,21 @@
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, @mui/styles,
+ * katex, and react-latex-next.
+ */
 import React, { useState, useCallback, useMemo } from "react"
-import {
-  Box,
-  Container,
-  Grid,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Typography,
-  Select,
-  SelectChangeEvent,
-  useTheme,
-  useMediaQuery,
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
-import _ from "lodash"
+import Box from "@mui/material/Box"
+import Container from "@mui/material/Container"
+import Grid from "@mui/material/Grid"
+import FormControl from "@mui/material/FormControl"
+import InputLabel from "@mui/material/InputLabel"
+import MenuItem from "@mui/material/MenuItem"
+import Typography from "@mui/material/Typography"
+import Select, { SelectChangeEvent } from "@mui/material/Select"
+import useTheme from "@mui/material/styles/useTheme"
+import useMediaQuery from "@mui/material/useMediaQuery"
+import makeStyles from "@mui/styles/makeStyles"
+import cloneDeep from "lodash/cloneDeep"
 import "katex/dist/katex.min.css"
 import Latex from "react-latex-next"
 import { center } from "theme/styles"
@@ -23,6 +25,7 @@ import { FunctionPlotOptions } from "components/function-plot/function-plot-type
 import { IPointsContext } from "components/points-context/points-context"
 import { PointsDataService } from "components/database/points-data-service"
 
+// Slider and plot settings.
 const step = 1
 const min = -6
 const max = 6
@@ -43,6 +46,7 @@ export function LinearFunctionSlopePoints() {
                 ? 300
                 : 400
 
+  // Points and slope calculations.
   const x1 = points[0][0]
   const y1 = points[0][1]
   const x2 = points[1][0]
@@ -101,25 +105,25 @@ export function LinearFunctionSlopePoints() {
   
 
   const handleChangeX1 = (event: SelectChangeEvent) => {
-    const tempPoints =  _.cloneDeep(points)
+    const tempPoints =  cloneDeep(points)
     tempPoints[0][0] = parseInt(event.target.value, 10)
     setPoints(tempPoints)
   }
 
   const handleChangeY1 = (event: SelectChangeEvent) => {
-    const tempPoints =  _.cloneDeep(points)
+    const tempPoints =  cloneDeep(points)
     tempPoints[0][1] = parseInt(event.target.value, 10)
     setPoints(tempPoints)
   }
 
   const handleChangeX2 = (event: SelectChangeEvent) => {
-    const tempPoints =  _.cloneDeep(points)
+    const tempPoints =  cloneDeep(points)
     tempPoints[1][0] = parseInt(event.target.value, 10)
     setPoints(tempPoints)
   }
 
   const handleChangeY2 = (event: SelectChangeEvent) => {
-    const tempPoints =  _.cloneDeep(points)
+    const tempPoints =  cloneDeep(points)
     tempPoints[1][1] = parseInt(event.target.value, 10)
     setPoints(tempPoints)
   }
@@ -146,6 +150,7 @@ export function LinearFunctionSlopePoints() {
         justifyContent="center"
         spacing={1}
       >
+        {/* Function graph and slope. */}
         <Grid item md={6} lg={5}>
           <Box className={classes.center}>
             <FunctionPlot 
@@ -164,6 +169,7 @@ export function LinearFunctionSlopePoints() {
             </Typography>
           </Box>
         </Grid>
+        {/* Points coordinates input. */}
         <Grid item md={6} lg={5}>
           <Box className={classes.box}>
             <Grid

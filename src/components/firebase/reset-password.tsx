@@ -74,6 +74,7 @@ export function ResetPassword(){
             alignItems="center"
             spacing={1}
           >
+            {/* Reset password form. */}
             <Typography align="center" className={classes.text}>
               Reset password
             </Typography>
@@ -84,6 +85,7 @@ export function ResetPassword(){
               placeholder="E-mail Address"
               fullWidth
             />
+            {/* Reset password buttons. */}
             <Button
               id="reset-button"
               className={classes.button}

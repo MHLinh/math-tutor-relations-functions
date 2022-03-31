@@ -1,23 +1,24 @@
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, @mui/styles,
+ * katex, and react-latex-next.
+ */
 import React, { useState, useCallback } from "react"
-import {
-  Box,
-  Container,
-  Grid,
-  FormControlLabel,
-  FormControl,
-  FormLabel,
-  InputLabel,
-  MenuItem,
-  Radio,
-  RadioGroup,
-  Typography,
-  Select,
-  SelectChangeEvent,
-  useTheme,
-  useMediaQuery,
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
-import _ from "lodash"
+import Box from "@mui/material/Box"
+import Container from "@mui/material/Container"
+import Grid from "@mui/material/Grid"
+import FormControlLabel from "@mui/material/FormControlLabel"
+import FormControl from "@mui/material/FormControl"
+import FormLabel from "@mui/material/FormLabel"
+import InputLabel from "@mui/material/InputLabel"
+import MenuItem from "@mui/material/MenuItem"
+import Radio from "@mui/material/Radio"
+import RadioGroup from "@mui/material/RadioGroup"
+import Typography from "@mui/material/Typography"
+import Select, { SelectChangeEvent } from "@mui/material/Select"
+import useMediaQuery from "@mui/material/useMediaQuery"
+import useTheme from "@mui/material/styles/useTheme"
+import makeStyles from "@mui/styles/makeStyles"
 import "katex/dist/katex.min.css"
 import Latex from "react-latex-next"
 import { center } from "theme/styles"
@@ -188,6 +189,7 @@ export function FunctionDomainContinuous() {
           </Box>
         </Grid>
         <Grid item md={6} lg={5}>
+          {/* Domain start and end input. */}
           <Box className={classes.box}>
             <Grid
               container
@@ -204,6 +206,7 @@ export function FunctionDomainContinuous() {
                   container
                   spacing={1}
                 >
+                  {/* Domain start input. */}
                   <Grid item>
                     <FormControl>
                       <InputLabel id="domain-start-select-label">Start</InputLabel>
@@ -222,6 +225,7 @@ export function FunctionDomainContinuous() {
                       </Select>
                     </FormControl>
                   </Grid>
+                  {/* Domain end input. */}
                   <Grid item>
                     <FormControl>
                       <InputLabel id="domain-end-select-label">End</InputLabel>
@@ -244,6 +248,7 @@ export function FunctionDomainContinuous() {
               </Grid>
             </Grid>
           </Box>
+          {/* Domain interval type. */}
           <Box className={classes.box}>
             <Grid
               container
@@ -251,6 +256,7 @@ export function FunctionDomainContinuous() {
               direction="row"
               justifyContent="center"
             >
+              {/* Domain start interval type. */}
               <Grid item>
                 <FormControl>
                   <FormLabel id="domain-start-radio-buttons-group-label">Domain start</FormLabel>
@@ -265,6 +271,7 @@ export function FunctionDomainContinuous() {
                     </RadioGroup>
                 </FormControl>
               </Grid>
+              {/* Domain end interval type. */}
               <Grid item>
                 <FormControl>
                   <FormLabel id="domain-end-radio-buttons-group-label">Domain end</FormLabel>
@@ -294,6 +301,7 @@ export function FunctionDomainContinuous() {
           </Box>
         </Grid>
       </Grid>
+      {/* Alert messages. */}
       <CustomAlert 
         open={alert}
         handleClose={handleCloseAlert}

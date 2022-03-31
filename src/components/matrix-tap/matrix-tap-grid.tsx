@@ -1,10 +1,12 @@
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, @mui/styles and lodash.
+ */
 import React, { useContext } from "react"
-import {
-  Box, 
-  Grid,
-  Typography
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+import Box from "@mui/material/Box"
+import Grid from "@mui/material/Grid"
+import Typography from "@mui/material/Typography"
+import makeStyles from "@mui/styles/makeStyles"
 import { MatrixContext } from "components/matrix-context/matrix-context"
 import { MatrixTapButton } from "./matrix-tap-button"
 

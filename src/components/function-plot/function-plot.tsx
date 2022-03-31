@@ -1,5 +1,9 @@
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, and function-plot.
+ */
 import React, { useState, useEffect, useRef } from "react"
-import { Box } from "@mui/material"
+import Box from "@mui/material/Box"
 import functionPlot from "function-plot"
 import { CustomAlert } from "components/custom-alert/custom-alert"
 import { FunctionPlotOptions } from "./function-plot-types"
@@ -11,9 +15,10 @@ export interface IFunctionPlot {
 /**
  * A component used to plot graphs of functions.
  * 
- * The code of the component was written based example code of the function-plot library 
- * at https://mauriciopoppe.github.io/function-plot/ (accessed 24.02.2022)
- * written by Mauricio Poppe.
+ * The code of the component was written based example code of the function-plot library at:
+ * at https://mauriciopoppe.github.io/function-plot/
+ * Accessed: 24.02.2022
+ * Author: Mauricio Poppe
  */
 function FunctionPlot (props: IFunctionPlot) {
   const { options } = props

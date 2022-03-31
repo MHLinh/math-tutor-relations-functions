@@ -1,14 +1,17 @@
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, @mui/styles,
+ * katex, and react-latex-next.
+ */
 import React, { useState, useCallback } from "react"
-import {
-  Box,
-  Button,
-  Container,
-  Grid,
-  Typography,
-  useTheme,
-  useMediaQuery,
-} from "@mui/material"
-import { makeStyles } from "@mui/styles"
+import Box from "@mui/material/Box"
+import Button from "@mui/material/Button"
+import Container from "@mui/material/Container"
+import Grid from "@mui/material/Grid"
+import Typography from "@mui/material/Typography"
+import useTheme from "@mui/material/styles/useTheme"
+import useMediaQuery from "@mui/material/useMediaQuery"
+import makeStyles from "@mui/styles/makeStyles"
 import "katex/dist/katex.min.css"
 import Latex from "react-latex-next"
 import { center } from "theme/styles"
@@ -18,6 +21,7 @@ import { FunctionPlotOptions } from "components/function-plot/function-plot-type
 import { FunctionEquationSelection } from "components/function-equation/function-equation-selection"
 import { Equation } from "components/function-equation/function-equation-types"
 
+// Plot settings.
 const min = -6
 const max = 6
 
@@ -98,6 +102,7 @@ export function Reflection() {
         justifyContent="center"
         spacing={1}
       >
+        {/* Function graph and equation. */}
         <Grid item md={6}>
           <Box className={classes.center}>
             <FunctionPlot 
@@ -110,6 +115,7 @@ export function Reflection() {
             </Typography>
           </Box>
         </Grid>
+        {/* Function transformation controls. */}
         <Grid item md={6}>
           <Box className={classes.box}>
             <Box className={classes.box}>

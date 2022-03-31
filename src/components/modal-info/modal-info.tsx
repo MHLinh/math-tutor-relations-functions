@@ -1,13 +1,15 @@
+/**
+ * This code uses following libraries: 
+ * react, @mui/material, @mui/styles and @mui/icons-material.
+ */
 import React, { ReactNode, useState } from "react"
-import {
-  Box,
-  IconButton,
-  Grid,
-  Typography,
-  Modal,  
-} from "@mui/material"
+import Box from "@mui/material/Box"
+import IconButton from "@mui/material/IconButton"
+import Grid from "@mui/material/Grid"
+import Typography from "@mui/material/Typography"
+import Modal from "@mui/material/Modal"
 import QuestionMarkIcon from "@mui/icons-material/QuestionMark"
-import { makeStyles } from "@mui/styles"
+import makeStyles from "@mui/styles/makeStyles"
 
 interface IModalInfo {
   title: string,

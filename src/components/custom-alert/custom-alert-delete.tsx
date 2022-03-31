@@ -1,10 +1,12 @@
+/**
+ * This code uses following libraries: 
+ * react and @mui/material.
+ */
 import React from "react"
-import {
-  Alert,
-  AlertColor,
-  Button,
-  Snackbar
-} from "@mui/material"
+import Alert, { AlertColor } from "@mui/material/Alert"
+import Button from "@mui/material/Button"
+import Snackbar from "@mui/material/Snackbar"
+
 
 interface ICustomAlertDelete {
   open: boolean,          // Whether to show the alert

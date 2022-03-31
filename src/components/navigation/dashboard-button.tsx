@@ -1,6 +1,11 @@
+/**
+ * This code uses following libraries: 
+ * react, react-router-dom, @mui/material, 
+ * @mui/icons-material, and react-firebase-hooks.
+ */
 import React from "react"
 import { useNavigate } from "react-router-dom"
-import { IconButton } from "@mui/material"
+import IconButton from "@mui/material/IconButton"
 import AccountCircleIcon from "@mui/icons-material/AccountCircle"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { auth } from "components/firebase/firebase"
