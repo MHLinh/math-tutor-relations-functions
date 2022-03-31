@@ -5,7 +5,7 @@
 import React from "react"
 import Box from "@mui/material/Box"
 import Grid from "@mui/material/Grid"
-import useTheme from "@mui/material/styles/useTheme"
+import { useTheme } from "@mui/material/styles"
 import useMediaQuery from "@mui/material/useMediaQuery"
 import makeStyles from "@mui/styles/makeStyles"
 import { IMatrixContext } from "components/matrix-context/matrix-context"

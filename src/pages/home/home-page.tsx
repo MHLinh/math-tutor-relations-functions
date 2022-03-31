@@ -2,10 +2,10 @@
  * This code uses following libraries: 
  * react, @mui/material, and @mui/styles.
  */
- import React from "react"
- import Box from "@mui/material/Box"
- import Container from "@mui/material/Container"
- import makeStyles from "@mui/styles/makeStyles"
+import React from "react"
+import Box from "@mui/material/Box"
+import Container from "@mui/material/Container"
+import makeStyles from "@mui/styles/makeStyles"
 import { 
   RelationNavigation,
   FunctionNavigation

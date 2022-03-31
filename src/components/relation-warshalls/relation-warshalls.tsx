@@ -8,7 +8,7 @@ import Button from "@mui/material/Button"
 import Container from "@mui/material/Container"
 import Grid from "@mui/material/Grid"
 import Typography from "@mui/material/Typography"
-import useTheme from "@mui/material/styles/useTheme"
+import { useTheme } from "@mui/material/styles"
 import useMediaQuery from "@mui/material/useMediaQuery"
 import makeStyles from "@mui/styles/makeStyles"
 import { 
