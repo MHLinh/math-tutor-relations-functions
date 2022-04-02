@@ -5,6 +5,7 @@
  */
 import React, { useState } from "react"
 import Box from "@mui/material/Box"
+import Button from "@mui/material/Button"
 import Container from "@mui/material/Container"
 import Grid from "@mui/material/Grid"
 import TextField from "@mui/material/TextField"
@@ -15,21 +16,28 @@ import makeStyles from "@mui/styles/makeStyles"
 import NumberFormat from "react-number-format"
 import "katex/dist/katex.min.css"
 import Latex from "react-latex-next"
-import { center } from "theme/styles"
+import { center, buttonStyle } from "theme/styles"
 import { roundToTwoDecimal } from "utils"
 import FunctionPlot from "components/function-plot/function-plot"
 import { FunctionPlotOptions } from "components/function-plot/function-plot-types"
+import { CustomAlert } from "components/custom-alert/custom-alert"
 
 /**
  * A component allowing the user to modify the quadratic function
  * to see the change in the vertex.
  */
 export function QuadraticFunctionVertex() {
+  const [inputParams, setInputParams] = useState({
+    a: 1,
+    b: 2,
+    c: 1
+  })
   const [params, setParams] = useState({
     a: 1,
     b: 2,
     c: 1
   })
+  const [alert, setAlert] = useState(false)
 
   const classes = useStyles()
   const { breakpoints } = useTheme()
@@ -81,24 +89,42 @@ export function QuadraticFunctionVertex() {
   }
 
   const handleChangeA = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setParams({
-      ...params, 
+    setInputParams({
+      ...inputParams, 
       a: parseInt(event.target.value, 10)
     })
   }
 
   const handleChangeB = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setParams({
-      ...params, 
+    setInputParams({
+      ...inputParams, 
       b: parseInt(event.target.value, 10)
     })
   }
 
   const handleChangeC = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setParams({
-      ...params, 
+    setInputParams({
+      ...inputParams, 
       c: parseInt(event.target.value, 10)
     })
+  }
+
+  const handleClick = () => {
+    if(Number.isNaN(inputParams.a) || 
+       Number.isNaN(inputParams.b) || 
+       Number.isNaN(inputParams.c)
+    ) {
+      setAlert(true)
+      return
+    }
+    setParams(inputParams)
+  }
+
+  const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
+    if (reason === "clickaway") {
+      return
+    }
+    setAlert(false)
   }
 
   return (
@@ -166,7 +192,7 @@ export function QuadraticFunctionVertex() {
                   <Grid item>
                     <NumberFormat
                       id="input-a"
-                      value={params.a}
+                      value={inputParams.a}
                       customInput={TextField} 
                       variant="outlined"
                       autoComplete="off"
@@ -192,7 +218,7 @@ export function QuadraticFunctionVertex() {
                   <Grid item>
                     <NumberFormat
                       id="input-b"
-                      value={params.b}
+                      value={inputParams.b}
                       customInput={TextField} 
                       variant="outlined"
                       autoComplete="off"
@@ -218,7 +244,7 @@ export function QuadraticFunctionVertex() {
                   <Grid item>
                     <NumberFormat
                       id="input-c"
-                      value={params.c}
+                      value={inputParams.c}
                       customInput={TextField} 
                       variant="outlined"
                       autoComplete="off"
@@ -252,8 +278,30 @@ export function QuadraticFunctionVertex() {
               </Grid>
             </Grid>
           </Box>
+          <Box className={classes.centerBox}>
+            <Button
+              variant="contained"
+              onClick={handleClick}
+              className={classes.button}
+            >
+              Compute
+            </Button>
+          </Box>
+          <Box className={classes.box}>
+            <Typography variant="caption">
+              Note: Please only input integer values.
+              The view of the graph can be moved and zoomed.
+            </Typography>
+          </Box>
         </Grid>
       </Grid>
+      {/* Alert messages. */}
+      <CustomAlert 
+        open={alert}
+        handleClose={handleClose}
+        severity="error"
+        text="Please input values for all parameters a, b, and c."
+      />
     </Container>
   )
 }
@@ -263,8 +311,16 @@ const useStyles = makeStyles((theme: any) => ({
     paddingBottom: theme.spacing(1),
     paddingTop: theme.spacing(1),
   },
+  button: {
+    ...buttonStyle
+  },
   center: {
     ...center,
+  },
+  centerBox: {
+    ...center,
+    paddingBottom: theme.spacing(1),
+    paddingTop: theme.spacing(1),
   },
   latex: {
     fontSize: theme.typography.pxToRem(16),
