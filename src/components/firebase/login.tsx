@@ -173,7 +173,7 @@ export function Login(){
               Login with Google
             </Button>
             <Typography align="center">
-              <Link to="/reset-password">Forgot Password</Link>
+              <Link to="/reset-password">Forgot Password.</Link>
             </Typography>
             <Typography align="center">
               Don&apos;t have an account? <Link to="/register">Register now.</Link>
