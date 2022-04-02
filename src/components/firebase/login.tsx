@@ -21,6 +21,7 @@ import Visibility from "@mui/icons-material/Visibility"
 import VisibilityOff from "@mui/icons-material/VisibilityOff"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { center } from "theme/styles"
+import { CustomAlert } from "components/custom-alert/custom-alert"
 import { PrivacyPolicyNotice } from "components/privacy-policy/privacy-policy-notice"
 import { 
   auth,
@@ -32,6 +33,7 @@ export function Login(){
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [showPassword, setShowPassword] = useState(false)
+  const [alert, setAlert] = useState(false)
   const [user, loading] = useAuthState(auth)
   const navigate = useNavigate()
   const { 
@@ -64,6 +66,11 @@ export function Login(){
   }
 
   const handleClickLogin = () => {
+    if (email === "" || password === "") {
+      setAlert(true)
+      return
+    }
+
     logInWithEmailAndPassword(email, password)
   }
 
@@ -77,6 +84,14 @@ export function Login(){
 
   const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault()
+  }
+
+  const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
+    if (reason === "clickaway") {
+      return
+    }
+
+    setAlert(false)
   }
 
   return (
@@ -166,6 +181,12 @@ export function Login(){
             <PrivacyPolicyNotice />
           </Stack>
         </Box>
+        <CustomAlert 
+          open={alert}
+          handleClose={handleClose}
+          severity="error"
+          text="Please enter your email and password."
+        />
       </Container>
     </Box>
   )
