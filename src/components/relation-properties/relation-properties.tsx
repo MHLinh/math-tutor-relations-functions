@@ -15,7 +15,7 @@ import { IMatrixContext } from "components/matrix-context/matrix-context"
 import { RelationOutput } from "components/relation-output/relation-output"
 import { relationOutputTypes } from "components/relation-output/relation-output-selection"
 import { RelationInput } from "components/relation-input/relation-input"
-import {  relationInputTypes} from "components/relation-input/relation-input-selection"
+import { relationInputTypes } from "components/relation-input/relation-input-selection"
 import { RelationButtons } from "components/relation-buttons/relation-buttons"
 import { RelationPropertiesTable } from "./relation-properties-table"
 
@@ -26,7 +26,7 @@ import { RelationPropertiesTable } from "./relation-properties-table"
  */
 export function RelationProperties() {
   const [relation, setRelation] = useState<number[][]>(generateMatrix(NUM_OF_ELEMENTS))
-  const [outputType, setOutputType] = useState(relationOutputTypes[0].id)
+  const [outputType, setOutputType] = useState(relationOutputTypes[1].id)
   const [inputType, setInputType] = useState(relationInputTypes[0].id)
   const classes = useStyles()
 
