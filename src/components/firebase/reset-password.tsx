@@ -15,6 +15,7 @@ import Typography from "@mui/material/Typography"
 import makeStyles from "@mui/styles/makeStyles"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { center } from "theme/styles"
+import { CustomAlert } from "components/custom-alert/custom-alert"
 import { 
   auth, 
   useAuthenticationManager,
@@ -23,6 +24,7 @@ import {
 
 export function ResetPassword(){
   const [email, setEmail] = useState("")
+  const [alert, setAlert] = useState(false)
   const [user, loading] = useAuthState(auth)
   const navigate = useNavigate()
   const { 
@@ -50,7 +52,20 @@ export function ResetPassword(){
   }
 
   const handleClickReset = () => {
+    if (email === "") {
+      setAlert(true)
+      return
+    }
+
     sendPasswordReset(email)
+  }
+
+  const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
+    if (reason === "clickaway") {
+      return
+    }
+
+    setAlert(false)
   }
 
   return (
@@ -99,6 +114,12 @@ export function ResetPassword(){
             </Typography>
           </Stack>
         </Box>
+        <CustomAlert 
+          open={alert}
+          handleClose={handleClose}
+          severity="error"
+          text="Please enter your email."
+        />
       </Container>
     </Box>
   )
