@@ -110,6 +110,9 @@ export function ResetPassword(){
               Reset password
             </Button>
             <Typography align="center">
+              Go back to <Link to="/login">Login</Link>.
+            </Typography>
+            <Typography align="center">
               Don&apos;t have an account? <Link to="/register">Register now.</Link>
             </Typography>
           </Stack>
