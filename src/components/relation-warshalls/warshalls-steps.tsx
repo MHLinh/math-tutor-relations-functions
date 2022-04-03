@@ -5,7 +5,6 @@
 import React, { useState, useCallback } from "react"
 import Box from "@mui/material/Box"
 import Button from "@mui/material/Button"
-import Container from "@mui/material/Container"
 import Grid from "@mui/material/Grid"
 import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
@@ -78,71 +77,66 @@ export function WarshallsSteps(props: IWarshallsSteps) {
       <Box className={classes.boxGrid}>
         {round !== maxRound
         ?  <Grid 
-              container 
-              direction={small 
-                ? "column"
-                : "row"
-              }
-              justifyContent="center"
-              alignItems="center" 
-              spacing={1}
-            >
-              <Grid item>
-                <WarshallsMatrix matrix={steps[round]} round={round} />
-              </Grid>
-              <Grid item>
-                {small 
-                  ? <ArrowDownwardIcon fontSize="large"/>
-                  : <ArrowForwardIcon fontSize="large"/>
-                }
-              </Grid>
-              <Grid item>
-                <Matrix matrix={steps[round + 1]} />
-              </Grid>
-            </Grid>
-        : <Grid 
-            container
-            direction="column"
+            container 
+            direction={small 
+              ? "column"
+              : "row"
+            }
             justifyContent="center"
             alignItems="center" 
             spacing={1}
           >
-            <Grid 
-              container
-              item 
+            <Grid item>
+              <WarshallsMatrix matrix={steps[round]} round={round} />
+            </Grid>
+            <Grid item>
+              {small 
+                ? <ArrowDownwardIcon fontSize="large"/>
+                : <ArrowForwardIcon fontSize="large"/>
+              }
+            </Grid>
+            <Grid item>
+              <Matrix matrix={steps[round + 1]} />
+            </Grid>
+          </Grid>
+        : <Stack 
+            direction="column"
+            justifyContent="center"
+            alignItems="center"
+            spacing={2}
+          >
+            <Stack 
               direction={small 
                 ? "column"
                 : "row"
               }
+              spacing={small 
+                ? 2
+                : 3
+              }
             >
-              <Grid item xs={6}>
-                <Box className={classes.box}>
-                  <WarshallsRelationOutput
-                    text="Initial relation"
-                    matrix={steps[0]} 
-                    type={outputType}
-                  />
-                </Box>
-              </Grid>
-              <Grid item xs={6}>
-                <Box className={classes.box}>
-                  <WarshallsRelationOutput
-                    text="Final relation"
-                    matrix={steps[maxRound - 1]} 
-                    type={outputType}
-                  />
-                </Box>
-              </Grid>
-            </Grid>
-            <Grid item>
-              <Box>
-                <RelationOutputSelection 
-                  selectedType={outputType}
-                  setSelectedType={wrapperSetOutputType}
+              <Box className={classes.box}>
+                <WarshallsRelationOutput
+                  text="Initial relation"
+                  matrix={steps[0]} 
+                  type={outputType}
                 />
               </Box>
-            </Grid>
-          </Grid>
+              <Box className={classes.box}>
+                <WarshallsRelationOutput
+                  text="Final relation"
+                  matrix={steps[maxRound - 1]} 
+                  type={outputType}
+                />
+              </Box>
+            </Stack>
+            <Box>
+              <RelationOutputSelection 
+                selectedType={outputType}
+                setSelectedType={wrapperSetOutputType}
+              />
+            </Box>
+          </Stack>
         }
       </Box>
       <Box className={classes.box}>
