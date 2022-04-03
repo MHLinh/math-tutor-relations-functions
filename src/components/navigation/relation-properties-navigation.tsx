@@ -14,7 +14,7 @@ export function RelationPropertiesNavigation() {
 
   const paths = [
     { name: "Reflexive relation", path: "/relation-properties-reflexive" },
-    { name: "Ireflexive relation", path: "/relation-properties-irreflexive" },
+    { name: "Irreflexive relation", path: "/relation-properties-irreflexive" },
     { name: "Symmetric relation", path: "/relation-properties-symmetric" },
     { name: "Antisymmetric relation", path: "/relation-properties-antisymmetric" },
     { name: "Transitive relation", path: "/relation-properties-transitive" },
