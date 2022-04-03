@@ -23,6 +23,9 @@ import { auth, db, useAuthenticationManager } from "./firebase"
  * A component displaying the user dashboard.
  * Displays the user's name and email.
  * Allows the user to log out.
+ * Code partially based on the article 
+ * https://blog.logrocket.com/user-authentication-firebase-react-apps/,
+ * author: Yusuff Faruq, published: 10.01.2022, accessed: 07.03.2022.
  */
 export function Dashboard() {
   const [user, loading] = useAuthState(auth)

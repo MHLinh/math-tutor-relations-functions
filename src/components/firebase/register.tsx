@@ -29,6 +29,12 @@ import {
   AuthenticationAlert
 } from "./firebase"
 
+/**
+ * A component displaying the register form.
+ * Code partially based on the article 
+ * https://blog.logrocket.com/user-authentication-firebase-react-apps/,
+ * author: Yusuff Faruq, published: 10.01.2022, accessed: 07.03.2022.
+ */
 export function Register (){
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
