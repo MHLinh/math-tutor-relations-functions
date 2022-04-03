@@ -5,8 +5,8 @@ export const center = {
 }
 
 export const paddingStyle = {
-  paddingLeft: "min(20%, 15.625rem)", // 250 px
-  paddingRight: "min(20%, 15.625rem)", // 250 px
+  paddingLeft: "min(15%, 15.625rem)", // 250 px
+  paddingRight: "min(15%, 15.625rem)", // 250 px
 }
 
 export const buttonStyle = {
