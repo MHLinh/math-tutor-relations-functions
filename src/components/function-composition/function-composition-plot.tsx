@@ -398,25 +398,25 @@ export function FunctionCompositionPlot() {
         open={alertF}
         handleClose={handleCloseAlertF}
         severity="error"
-        text="Function f has invalid syntax"
+        text="Function f has invalid syntax."
       />
       <CustomAlert 
         open={alertG}
         handleClose={handleCloseAlertG}
         severity="error"
-        text="Function g has invalid syntax"
+        text="Function g has invalid syntax."
       />
       <CustomAlert 
         open={alertFG}
         handleClose={handleCloseAlertFG}
         severity="error"
-        text="There was a problem with creating the composition (f ∘ g)(x)"
+        text="There was a problem with creating the composition (f ∘ g)(x)."
       />
       <CustomAlert 
         open={alertGF}
         handleClose={handleCloseAlertGF}
         severity="error"
-        text="There was a problem with creating the composition (g ∘ f)(x)"
+        text="There was a problem with creating the composition (g ∘ f)(x)."
       />
     </Container>
   )

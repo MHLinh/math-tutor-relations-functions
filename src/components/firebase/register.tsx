@@ -185,9 +185,6 @@ export function Register (){
               Register with Google
             </Button>
             <Typography align="center">
-              <Link to="/reset-password">Forgot Password</Link>
-            </Typography>
-            <Typography align="center">
               Already have an account? <Link to="/login">Login now.</Link>
             </Typography>
             <Typography align="left" variant="caption">
