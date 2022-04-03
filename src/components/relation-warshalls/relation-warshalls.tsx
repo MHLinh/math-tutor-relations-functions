@@ -7,6 +7,7 @@ import Box from "@mui/material/Box"
 import Button from "@mui/material/Button"
 import Container from "@mui/material/Container"
 import Grid from "@mui/material/Grid"
+import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
 import { useTheme } from "@mui/material/styles"
 import useMediaQuery from "@mui/material/useMediaQuery"
@@ -16,7 +17,7 @@ import {
   generateMatrix,
   computeWarshalls 
 } from "utils"
-import { paddingStyle, buttonStyle } from "theme"
+import { center, paddingStyle, buttonStyle } from "theme"
 import { IMatrixContext } from "components/matrix-context/matrix-context"
 import { RelationInput } from "components/relation-input/relation-input"
 import { 
@@ -107,24 +108,24 @@ export function RelationWarshalls() {
               justifyContent="center"
               md={6}
             >
-            <Box className={classes.box}>
-              <RelationInputSelection 
-                selectedType={inputType}
-                setSelectedType={wrapperSetInputType}
-              />
-            </Box>
-            <Box className={classes.box}>
-              <ClearButtonProvider matrixContextValue={contextValue} />
-            </Box>
-            <Box className={classes.box}>
-              <Button 
-                variant="contained" 
-                onClick={handleCompute}
-                className={classes.button}
-              >
-                Compute transitive closure
-              </Button>
-            </Box>
+              <Box className={classes.box}>
+                <RelationInputSelection 
+                  selectedType={inputType}
+                  setSelectedType={wrapperSetInputType}
+                />
+              </Box>
+              <Box className={classes.box}>
+                <ClearButtonProvider matrixContextValue={contextValue} />
+              </Box>
+              <Box className={classes.box}>
+                <Button 
+                  variant="contained" 
+                  onClick={handleCompute}
+                  className={classes.button}
+                >
+                  Compute transitive closure
+                </Button>
+              </Box>
             </Grid>
             <Grid 
               container
@@ -143,32 +144,27 @@ export function RelationWarshalls() {
           <Box className={classes.box}>
             <WarshallsSteps steps={steps}/>
           </Box>
-          <Grid
-            container
-            direction="column"
-            justifyContent="center"
-            alignItems="center" 
-            spacing={2}
-          >
-            <Grid item> 
+          <Box className={classes.center}>
+            <Stack 
+              direction="column"
+              spacing={2}
+            >
               <Button 
-                variant="contained" 
-                onClick={handleBackToInput}
-                className={classes.button}
-              >
-                Back to input
-              </Button>
-            </Grid>
-            <Grid item>
-              <Button 
-                variant="contained" 
-                onClick={handleReset}
-                className={classes.button}
-              >
-                Reset
-              </Button>
-            </Grid>
-          </Grid>
+                  variant="contained" 
+                  onClick={handleBackToInput}
+                  className={classes.button}
+                >
+                  Back to input
+                </Button>
+                  <Button 
+                  variant="contained" 
+                  onClick={handleReset}
+                  className={classes.button}
+                >
+                  Reset
+                </Button>
+            </Stack>
+          </Box>
         </Box>
       }
     </Container>
@@ -182,6 +178,9 @@ const useStyles = makeStyles((theme: any) => ({
   },
   button: {
     ...buttonStyle
+  },
+  center: {
+    ...center
   },
   container: {
     ...paddingStyle,
