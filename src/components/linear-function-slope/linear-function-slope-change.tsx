@@ -72,7 +72,11 @@ export function LinearFunctionSlopeChange() {
     event: Event | React.SyntheticEvent<Element, Event>, 
     value: number | number[]
   ) => {
-    setXChange(value as number)
+    const inValue = value as number
+    if(inValue !== 0) {
+      setXChange(inValue)
+    }
+
   }
 
   const handleYChange = (

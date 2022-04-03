@@ -15,7 +15,7 @@ import { IMatrixContext } from "components/matrix-context/matrix-context"
 import { RelationOutput } from "components/relation-output/relation-output"
 import { relationOutputTypes } from "components/relation-output/relation-output-selection"
 import { RelationInput } from "components/relation-input/relation-input"
-import {  relationInputTypes} from "components/relation-input/relation-input-selection"
+import { relationInputTypes } from "components/relation-input/relation-input-selection"
 import { RelationButtons } from "components/relation-buttons/relation-buttons"
 import { RelationTotalOrderCheck } from "./relation-total-order-check"
 

@@ -34,7 +34,7 @@ export function Register (){
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [showPassword, setShowPassword] = useState(false)
-  const [alertName, setAlertName] = useState(false)
+  const [alert, setAlert] = useState(false)
   const [user, loading] = useAuthState(auth)
   const navigate = useNavigate()
   const { 
@@ -71,9 +71,11 @@ export function Register (){
   }
 
   const handleClickRegister = () => {
-    if (name === "") {
-      setAlertName(true)
+    if (name === "" || email === "" || password === "") {
+      setAlert(true)
+      return
     }
+
     registerWithEmailAndPassword(name, email, password)
   }
 
@@ -93,7 +95,8 @@ export function Register (){
     if (reason === "clickaway") {
       return
     }
-    setAlertName(false)
+
+    setAlert(false)
   }
 
   return (
@@ -182,9 +185,6 @@ export function Register (){
               Register with Google
             </Button>
             <Typography align="center">
-              <Link to="/reset-password">Forgot Password</Link>
-            </Typography>
-            <Typography align="center">
               Already have an account? <Link to="/login">Login now.</Link>
             </Typography>
             <Typography align="left" variant="caption">
@@ -194,10 +194,10 @@ export function Register (){
           </Stack>
         </Box>
         <CustomAlert 
-          open={alertName}
+          open={alert}
           handleClose={handleClose}
           severity="error"
-          text="Please enter your name."
+          text="Please enter your name, email, and password."
         />
       </Container>
     </Box>
