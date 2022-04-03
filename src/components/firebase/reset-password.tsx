@@ -22,6 +22,12 @@ import {
   AuthenticationAlert
 } from "./firebase"
 
+/**
+ * A component for resetting the user password.
+ * Code partially based on the article 
+ * https://blog.logrocket.com/user-authentication-firebase-react-apps/,
+ * author: Yusuff Faruq, published: 10.01.2022, accessed: 07.03.2022.
+ */
 export function ResetPassword(){
   const [email, setEmail] = useState("")
   const [alert, setAlert] = useState(false)
