@@ -49,6 +49,9 @@ Environment settings used:
 ## Deployment
 The web application was deployed using Heroku at the following url: https://relations-and-functions.herokuapp.com.
 
+## Testing
+To run the unit tests use the following command in the root folder: `yarn test --watchAll`
+
 ## Project structure
 The following shows a high overview of the project folder structure.
 ```
