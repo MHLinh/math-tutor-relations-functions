@@ -59,7 +59,7 @@ test("render relation properties navigation", () => {
   expect(screen.getByTestId("relation-properties-reflexive"))
     .toHaveTextContent("Reflexive relation")
   expect(screen.getByTestId("relation-properties-irreflexive"))
-    .toHaveTextContent("Ireflexive relation")
+    .toHaveTextContent("Irreflexive relation")
   expect(screen.getByTestId("relation-properties-symmetric"))
     .toHaveTextContent("Symmetric relation")
   expect(screen.getByTestId("relation-properties-antisymmetric"))
